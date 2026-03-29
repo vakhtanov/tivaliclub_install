@@ -24,9 +24,9 @@ IPV4 and IPV6 address
   `cat /etc/default/locale`  
     ответ: LANG="en_US.UTF-8"  
 
-#if not ===================
-    sudo apt-get install -y language-pack-en  
-    sudo update-locale LANG=en_US.UTF-8  
+#if not ===================  
+    `sudo apt-get install -y language-pack-en`  
+    `sudo update-locale LANG=en_US.UTF-8`  
     перелогиниться  
     проверить  
     cat /etc/default/locale
@@ -40,34 +40,36 @@ IPV4 and IPV6 address
     LANG=en_US.UTF-8
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-# if not =============================
-sudo systemctl set-environment LANG=en_US.UTF-8
+   # if not =============================  
+   `sudo systemctl set-environment LANG=en_US.UTF-8`  
 
-#check
-sudo systemctl show-environment
-#LANG=en_US.UTF-8
-#PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+   #check  
+   `sudo systemctl show-environment`  
+   #LANG=en_US.UTF-8  
+   #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin  
 
-# 3 check memory
-free -h
+3. check memory  
+   `free -h`  
+   16 for prod  
+   8 for dev 
 
-16 for prod
-8 for dev
+4. check version  
+   `cat /etc/lsb-release`  
+   ответ:  
+   ```
+   DISTRIB_ID=Ubuntu
+   DISTRIB_RELEASE=22.04
+   DISTRIB_CODENAME=jammy
+   DISTRIB_DESCRIPTION="Ubuntu 22.04.3 LTS"
+   ```
 
-# 4 check version
-cat /etc/lsb-release
-#DISTRIB_ID=Ubuntu
-#DISTRIB_RELEASE=22.04
-#DISTRIB_CODENAME=jammy
-#DISTRIB_DESCRIPTION="Ubuntu 22.04.3 LTS"
+5. check 64 bit  
+   `uname -m`  
+   ответ: x86_64  
 
-# 5 check 64 bit
-uname -m
-# x86_64
-
-# 6 check ipv6
-ip addr | grep inet6
-#inet6 ::1/128 scope host
+6. check ipv6  
+   `ip addr | grep inet6`
+   ответ #inet6 ::1/128 scope host
 
 # if not after install need to disable ipv6 in FreeSWITCH 
 
