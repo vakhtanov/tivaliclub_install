@@ -1,4 +1,4 @@
-основное руководство
+# Краткое руководство по установке bigbluebutton
 
 [https://docs.bigbluebutton.org/administration/install/](https://docs.bigbluebutton.org/administration/install/)
 
@@ -40,7 +40,7 @@ IPV4 and IPV6 address
     LANG=en_US.UTF-8
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-   # if not =============================  
+   if not =============================  
    `sudo systemctl set-environment LANG=en_US.UTF-8`  
 
    #check  
@@ -90,6 +90,10 @@ IPV4 and IPV6 address
 
 **80 порт для получения сертификата lets encrypt**  
 **По UDP портам есть вопросы, вроде работает без них**  
+
+**Если есть сертификаты домена их нужно положить в папку  /local/certs/**   
+`Place your fullchain.pem and privkey.pem files in /local/certs/ and bbb-install.sh will deal with the rest.`
+
 
 10. **install**  
 `wget -qO- https://raw.githubusercontent.com/bigbluebutton/bbb-install/v3.0.x-release/bbb-install.sh | sudo bash -s -- -v jammy-300 -s bbb.tivaliclub.com -e info@example.com -g`
