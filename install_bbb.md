@@ -116,3 +116,7 @@ check ARI   https://mconf.github.io/api-mate/#server=https://devopsdemo.ru/bigbl
 
 **Установка через Ansible - изучить**
 https://bbb.tivaliclub.com/
+
+про прокси https://docs.bigbluebutton.org/administration/cluster-proxy/
+
+
