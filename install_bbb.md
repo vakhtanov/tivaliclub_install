@@ -24,7 +24,7 @@ IPV4 and IPV6 address
   `cat /etc/default/locale`  
     ответ: LANG="en_US.UTF-8"  
 
-#if not ===================  
+   if not ===================  
     `sudo apt-get install -y language-pack-en`  
     `sudo update-locale LANG=en_US.UTF-8`  
     перелогиниться  
@@ -68,52 +68,47 @@ IPV4 and IPV6 address
    ответ: x86_64  
 
 6. check ipv6  
-   `ip addr | grep inet6`
-   ответ #inet6 ::1/128 scope host
+   `ip addr | grep inet6`  
+   ответ #inet6 ::1/128 scope host  
+   if not after install need to disable ipv6 in FreeSWITCH 
 
-# if not after install need to disable ipv6 in FreeSWITCH 
+7. check kernel  
+   `uname -r`  
+   ответ: 5.15.x-xx-generic  
 
-# 7 check kernel
-uname -r
-#5.15.x-xx-generic
+8. check cores  
+   grep -c ^processor /proc/cpuinfo  
+   ответ 8  
 
-# 8 check cores
-grep -c ^processor /proc/cpuinfo
-# 8
+9. check ports  
+   `sudo ufw status`  
+   ```
+   inactive or: 
+   80       ALLOW   Anywhere
+   443      ALLOW   Anywhere
+   ```
 
-# 9 check ports
-sudo ufw status
+**80 порт для получения сертификата lets encrypt**  
+**По UDP портам есть вопросы, вроде работает без них**  
 
-# inactive or 
-# 80       ALLOW   Anywhere
-# 443      ALLOW   Anywhere
-
-
-# 10 install
-wget -qO- https://raw.githubusercontent.com/bigbluebutton/bbb-install/v3.0.x-release/bbb-install.sh | bash -s -- -v jammy-300 -s bbb.example.com -e info@example.com -g
-
-
-#DEV install
-wget -qO- https://raw.githubusercontent.com/bigbluebutton/bbb-install/v3.0.x-release/bbb-install.sh | bash -s -- -v jammy-300 -s devopsdemo.ru -e wahha@mail.ru -g -j
-
-tivaliclub.com
-wget -qO- https://raw.githubusercontent.com/bigbluebutton/bbb-install/v3.0.x-release/bbb-install.sh | bash -s -- -v jammy-300 -s bbb.tivaliclub.com -e wahha@mail.ru -g -j
+10. **install**  
+`wget -qO- https://raw.githubusercontent.com/bigbluebutton/bbb-install/v3.0.x-release/bbb-install.sh | sudo bash -s -- -v jammy-300 -s bbb.tivaliclub.com -e info@example.com -g`
 
 
-# 11 check install
+11. check install  
 
-bbb-conf --check
-sudo bbb-conf --status
-dpkg -l | grep bbb-
-bbb-conf --secret
+`sudo bbb-conf --check` - конфигурация  
+`sudo bbb-conf --status` - запущеныне процессы  
+`dpkg -l | grep bbb-`  пакеты установленные  
+https://bbb.tivaliclub.com/  - основная страница  
+`bbb-conf --secret` - секреты доступа к API  
 
-check ARI
- https://mconf.github.io/api-mate/#server=https://devopsdemo.ru/bigbluebutton/&
- 
- 
- #12 check firewall
-sudo apt-get install netcat
-===
-sudo bbb-conf --stop
+check ARI   https://mconf.github.io/api-mate/#server=https://devopsdemo.ru/bigbluebutton/&
 
-netcat -l 443
+12. пароль админа greenlight
+`docker exec -it greenlight-v3 bundle exec rake admin:create['name','email','password']`
+
+ дополнительно [https://docs.bigbluebutton.org/greenlight/v3/install/](https://docs.bigbluebutton.org/greenlight/v3/install/)
+
+**Установка через Ansible - изучить**
+https://bbb.tivaliclub.com/
