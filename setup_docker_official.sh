@@ -18,7 +18,7 @@ EOF
 sudo apt update
 
 #setup package
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # run container from user
 sudo groupadd docker
