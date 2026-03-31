@@ -10,6 +10,6 @@
 
 `ssh -o ProxyCommand="ssh -i c:/Users/wahha/.ssh/wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:/Users/wahha/.ssh/wahha_rsa wahha@192.168.0.3`
 
-**установить docker**
-`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/setup_docker.sh`
-`chmod +x setup_docker.sh`
+**установить docker**  
+`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/setup_docker_official.sh`  
+`chmod +x setup_docker.sh`  
