@@ -12,4 +12,5 @@
 
 **установить docker**  
 `wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/setup_docker_official.sh`  
-`chmod +x setup_docker.sh`  
+`chmod +x setup_docker_official.sh`  
+`sudo ./setup_docker_official.sh`
