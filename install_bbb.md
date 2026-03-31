@@ -2,6 +2,8 @@
 
 [https://docs.bigbluebutton.org/administration/install/](https://docs.bigbluebutton.org/administration/install/)
 
+[https://github.com/bigbluebutton/bbb-install/blob/v3.0.x-release/README.md](https://github.com/bigbluebutton/bbb-install/blob/v3.0.x-release/README.md)
+
 требования
 ```
 Ubuntu 22.04 64-bit OS running Linux kernel 5.x
