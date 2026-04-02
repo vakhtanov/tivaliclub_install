@@ -25,4 +25,9 @@ echo "---===*** Install docker ***===---"
 apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # 4. Check docker status
- systemctl status docker
+# systemctl status docker
+
+# 5. make run container from user
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
