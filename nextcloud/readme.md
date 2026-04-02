@@ -9,7 +9,7 @@
 `chmod +x setup_docker_tv_mod.sh`
 
 
-**start setup_docker_tv_mod.sh NO SUDO**
+**start setup_docker_tv_mod.sh**
 
 'sudo ./setup_docker_official.sh'
 
@@ -18,11 +18,11 @@
 
 `wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud/docker-compose.yaml -O docker-compose.yaml`
 
-`docker compose up`
+`docker compose up` - SUDO NOT NEED for docker
 
 **узнаем пароль для админки nextcloud**
 
-`sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json`
+`docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json`
 
 **новая сессия ssh для проброса портов на управляющую машину**
 
