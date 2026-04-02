@@ -17,13 +17,12 @@ https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md#1-configure-t
 https://github.com/nextcloud/all-in-one/blob/main/compose.yaml
 
 Required steps:
+* Configure your web server or reverse proxy with the specific settings for AIO. See "Configuring your reverse proxy" below.
+* Specify the port that AIO's integrated Apache container will use via the environment variable APACHE_PORT, and update the docker run command or your Compose file accordingly. See "Use this startup command" below.
+* Optional: Limit the access to the Apache container. See "Limit the access to the Apache container".
+* Open the AIO interface at port 8080, enter your domain, and validate it. See "Open the AIO interface" below.
 
-Configure your web server or reverse proxy with the specific settings for AIO. See "Configuring your reverse proxy" below.
-Specify the port that AIO's integrated Apache container will use via the environment variable APACHE_PORT, and update the docker run command or your Compose file accordingly. See "Use this startup command" below.
-Optional: Limit the access to the Apache container. See "Limit the access to the Apache container".
-Open the AIO interface at port 8080, enter your domain, and validate it. See "Open the AIO interface" below.
 Optional steps:
-
-Configure additional settings if your reverse proxy uses an IP address to connect to AIO. See "Configure AIO for IP-based reverse proxies".
-Get a valid certificate for the AIO interface. See "Get a valid certificate for the AIO interface".
-Debug things if needed. See "How to debug things".
+* Configure additional settings if your reverse proxy uses an IP address to connect to AIO. See "Configure AIO for IP-based reverse proxies".
+* Get a valid certificate for the AIO interface. See "Get a valid certificate for the AIO interface".
+* Debug things if needed. See "How to debug things".
