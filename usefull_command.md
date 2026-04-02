@@ -14,3 +14,5 @@
 `wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/setup_docker_official.sh`  
 `chmod +x setup_docker_official.sh`  
 `./setup_docker_official.sh`
+
+ssh -L 8080:localhost:80 user@example-host
