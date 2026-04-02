@@ -12,3 +12,10 @@ docker compose up
 новая сессия ssh
 
 ssh -L 8080:127.0.0.1:8080 -o ProxyCommand="ssh -i c:/Users/wahha/.ssh/wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:/Users/wahha/.ssh/wahha_rsa wahha@192.168.0.3
+
+If you have somehow lost the passphrase that is used for the AIO interface, you can reobtain it by running  
+`sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json`
+
+на хосте управления localhost:8080
+
+password
