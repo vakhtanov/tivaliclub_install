@@ -31,6 +31,8 @@ Optional steps:
 5. Optional: Configure AIO for reverse proxies that connect to nextcloud not using localhost nor 127.0.0.1
 If your reverse proxy connects to nextcloud not using localhost or 127.0.0.1, you must add said IP as trusted proxy to the installation. See the step below:
 
-Add the IP it uses connect to AIO to the Nextcloud trusted_proxies like this:
-
+Add the IP it uses connect to AIO to the Nextcloud trusted_proxies like this:  
 `sudo docker exec --user www-data -it nextcloud-aio-nextcloud php occ config:system:set trusted_proxies 2 --value=ip.address.of.proxy`
+
+If you have somehow lost the passphrase that is used for the AIO interface, you can reobtain it by running   
+`sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json`
