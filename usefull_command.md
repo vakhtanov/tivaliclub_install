@@ -16,3 +16,6 @@
 `./setup_docker_official.sh`
 
 ssh -L 8080:localhost:80 user@example-host
+
+
+https://www.dmosk.ru/miniinstruktions.php?mini=ssh-tunnels
