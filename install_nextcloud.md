@@ -36,3 +36,6 @@ Add the IP it uses connect to AIO to the Nextcloud trusted_proxies like this:
 
 If you have somehow lost the passphrase that is used for the AIO interface, you can reobtain it by running   
 `sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json`
+
+
+https://raju.dev/nextcloud-aio-install-with-docker-compose-and-reverse-proxy/
