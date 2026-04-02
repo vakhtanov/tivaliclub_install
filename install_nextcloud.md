@@ -26,3 +26,11 @@ Optional steps:
 * Configure additional settings if your reverse proxy uses an IP address to connect to AIO. See "Configure AIO for IP-based reverse proxies".
 * Get a valid certificate for the AIO interface. See "Get a valid certificate for the AIO interface".
 * Debug things if needed. See "How to debug things".
+
+
+5. Optional: Configure AIO for reverse proxies that connect to nextcloud not using localhost nor 127.0.0.1
+If your reverse proxy connects to nextcloud not using localhost or 127.0.0.1, you must add said IP as trusted proxy to the installation. See the step below:
+
+Add the IP it uses connect to AIO to the Nextcloud trusted_proxies like this:
+
+`sudo docker exec --user www-data -it nextcloud-aio-nextcloud php occ config:system:set trusted_proxies 2 --value=ip.address.of.proxy`
