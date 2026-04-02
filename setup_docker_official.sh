@@ -20,7 +20,7 @@ sudo apt update
 #setup package
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# run container from user
+# make run container from user
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
