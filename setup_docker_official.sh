@@ -21,6 +21,6 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # make run container from user
-sudo groupadd docker
+sudo groupadd -f docker
 sudo usermod -aG docker $USER
 newgrp docker
