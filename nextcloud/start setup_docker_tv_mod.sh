@@ -31,3 +31,4 @@ apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker
 groupadd -f docker
 usermod -aG docker $USER
 newgrp docker
+exit
