@@ -1,6 +1,8 @@
 
 # Установка NextCloud
 
+https://github.com/docker-library/docs/blob/master/nextcloud/README.md
+
 **Connect to nextcloud host thrue proxy**  
 `ssh -o ProxyCommand="ssh -i c:/Users/wahha/.ssh/wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:/Users/wahha/.ssh/wahha_rsa wahha@192.168.0.3`
 
