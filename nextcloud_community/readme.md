@@ -23,7 +23,7 @@
 
 `wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud_community/docker-compose.yaml -O docker-compose.yaml`  
 `wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud_community/postgres_password.txt -O postgres_password.txt`  
-`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud_community/postgres_password.txt -O postgres_password.txt`  
+`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud_community/nextcloud_admin_password.txt -O nextcloud_admin_password.txt`  
 
 
 *Все адреса и доменные имена исправляем на ИСПОЛЬЗУЕМЫЕ*
