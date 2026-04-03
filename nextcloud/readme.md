@@ -16,7 +16,8 @@
 
 **start setup_docker_tv_mod.sh**
 
-`sudo ./setup_docker_tv_mod.sh`
+`./setup_docker_tv_mod.sh` - SUDO NOT NEED 
+
 
 
 **выйти из сеанса и зайти заново**
