@@ -26,6 +26,7 @@ services:
       - POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password
       - NEXTCLOUD_ADMIN_PASSWORD_FILE=/run/secrets/nextcloud_admin_password
       - NEXTCLOUD_ADMIN_USER=admin
+      - NEXTCLOUD_TRUSTED_DOMAINS=/run/secrets/trusted_domains
     depends_on:
       - db
     secrets:
@@ -41,4 +42,6 @@ secrets:
     file: ./nextcloud_admin_password.txt # put admin password in this file
   postgres_password:
     file: ./postgres_password.txt # put postgresql password in this file
+  trusted_domains:
+    file: ./trusted_domains.txt # put your domain in this file
     
