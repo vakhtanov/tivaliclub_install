@@ -27,6 +27,8 @@ services:
       - NEXTCLOUD_ADMIN_PASSWORD_FILE=/run/secrets/nextcloud_admin_password
       - NEXTCLOUD_ADMIN_USER=admin
       - NEXTCLOUD_TRUSTED_DOMAINS=/run/secrets/trusted_domains
+      - APACHE_DISABLE_REWRITE_IP=1
+      - TRUSTED_PROXIES=10.130.0.26
     depends_on:
       - db
     secrets:
