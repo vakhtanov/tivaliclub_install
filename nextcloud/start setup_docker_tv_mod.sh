@@ -29,6 +29,6 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 
 # 5. make run container from user
 /usr/sbin/groupadd -f docker
-/usr/sbin/usermod -aG docker $USER
+sudo /usr/sbin/usermod -aG docker $USER
 /usr/sbin/newgrp docker
 
