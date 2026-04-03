@@ -19,6 +19,8 @@
 `sudo ./setup_docker_tv_mod.sh`
 
 
+**выйти из сеанса и зайти заново**
+
 **start nextcloud**
 
 `wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud/docker-compose.yaml -O docker-compose.yaml`
