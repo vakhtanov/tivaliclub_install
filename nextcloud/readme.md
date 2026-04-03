@@ -16,7 +16,7 @@
 
 **start setup_docker_tv_mod.sh**
 
-'sudo ./setup_docker_official.sh'
+`sudo ./setup_docker_tv_mod.sh`
 
 
 **start nextcloud**
