@@ -21,11 +21,16 @@
 
 **start nextcloud**
 
-`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud/docker-compose.yaml -O docker-compose.yaml`
+`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud_community/docker-compose.yaml -O docker-compose.yaml`  
+`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud_community/postgres_password.txt -O postgres_password.txt`  
+`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud_community/postgres_password.txt -O postgres_password.txt`  
+
 
 *Все адреса и доменные имена исправляем на ИСПОЛЬЗУЕМЫЕ*
 
 `docker compose up` - SUDO NOT NEED for docker
+
+
 
 **узнаем пароль для админки nextcloud**
 
