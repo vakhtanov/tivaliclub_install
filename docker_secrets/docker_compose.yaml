@@ -22,7 +22,7 @@ services:
 
 secrets:
   db_password:
-    file: /home/admin/db_pass.txt
+    file: ./secrets/db_password
 
 
 
