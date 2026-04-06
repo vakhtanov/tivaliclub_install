@@ -6,4 +6,4 @@
 
 [docker official](https://docs.docker.com/compose/how-tos/use-secrets/)
 
-С другой стороны официальный образ docker postgres содержит имеет переменную `POSTGRES_PASSWORD_FILE: /run/secrets/db_password` для передачи пароля.
+С другой стороны официальный образ docker postgres содержит имеет переменную `POSTGRES_PASSWORD_FILE: ________` для передачи пароля.
