@@ -10,7 +10,7 @@
 
 В приложение пароль и параметры подключения передаются через `ConnectionStrings__DefaultConnection`
 
-сам пароль лежит в файле с ограниченными правами, пример скрипта для его создания [create_secret.sh](./reate_secret.sh)
+сам пароль лежит в файле с ограниченными правами, пример скрипта для его создания [create_secret.sh](./сreate_secret.sh)
 
 пример [docker_compose.yaml](./docker_compose.yaml)
 
