@@ -7,3 +7,10 @@
 [docker official](https://docs.docker.com/compose/how-tos/use-secrets/)
 
 С другой стороны официальный образ docker postgres содержит имеет переменную `POSTGRES_PASSWORD_FILE: ________` для передачи пароля.
+
+В приложение пароль и параметры подключения передаются через `ConnectionStrings__DefaultConnection`
+
+сам пароль лежит в файле с ограниченными правами, пример скрипта для его создания [create_secret.sh](./reate_secret.sh)
+
+пример [docker_compose.yaml](./docker_compose.yaml)
+
