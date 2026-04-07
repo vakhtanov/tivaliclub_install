@@ -136,15 +136,15 @@ https://share.google/aimode/2V5jPCAO8jgZ32dWE
 
 
 Вот идеальная структура и процесс «склейки» для Docker Compose:
-## 1. Структура файлов в Git
+ 1. Структура файлов в Git
 
 * appsettings.json.template — Общая структура (скелет).
 * config.dev.env / config.prod.env — Открытые настройки для разных сред (Host, Port, LogLevel).
 * secrets.enc.json — Зашифрованные данные (пароли, ключи).
 
-## 2. Пример содержимого файлов
+ 2. Пример содержимого файлов
 appsettings.json.template (общий шаблон):
-
+```json
 {
   "Logging": "${LOG_LEVEL}",
   "DbConfig": {
@@ -152,21 +152,26 @@ appsettings.json.template (общий шаблон):
     "Password": "${DB_PASSWORD}"
   }
 }
+```
 
 config.prod.env (открытые переменные окружения):
 
+```
 LOG_LEVEL=Error
 DB_HOST=://company.com
-
+```
 secrets.enc.json (зашифрованные через SOPS):
 
+```
 {
   "DB_PASSWORD": "very-strong-password"
 }
+```
 
-## 3. Скрипт деплоя (Сборка «бутерброда»)
+ 3. Скрипт деплоя (Сборка «бутерброда»)
 Этот скрипт объединяет всё в один финальный файл перед запуском контейнера.
 
+```bash
 #!/bin/bash
 # 1. Загружаем открытые настройки из нужного окружения (например, prod)
 export $(grep -v '^#' config.prod.env | xargs)
@@ -175,17 +180,18 @@ export $(grep -v '^#' config.prod.env | xargs)
 envsubst < appsettings.json.template > appsettings.json
 # 4. Запускаем Docker Compose
 docker-compose up -d
+```
 
-## 4. Настройка Docker Compose
+ 4. Настройка Docker Compose
 В самом Compose файле мы просто пробрасываем готовый результат:
-
+```json
 services:
   app:
     image: my-app:latest
     volumes:
       - ./appsettings.json:/app/appsettings.json:ro
-
-## Почему это лучшее решение:
+```
+ **Почему это лучшее решение:**
 
    1. Прозрачность: Ты видишь в Git историю изменения инфраструктурных настроек (config.prod.env) отдельно от истории изменения секретов.
    2. Гибкость: Тебе не нужно перешифровывать файл каждый раз, когда меняется адрес БД или уровень логирования.
@@ -206,3 +212,7 @@ https://share.google/aimode/DW1fdeZQiNZuCB3Ti
 ## полный цикл
 
 https://share.google/aimode/DW1fdeZQiNZuCB3Ti
+
+## Полный цикл по шагам!
+
+https://share.google/aimode/wHNUeT3iH3eKTaQkO
