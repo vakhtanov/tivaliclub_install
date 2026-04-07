@@ -30,6 +30,6 @@ services:
 Никогда не храни секреты в Git в открытом виде. Даже в приватных репозиториях.
 * Уровень «База»: Используй Docker Secrets (если работаешь с Swarm) или встроенные механизмы CI/CD (Masked Variables).
 * Уровень «Профи» (External Secret Management):
-** HashiCorp Vault: Индустриальный стандарт. Приложение либо само запрашивает секреты по API, либо они «подкладываются» в контейнер через sidecar-контейнеры.
-** Sops (от Mozilla): Позволяет шифровать значения внутри YAML/JSON файлов прямо в Git. Ключ для расшифровки хранится в KMS (AWS, GCP) или PGP.
-** Cloud Native: Если ты в облаке, используй AWS Secrets Manager, Google Secret Manager или Azure Key Vault.
+  * HashiCorp Vault: Индустриальный стандарт. Приложение либо само запрашивает секреты по API, либо они «подкладываются» в контейнер через sidecar-контейнеры.
+  * Sops (от Mozilla): Позволяет шифровать значения внутри YAML/JSON файлов прямо в Git. Ключ для расшифровки хранится в KMS (AWS, GCP) или PGP.
+  * Cloud Native: Если ты в облаке, используй AWS Secrets Manager, Google Secret Manager или Azure Key Vault.
