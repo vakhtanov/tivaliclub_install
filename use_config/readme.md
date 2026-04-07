@@ -201,6 +201,8 @@ envsubst '$LOG_LEVEL $DB_HOST $DB_PASSWORD' < template > final.json.
 
 https://share.google/aimode/LpxUj44FImvkwmFHy
 
+https://share.google/aimode/DW1fdeZQiNZuCB3Ti
+
 ## полный цикл
 
 https://share.google/aimode/DW1fdeZQiNZuCB3Ti
