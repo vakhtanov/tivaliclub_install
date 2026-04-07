@@ -34,7 +34,7 @@ services:
   * Sops (от Mozilla): Позволяет шифровать значения внутри YAML/JSON файлов прямо в Git. Ключ для расшифровки хранится в KMS (AWS, GCP) или PGP.
   * Cloud Native: Если ты в облаке, используй AWS Secrets Manager, Google Secret Manager или Azure Key Vault.
 
-#Современный совет
+# Современный совет
 
 1. Как хранить и подключать JSON
 Поскольку JSON — это статический файл, его не стоит «зашивать» в Dockerfile. Используй ReadOnly Volumes.
@@ -129,7 +129,78 @@ rm config.json # Удаляем расшифрованный файл после
 
 [appsettings](https://share.google/aimode/XWGjT2q4Esay4Xedq)
 
+
+# Понял задачу. Нам нужна трехуровневая сборка конфига: Шаблон + Открытые переменные (env-specific) + Секреты (SOPS).
+
+https://share.google/aimode/2V5jPCAO8jgZ32dWE
+
+
+Вот идеальная структура и процесс «склейки» для Docker Compose:
+## 1. Структура файлов в Git
+
+* appsettings.json.template — Общая структура (скелет).
+* config.dev.env / config.prod.env — Открытые настройки для разных сред (Host, Port, LogLevel).
+* secrets.enc.json — Зашифрованные данные (пароли, ключи).
+
+## 2. Пример содержимого файлов
+appsettings.json.template (общий шаблон):
+
+{
+  "Logging": "${LOG_LEVEL}",
+  "DbConfig": {
+    "Host": "${DB_HOST}",
+    "Password": "${DB_PASSWORD}"
+  }
+}
+
+config.prod.env (открытые переменные окружения):
+
+LOG_LEVEL=Error
+DB_HOST=://company.com
+
+secrets.enc.json (зашифрованные через SOPS):
+
+{
+  "DB_PASSWORD": "very-strong-password"
+}
+
+## 3. Скрипт деплоя (Сборка «бутерброда»)
+Этот скрипт объединяет всё в один финальный файл перед запуском контейнера.
+
+#!/bin/bash
+# 1. Загружаем открытые настройки из нужного окружения (например, prod)
+export $(grep -v '^#' config.prod.env | xargs)
+# 2. Расшифровываем секреты и экспортируем их как переменные# Используем jq для чистого парсинга JSON в переменные окруженияeval $(sops -d secrets.enc.json | jq -r 'to_entries | .[] | "export \(.key)=\"\(.value)\""')
+# 3. Накатываем ВСЕ переменные на шаблон
+envsubst < appsettings.json.template > appsettings.json
+# 4. Запускаем Docker Compose
+docker-compose up -d
+
+## 4. Настройка Docker Compose
+В самом Compose файле мы просто пробрасываем готовый результат:
+
+services:
+  app:
+    image: my-app:latest
+    volumes:
+      - ./appsettings.json:/app/appsettings.json:ro
+
+## Почему это лучшее решение:
+
+   1. Прозрачность: Ты видишь в Git историю изменения инфраструктурных настроек (config.prod.env) отдельно от истории изменения секретов.
+   2. Гибкость: Тебе не нужно перешифровывать файл каждый раз, когда меняется адрес БД или уровень логирования.
+   3. Безопасность: В итоговый appsettings.json попадают значения из обоих источников, но сам файл создается только в момент деплоя.
+
+Важный нюанс: Если переменных очень много, envsubst может «зацепить» лишние системные переменные. Чтобы этого избежать, можно ограничить его только нужным списком:
+envsubst '$LOG_LEVEL $DB_HOST $DB_PASSWORD' < template > final.json.
+Тебе удобно использовать скрипт-обертку (deploy.sh) или ты хочешь упаковать эту логику расшифровки прямо внутрь Dockerfile / Entrypoint приложения?
+
+
+
 облегчение шифрования
 
 https://share.google/aimode/LpxUj44FImvkwmFHy
 
+## полный цикл
+
+https://share.google/aimode/DW1fdeZQiNZuCB3Ti
