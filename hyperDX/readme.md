@@ -170,3 +170,40 @@ server {
 ## Варианты установки
 
 [варианты](https://clickhouse.com/docs/use-cases/observability/clickstack/deployment)
+
+
+==========
+## Чистка ClickHouse
+
+**1. Настройка автоматической очистки (TTL) — Рекомендуемый**
+Это самый правильный способ. Вы задаете правило, и ClickHouse сам удаляет старые данные.
+Нужно подключиться к ClickHouse (например, через clickhouse-client внутри контейнера) и выполнить SQL-запрос для таблицы логов:
+```sql
+ALTER TABLE hdx.logs 
+MODIFY TTL timestamp + INTERVAL 30 DAY;
+```
+
+В этом примере логи старше 30 дней будут удаляться автоматически.
+
+**2. Ручная очистка через удаление партиций**
+Если место на диске закончилось прямо сейчас, можно удалить данные за конкретный месяц или день.
+
+- Посмотреть список партиций и их размер:
+```sql
+SELECT partition, name, table, active 
+FROM system.parts 
+WHERE table = 'logs';
+```
+
+- Удалить конкретную партицию (например, за январь 2024):
+```sql
+ALTER TABLE hdx.logs DROP PARTITION '202401';
+```
+
+**3. Нюанс с Docker-контейнером**
+Если вы используете стандартный docker-compose от HyperDX, подключиться к консоли ClickHouse можно так:
+```bash
+docker exec -it hyperdx-clickhouse-1 clickhouse-client
+```
+
+Важно: Не забудьте также проверить таблицу hdx.spans (там хранятся трейсы) и hdx.metrics, так как они тоже могут занимать много места.
