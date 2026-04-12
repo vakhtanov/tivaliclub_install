@@ -39,31 +39,23 @@
 ```nginx
 server {
     listen 443 ssl;
-    server_name ://yourdomain.com; # Ваш домен
-
-    # Настройки SSL (пути к вашим сертификатам)
-    ssl_certificate /etc/letsencrypt/live/yourdomain/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/yourdomain/privkey.pem;
+    server_name hyperdx.company.local; # или внешний домен
 
     location / {
-        proxy_pass http://127.0.0.1:8080; # Порт интерфейса HyperDX
+        proxy_pass http://<IP_ХОСТА_HYPERDX>:8080;
         
-        # Обязательные заголовки для корректной работы сессий
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-
-        # ПОДДЕРЖКА WEBSOCKET (критично для Live-логов)
+        # Поддержка WebSocket (обязательно для live-логов в браузере)
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
 
-        # Тайм-ауты (чтобы долгие запросы к ClickHouse не обрывались)
-        proxy_read_timeout 300s;
-        proxy_connect_timeout 75s;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
+
 ```
 
 **3. Важная настройка в HyperDX (.env)**
@@ -76,5 +68,6 @@ SERVER_URL=https://yourdomain.com
 **3. Нюанс с логами (Ingestor)**
 Раз логи приходят с других серверов, убедитесь в следующем:  
 - Порты сбора: Если ваши серверы шлют логи напрямую в HyperDX минуя этот прокси, то порты 4317 (gRPC) и 4318 (HTTP) должны быть открыты во внешней сети (или через VPN).
-- Если логи ТОЖЕ через прокси: Вам нужно будет добавить в Nginx отдельный location /api/otlp, либо проксировать gRPC трафик (в Nginx это делается через модуль stream или специальный флаг grpc_pass).
-Уточните, ваши серверы с логами находятся в той же локальной сети, что и HyperDX, или они шлют данные через публичный интернет?
+- На ваших серверах, которые шлют логи, в конфиге OpenTelemetry Collector или в коде приложения указывайте внутренний IP сервера HyperDX, минуя Nginx:
+  - Endpoint: http://192.168.x.x:4318 (для HTTP)
+  - Endpoint: http://192.168.x.x:4317 (для gRPC)
