@@ -218,6 +218,8 @@ docker exec -it hyperdx-clickhouse-1 clickhouse-client
 
 # Чистая установка за обратным прокси ==============================
 
+полное руководство https://clickhouse.com/docs/use-cases/observability/clickstack/overview
+
 репозиторий https://github.com/ClickHouse/ClickStack.git
 
 переменные в `.env`
