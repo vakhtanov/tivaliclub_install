@@ -2,6 +2,14 @@
 
 set -euo pipefail ## ЗАВЕРШАЕТ БАШ СКПРИПТ ПРИ ЛЮБОЙ ОШИБКЕ!!!!!
 
+# 0. Проверка, установлен ли Docker
+if command -v docker &> /dev/null; then
+    echo "Docker уже установлен. Версия: $(docker --version)"
+    exit 0
+fi
+
+echo "Docker не найден. Начинаем установку..."
+
 # 1. Set up Docker's apt repository
 sudo apt update
 sudo apt install -y ca-certificates curl
@@ -25,13 +33,17 @@ sudo apt update
 echo "---===*** Install docker ***===---"
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# 4. Check docker status
-# systemctl status docker
-
-# 5. make run container from user
+# 4. настройка прав
 sudo groupadd -f docker
 sudo usermod -aG docker $USER
 
-echo "Готово! Docker установлен."
-echo "ВНИМАНИЕ: Чтобы запускать docker без sudo, перезайдите в систему или выполните команду: newgrp docker"
+# 5. Вывод версии
+echo "------------------------------------------------------"
+echo "Установка завершена!"
+echo -n "Установленная версия: "
+docker --version
 
+echo "------------------------------------------------------"
+echo "ВАЖНО: Чтобы запускать контейнеры без sudo, выполните команду:"
+echo "newgrp docker"
+echo "Или перезайдите в систему."
