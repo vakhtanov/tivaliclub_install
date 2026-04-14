@@ -174,6 +174,9 @@ https://github.com/hyperdxio/hyperdx/blob/main/docker/nginx/README.md
 [варианты](https://clickhouse.com/docs/use-cases/observability/clickstack/deployment)
 
 
+**Установка через docker compose**  
+[https://github.com/ClickHouse/ClickStack](https://github.com/ClickHouse/ClickStack)
+
 ==========
 ## Чистка ClickHouse
 
