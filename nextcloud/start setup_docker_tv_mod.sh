@@ -11,11 +11,11 @@ NC='\033[0m'
 
 # 0. Проверка, установлен ли Docker
 if command -v docker &> /dev/null; then
-    echo "Docker уже установлен. Версия: $(docker --version)"
+    echo -e "${GREEN}Docker уже установлен. Версия: $(docker --version)${NS}"
     exit 0
 fi
 
-echo "Docker не найден. Начинаем установку..."
+echo -e "${YELLOW}Docker не найден. Начинаем установку...${NS}"
 
 # 1. Set up Docker's apt repository
 sudo apt update
@@ -37,7 +37,7 @@ EOF
 sudo apt update
 
 # 3. Install docker
-echo "---===*** Install docker ***===---"
+echo "${YELLOW}---===*** Install docker ***===---${NS}"
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # 4. настройка прав
@@ -46,11 +46,11 @@ sudo usermod -aG docker $USER
 
 # 5. Вывод версии
 echo "------------------------------------------------------"
-echo "Установка завершена!"
+echo "${GREEN}Установка завершена!${NS}"
 echo -n "Установленная версия: "
 docker --version
 
 echo "------------------------------------------------------"
-echo "ВАЖНО: Чтобы запускать контейнеры без sudo, выполните команду:"
-echo "newgrp docker"
-echo "Или перезайдите в систему."
+echo "${YELLOW}ВАЖНО: Чтобы запускать контейнеры без sudo, выполните команду:${NS}"
+echo "${YELLOW}newgrp docker${NS}"
+echo "${YELLOW}Или перезайдите в систему.${NS}"
