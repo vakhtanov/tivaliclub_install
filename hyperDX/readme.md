@@ -216,7 +216,7 @@ docker exec -it hyperdx-clickhouse-1 clickhouse-client
 
 ## Перед установкой докера - обязательно apt update
 
-# Чистая установка за обратным прокси
+# Чистая установка за обратным прокси ==============================
 
 репозиторий https://github.com/ClickHouse/ClickStack.git
 
@@ -225,4 +225,8 @@ docker exec -it hyperdx-clickhouse-1 clickhouse-client
 Update HYPERDX_APP_URL to https://mydomain.local in the .env file
 Update HYPERDX_APP_PORT to 443 (same as the nginx server port) in the .env file
 
-
+Задачи:
+- сразу импортировать дашборды
+- сразу создавать юзера и пароль
+- сразу получать апикей
+- разобраться с агентами
