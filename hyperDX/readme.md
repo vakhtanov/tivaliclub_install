@@ -208,4 +208,7 @@ ALTER TABLE hdx.logs DROP PARTITION '202401';
 docker exec -it hyperdx-clickhouse-1 clickhouse-client
 ```
 
+
+## Перед установкой докера - обязательно apt update
+
 Важно: Не забудьте также проверить таблицу hdx.spans (там хранятся трейсы) и hdx.metrics, так как они тоже могут занимать много места.
