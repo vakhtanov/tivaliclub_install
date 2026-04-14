@@ -205,6 +205,8 @@ WHERE table = 'logs';
 ALTER TABLE hdx.logs DROP PARTITION '202401';
 ```
 
+Важно: Не забудьте также проверить таблицу hdx.spans (там хранятся трейсы) и hdx.metrics, так как они тоже могут занимать много места.
+
 **3. Нюанс с Docker-контейнером**
 Если вы используете стандартный docker-compose от HyperDX, подключиться к консоли ClickHouse можно так:
 ```bash
@@ -214,4 +216,13 @@ docker exec -it hyperdx-clickhouse-1 clickhouse-client
 
 ## Перед установкой докера - обязательно apt update
 
-Важно: Не забудьте также проверить таблицу hdx.spans (там хранятся трейсы) и hdx.metrics, так как они тоже могут занимать много места.
+# Чистая установка за обратным прокси
+
+репозиторий https://github.com/ClickHouse/ClickStack.git
+
+переменные в `.env`
+
+Update HYPERDX_APP_URL to https://mydomain.local in the .env file
+Update HYPERDX_APP_PORT to 443 (same as the nginx server port) in the .env file
+
+
