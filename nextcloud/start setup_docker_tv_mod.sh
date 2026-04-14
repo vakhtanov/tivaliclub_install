@@ -25,7 +25,7 @@ sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyring
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # 2. Add the repository to Apt sources
-echo "Adding Docker repository..."
+echo -e "${YELLOW}Adding Docker repository...${NC}"
 sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
 Types: deb
 URIs: https://download.docker.com/linux/debian
@@ -37,7 +37,7 @@ EOF
 sudo apt update
 
 # 3. Install docker
-echo "${YELLOW}---===*** Install docker ***===---${NC}"
+echo -e "${YELLOW}---===*** Install docker ***===---${NC}"
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # 4. настройка прав
@@ -46,11 +46,11 @@ sudo usermod -aG docker $USER
 
 # 5. Вывод версии
 echo "------------------------------------------------------"
-echo "${GREEN}Установка завершена!${NC}"
+echo -e "${GREEN}Установка завершена!${NC}"
 echo -n "Установленная версия: "
 docker --version
 
 echo "------------------------------------------------------"
-echo "${YELLOW}ВАЖНО: Чтобы запускать контейнеры без sudo, выполните команду:${NC}"
-echo "${YELLOW}newgrp docker${NC}"
-echo "${YELLOW}Или перезайдите в систему.${NC}"
+echo -e "${YELLOW}ВАЖНО: Чтобы запускать контейнеры без sudo, выполните команду:${NC}"
+echo -e "${YELLOW}newgrp docker${NC}"
+echo -e "${YELLOW}Или перезайдите в систему.${NC}"
