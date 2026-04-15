@@ -1,7 +1,11 @@
 # Poretheus_stack
 
+[https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker](https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker)
+
 Создаем каталоги, где будем создавать наши файлы:
 `mkdir -p /opt/prometheus_stack/{prometheus,grafana,alertmanager,blackbox}`
+
+## Prometheus node-exporter
 
 Создаем (скачиваем) файл:
 
@@ -10,3 +14,49 @@
 Переходим в каталог prometheus_stack:
 
 `cd /opt/prometheus_stack`
+
+Создаем конфигурационный файл для prometheus:
+
+`mkdir -p ./prometheus/etc`
+
+`nano prometheus/prometheus.yml`
+
+```
+scrape_configs:
+  - job_name: node
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['node-exporter:9100']
+```
+* в данном примере мы прописываем наш node-exporter в качестве таргета.
+
+Заранее создаем каталог с данными и назначаем ему владельца:
+
+`mkdir -p ./prometheus/data`
+
+`chown 65534:65534 ./prometheus/data`
+
+
+## Grafana
+
+Ждем несколько секунд и можно пробовать подключиться.  
+Открываем браузер и переходим по адресу   
+http://<IP-адрес сервера>:9090 — мы должны увидеть страницу Prometheus  
+http://<IP-адрес сервера>:9100 — мы должны увидеть страницу Node Exporter  
+
+ http://<IP-адрес сервера>:3000 — мы должны увидеть стартовую страницу Grafana.
+
+Для авторизации вводим admin / admin. После система потребует ввести новый пароль.
+
+Настроим связку с Prometheus. Кликаем по иконке Configuration - Data Sources:
+Переходим к добавлению источника, нажав по Add data source:
+Среди списка источников данных находим и выбираем Prometheus, кликнув по Select:
+Задаем параметры для подключения к Prometheus:
+Сохраняем настройки, кликнув по Save & Test:
+Добавим дашборд для мониторинга с node exporter. Для этого уже есть готовый вариант.
+
+Кликаем по изображению плюса и выбираем Import:
+
+Вводим идентификатор дашборда. Для Node Exporter это 1860:
+Кликаем Load — Grafana подгрузит дашборд из своего репозитория — выбираем в разделе Prometheus наш источник данных и кликаем по Import:
+Мы увидим страницу с настроенными показателями метрик. Можно пользоваться.
