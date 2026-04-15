@@ -17,7 +17,6 @@ services:
       TZ: "Europe/Moscow"
 
 #=========Node-Exporter==COLLECT=======================
-
   node-exporter:
     image: prom/node-exporter
     volumes:
@@ -36,3 +35,22 @@ services:
     restart: unless-stopped
     environment:
       TZ: "Europe/Moscow"
+
+
+#=========Grafana=======================
+  grafana:
+    image: grafana/grafana
+    user: root
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    container_name: grafana
+    hostname: grafana
+    restart: unless-stopped
+    environment:
+      TZ: "Europe/Moscow"
+
