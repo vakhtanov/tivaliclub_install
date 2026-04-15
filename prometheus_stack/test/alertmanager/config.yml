@@ -1,0 +1,9 @@
+#route:
+#  receiver: 'telegram-notifications'
+
+#receivers:
+#- name: 'telegram-notifications'
+#  telegram_configs:
+#  - bot_token: '1234567890:ABCDEFGHIYKLMNOPI8e48SeTHIGfzD8W4E'
+#    chat_id: -102030405060708090
+#    parse_mode: 'HTML'
