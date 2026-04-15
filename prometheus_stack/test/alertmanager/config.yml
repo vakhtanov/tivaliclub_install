@@ -7,3 +7,28 @@
 #  - bot_token: '1234567890:ABCDEFGHIYKLMNOPI8e48SeTHIGfzD8W4E'
 #    chat_id: -102030405060708090
 #    parse_mode: 'HTML'
+
+global:
+  # Настройки SMTP-сервера
+  smtp_smarthost: '://gmail.com'
+  smtp_from: 'alertmanager@example.com'
+  smtp_auth_username: 'your-email@gmail.com'
+  smtp_auth_password: 'your-app-password'
+  smtp_require_tls: true
+
+route:
+  # Кому отправлять по умолчанию
+  receiver: 'email-notifications'
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+
+receivers:
+- name: 'email-notifications'
+  email_configs:
+  - to: 'admin@example.com'
+    # Можно настроить заголовок и текст письма (опционально)
+    send_resolved: true
+    headers:
+      subject: '[Alert] {{ .Status | ToUpper }} - {{ .GroupLabels.alertname }}'
