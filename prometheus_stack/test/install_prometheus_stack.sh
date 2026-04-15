@@ -17,4 +17,8 @@ NC='\033[0m'
 
 mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
 cd $INSTALL_DIR
-wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud/start%20setup_docker_tv_mod.sh -O setup_docker_tv_mod.sh
+
+wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test/alertmanager/config.yml -O $INSTALL_DIR/alertmanager/config.yml
+wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test/prometheus/etc/alert.rules -O $INSTALL_DIR/prometheus/etc/alert.rules
+wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test/prometheus/etc/prometheus.yml -O $INSTALL_DIR/prometheus/etc/prometheus.yml
+wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test/docker-compose.yml -O $INSTALL_DIR/docker-compose.yml
