@@ -16,3 +16,5 @@ NC='\033[0m'
 #===================
 
 mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
+cd $INSTALL_DIR
+wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud/start%20setup_docker_tv_mod.sh -O setup_docker_tv_mod.sh
