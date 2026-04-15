@@ -54,3 +54,20 @@ services:
     environment:
       TZ: "Europe/Moscow"
 
+#=======AlertManager======================
+  alertmanager:
+    image: prom/alertmanager:v0.31.1
+    user: root
+    ports:
+      - 127.0.0.1:9093:9093
+    volumes:
+      - ./alertmanager/:/etc/alertmanager/
+    container_name: alertmanager
+    hostname: alertmanager
+    environment:
+      TZ: "Europe/Moscow"
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/etc/alertmanager/data'
+
