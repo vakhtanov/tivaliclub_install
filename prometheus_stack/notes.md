@@ -50,3 +50,34 @@ targets.json
   }
 ]
 ```
+
+
+  
+### cAdvisor  еще сборщик - мониторит docker контейнеры
+
+```yaml
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    restart: unless-stopped
+
+```
+
+```yaml
+scrape_configs:
+  - job_name: 'docker_containers'
+    static_configs:
+      - targets: ['<IP_ВТОРОГО_ХОСТА>:8080']
+```
+
+Grafana dashboard
+Docker Monitoring (ID: 10619)
+
