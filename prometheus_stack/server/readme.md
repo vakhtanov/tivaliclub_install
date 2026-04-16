@@ -12,7 +12,15 @@ prometheus
 
 `wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/install_prometheus_stack.sh | bash`
 
-## script step FOR INFORMAION
+## ADD NODES
+
+add in file `prometheus/etc/targets.json
+
+host added on a fly
+
+
+
+# script step -- FOR INFORMATION
 
 Создаем каталоги, где будем создавать наши файлы:
 `mkdir -p /opt/prometheus_stack/{prometheus,grafana,alertmanager,blackbox}`
