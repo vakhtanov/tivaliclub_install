@@ -1,6 +1,8 @@
 # Prometheus Grafana stack
 
-Readme for server and nodes is in folders
+**Readme for server and nodes is in folders**
+
+_Grafana admin:TIvaliClub_
 
 ## Usefull notes
 
