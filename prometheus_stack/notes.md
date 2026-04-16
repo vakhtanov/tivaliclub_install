@@ -30,3 +30,12 @@ services:
       - 9100:9100
     restart: unless-stopped
 ```
+
+```
+   command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --collector.filesystem.ignored-mount-points
+      - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
+      - --node-exporter.hostname=${HOSTNAME} # передаем имя хоста
+```
