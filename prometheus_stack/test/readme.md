@@ -12,7 +12,7 @@ prometheus
 
 `wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test/install_prometheus_stack.sh | bash`
 
-## SCRIPT STEPS
+## script step FOR INFORMAION
 
 Создаем каталоги, где будем создавать наши файлы:
 `mkdir -p /opt/prometheus_stack/{prometheus,grafana,alertmanager,blackbox}`
