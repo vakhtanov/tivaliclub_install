@@ -13,3 +13,7 @@ Readme for server and nodes is in folders
     #hostname: exporter
     network_mode: host  # Контейнер будет использовать имя сервера
 ```
+
+### Dinamic host attach
+```yaml
+```
