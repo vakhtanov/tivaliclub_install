@@ -1,1 +1,145 @@
 
+
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+
+server {
+
+    listen 8080;
+
+    if ($scheme = "http") {
+       
+      return 301 https://$host$request_uri;
+     }
+
+
+    listen 8443 ssl http2; # managed by Certbot
+    # listen [::]:443 ssl ipv6only=on http2; # managed by Certbot
+
+
+
+    server_name devopsdemo.ru; # managed by Certbot
+
+
+	location / {
+
+        #proxy_pass http://192.168.0.3:11000$request_uri;
+
+        proxy_pass http://192.168.0.4:8080$request_uri;
+
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
+        proxy_set_header X-Forwarded-Port $server_port;
+        proxy_set_header X-Forwarded-Scheme $scheme;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;  
+        proxy_set_header Accept-Encoding "";
+        proxy_set_header Host $host;  
+
+        proxy_set_header Early-Data $ssl_early_data;
+
+        # Websocket
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+  
+	}
+
+    # SSL configuration
+
+    ssl_certificate /etc/letsencrypt/live/devopsdemo.ru/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/devopsdemo.ru/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+################################NypeDX============
+server {
+    #listen 80;
+    listen 443 ssl;
+    server_name hyperdx.devopsdemo.ru; # или внешний домен
+
+    location / {
+        #proxy_pass http://192.168.0.5:443;
+        proxy_pass http://192.168.0.5:8080;
+        
+        # Поддержка WebSocket (обязательно для live-логов в браузере)
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    ssl_certificate /etc/letsencrypt/live/devopsdemo.ru/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/devopsdemo.ru/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+################################grafana============
+server {
+    #listen 80;
+    listen 443 ssl;
+    server_name grafana.devopsdemo.ru; # или внешний домен
+
+    location / {
+        #proxy_pass http://192.168.0.5:443;
+        proxy_pass http://192.168.0.6:3000;
+
+        # Поддержка WebSocket (обязательно для live-логов в браузере)
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    ssl_certificate /etc/letsencrypt/live/grafana.devopsdemo.ru/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/grafana.devopsdemo.ru/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
+################################Prometheus============
+server {
+    #listen 80;
+    listen 443 ssl;
+    server_name prometheus.devopsdemo.ru; # или внешний домен
+
+    location / {
+        #proxy_pass http://192.168.0.5:443;
+        proxy_pass http://192.168.0.6:9090;
+
+        # Поддержка WebSocket (обязательно для live-логов в браузере)
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    ssl_certificate /etc/letsencrypt/live/grafana.devopsdemo.ru/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/grafana.devopsdemo.ru/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
