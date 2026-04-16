@@ -3,7 +3,7 @@ services:
   node-exporter:
     image: prom/node-exporter
     container_name: exporter
-    #hostname: exporter
+    network_mode: host  # Контейнер будет использовать имя сервера
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -14,8 +14,8 @@ services:
       - --collector.filesystem.ignored-mount-points
       - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
       - --node-exporter.hostname=${HOSTNAME} # передаем имя хоста
-    ports:
-      - 9100:9100
+#    ports:
+#      - 9100:9100
     restart: unless-stopped
     environment:
       TZ: "Europe/Moscow"
