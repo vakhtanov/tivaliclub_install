@@ -10,7 +10,7 @@ prometheus
 
 ## START SCRIPT
 
-`wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test/install_prometheus_stack.sh | bash`
+`wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/install_prometheus_stack.sh | bash`
 
 ## script step FOR INFORMAION
 

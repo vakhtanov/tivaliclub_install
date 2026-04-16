@@ -5,7 +5,7 @@ REPO_URL="https://github.com/hyperdxio/hyperdx.git"
 INSTALL_DIR="/opt/prometheus_stack"
 #RUN_USER="hyperdx"
 SERVER_IP="grafana.devopsdemo.ru"  # ← Твой домен!
-PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test"
+PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server"
 DOCKER_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/docker"
 
 ## КРАСИТ ЭХО В РАЗНЫЕ ЦВЕТА!!!!
