@@ -10,7 +10,7 @@ prometheus
 
 ## START SCRIPT
 
-`wget '
+`wget wget -O - $DOCKER_REPO/setup_docker_tv_mod.sh | bash'
 
 ## SCRIPT STEPS
 
