@@ -8,7 +8,11 @@ proxy
 prometheus
 `ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:\Users\User\.ssh\wahha_rsa wahha@192.168.0.6`  
 
-## Init
+## START SCRIPT
+
+`wget '
+
+## SCRIPT STEPS
 
 Создаем каталоги, где будем создавать наши файлы:
 `mkdir -p /opt/prometheus_stack/{prometheus,grafana,alertmanager,blackbox}`
