@@ -14,15 +14,23 @@ INSTALL_DIR="/opt/prometheus_stack"
 PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server"  
 DOCKER_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/docker"  
 
+## ADD NODES
+
+add in file `prometheus/etc/targets.json`
+
+host added on a fly
+
+## ADD ALERTS
+
+add in file `prometheus/etc/alert.rules`
+
+
+
 ## START SCRIPT
 
 `wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/install_prometheus_stack.sh | bash`
 
-## ADD NODES
 
-add in file `prometheus/etc/targets.json
-
-host added on a fly
 
 
 
