@@ -15,6 +15,8 @@ NC='\033[0m'
 
 #===================
 
+echo -e "${GREEN}INIT PREPARE${NC}"
+
 mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
 cd $INSTALL_DIR
 
