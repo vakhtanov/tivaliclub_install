@@ -1,4 +1,4 @@
-# Poretheus_stack
+# Prometheus_stack
 
 [https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker](https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker)
 
