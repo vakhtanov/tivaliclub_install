@@ -22,6 +22,8 @@ echo -e "${GREEN}INIT PREPARE${NC}"
 sudo mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
 cd $INSTALL_DIR
 
+sudo mkdir -p $INSTALL_DIR/prometheus/etc
+
 sudo wget $PROMETHEUS_SRV_REPO/alertmanager/config.yml -O $INSTALL_DIR/alertmanager/config.yml
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/alert.rules -O $INSTALL_DIR/prometheus/etc/alert.rules
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/prometheus.yml -O $INSTALL_DIR/prometheus/etc/prometheus.yml
