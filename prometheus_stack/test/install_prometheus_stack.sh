@@ -19,7 +19,7 @@ NC='\033[0m'
 
 echo -e "${GREEN}INIT PREPARE${NC}"
 
-mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
+sudo mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
 cd $INSTALL_DIR
 
 wget $PROMETHEUS_REPO/alertmanager/config.yml -O $INSTALL_DIR/alertmanager/config.yml
