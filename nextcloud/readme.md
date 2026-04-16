@@ -9,7 +9,7 @@
 
 **download script to install docker and start nextcloud container**
 
-`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud/start%20setup_docker_tv_mod.sh -O setup_docker_tv_mod.sh`
+`wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/docker/setup_docker_tv_mod.sh -O setup_docker_tv_mod.sh`
 
 `chmod +x setup_docker_tv_mod.sh`
 
