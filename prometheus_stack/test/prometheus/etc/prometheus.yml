@@ -3,6 +3,11 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
     - targets: ['node-exporter:9100']
+      labels:
+          instance: 'this-host'
+    - targets: ['192.168.0.5:9100']
+      labels:
+          instance: 'hyper-host'
 
 rule_files:
   - 'alert.rules'
