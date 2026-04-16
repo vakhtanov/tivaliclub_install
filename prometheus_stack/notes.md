@@ -5,7 +5,7 @@ Readme for server and nodes is in folders
 ## Usefull notes
 
 ### Hostname from host
-
+docker-compose.yml
 ```yaml
   node-exporter:
     image: prom/node-exporter
@@ -15,5 +15,11 @@ Readme for server and nodes is in folders
 ```
 
 ### Dinamic host attach
+prometheus.yml
 ```yaml
+scrape_configs:
+  - job_name: 'node_exporter'
+    file_sd_configs:
+      - files:
+        - '/etc/prometheus/targets.json'
 ```
