@@ -20,7 +20,7 @@ NC='\033[0m'
 echo -e "${GREEN}INIT PREPARE${NC}"
 #sudo mkdir -p $INSTALL_DIR
 sudo mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
-cd $INSTALL_DIR
+#cd $INSTALL_DIR
 
 sudo mkdir -p $INSTALL_DIR/prometheus/etc
 
@@ -38,6 +38,6 @@ echo -e "${GREEN}SETUP DOCKER OFFICIAL${NC}"
 
 wget -O - $DOCKER_REPO/setup_docker_tv_mod.sh | bash
 
-echo -e "${RED}LOGOUT, LOGIN ${NC}"
-echo -e "${RED}CHECK DIRRECTORY $INSTALL_DIR and DO COMMAND ${NC}"
-echo -e "${RED}docker compose up -d${NC}"
+echo -e "${YELLOW}LOGOUT, LOGIN ${NC}"
+echo -e "${YELLOW}do cd $INSTALL_DIR and DO COMMAND ${NC}"
+echo -e "${YELLOW}docker compose up -d${NC}"
