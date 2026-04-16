@@ -30,7 +30,11 @@ add in file `prometheus/etc/alert.rules`
 
 `wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/install_prometheus_stack.sh | bash`
 
+## IN Grafana 
 
+add data source
+
+add dashboard - 1860
 
 ===============================================================
 
