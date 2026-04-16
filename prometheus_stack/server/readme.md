@@ -8,6 +8,10 @@ proxy
 prometheus  
 `ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:\Users\User\.ssh\wahha_rsa wahha@192.168.0.6`  
 
+## SET PATH in install_prometheus_stack.sh
+
+
+
 ## START SCRIPT
 
 `wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/install_prometheus_stack.sh | bash`
