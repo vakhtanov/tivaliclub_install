@@ -14,7 +14,7 @@
     }
   },
     {
-    "targets": ["192.168.0.3:9100"],
+    "targets": ["10.130.0.26:9100"],
     "labels": {
       "env": "production",
       "job": "node_exporter"
