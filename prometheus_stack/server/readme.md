@@ -2,7 +2,7 @@
 
 [https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker](https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker)
 
-## Connect VMs
+## Connect VMs SAMPLE
 proxy  
 `ssh -i c:\Users\User\.ssh\wahha_rsa wahha@devopsdemo.ru`  
 prometheus  
