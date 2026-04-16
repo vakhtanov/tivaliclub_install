@@ -5,7 +5,7 @@
 ## Connect VMs
 proxy  
 `ssh -i c:\Users\User\.ssh\wahha_rsa wahha@devopsdemo.ru`  
-prometheus
+prometheus  
 `ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:\Users\User\.ssh\wahha_rsa wahha@192.168.0.6`  
 
 ## START SCRIPT
