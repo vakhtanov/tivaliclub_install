@@ -2,6 +2,13 @@
 
 [https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker](https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker)
 
+## Connect VMs
+proxy
+
+prometheus
+
+192.168.0.5
+
 Создаем каталоги, где будем создавать наши файлы:
 `mkdir -p /opt/prometheus_stack/{prometheus,grafana,alertmanager,blackbox}`
 
