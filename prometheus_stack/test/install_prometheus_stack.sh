@@ -5,7 +5,7 @@ REPO_URL="https://github.com/hyperdxio/hyperdx.git"
 INSTALL_DIR="/opt/prometheus_stack"
 #RUN_USER="hyperdx"
 SERVER_IP="grafana.devopsdemo.ru"  # ← Твой домен!
-PROMETHEUS_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test"
+PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/test"
 DOCKER_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/docker"
 
 ## КРАСИТ ЭХО В РАЗНЫЕ ЦВЕТА!!!!
@@ -18,14 +18,17 @@ NC='\033[0m'
 #===================INIT=============
 
 echo -e "${GREEN}INIT PREPARE${NC}"
-
+#sudo mkdir -p $INSTALL_DIR
 sudo mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
 cd $INSTALL_DIR
 
-wget $PROMETHEUS_REPO/alertmanager/config.yml -O $INSTALL_DIR/alertmanager/config.yml
-wget $PROMETHEUS_REPO/prometheus/etc/alert.rules -O $INSTALL_DIR/prometheus/etc/alert.rules
-wget $PROMETHEUS_REPO/prometheus/etc/prometheus.yml -O $INSTALL_DIR/prometheus/etc/prometheus.yml
-wget $PROMETHEUS_REPO/docker-compose.yml -O $INSTALL_DIR/docker-compose.yml
+sudo wget $PROMETHEUS_SRV_REPO/alertmanager/config.yml -O $INSTALL_DIR/alertmanager/config.yml
+sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/alert.rules -O $INSTALL_DIR/prometheus/etc/alert.rules
+sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/prometheus.yml -O $INSTALL_DIR/prometheus/etc/prometheus.yml
+sudo wget $PROMETHEUS_SRV_REPO/docker-compose.yml -O $INSTALL_DIR/docker-compose.yml
+
+sudo mkdir -p $INSTALL_DIR/prometheus/data
+sudo chown 65534:65534 $INSTALL_DIR/prometheus/data
 
 #=============SETUP DOCKER OFFICIAL==============================
 
