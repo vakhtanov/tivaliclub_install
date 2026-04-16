@@ -4,8 +4,14 @@
 
 ## Connect VMs
 
-nodeexporter  
+node_exporter  
 `ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:\Users\User\.ssh\wahha_rsa wahha@192.168.0.5`  
+
+## set VARIABLES in install_node_exporter.sh
+
+INSTALL_DIR="/opt/prometheus_stack"  
+PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/client"  
+DOCKER_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/docker"  
 
 ## START SCRIPT
 
