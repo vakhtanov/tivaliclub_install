@@ -19,12 +19,14 @@ services:
 #=========Node-Exporter==COLLECT=======================
   node-exporter:
     image: prom/node-exporter
+    container_name: exporter
+    #hostname: exporter
+    network_mode: host  # Контейнер будет использовать имя сервера
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    container_name: exporter
-    hostname: exporter
+      - /:/rootfs:ro   
+    
     command:
       - --path.procfs=/host/proc
       - --path.sysfs=/host/sys
