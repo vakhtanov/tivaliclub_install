@@ -20,7 +20,7 @@ sudo mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
 
 
 sudo mkdir -p $INSTALL_DIR/prometheus/etc
-sudo mkdir -p $INSTALL_DIR//grafana/provisioning
+sudo mkdir -p $INSTALL_DIR/grafana/provisioning
 
 
 #PATH to DATA DIRECTORY
