@@ -32,3 +32,4 @@ sudo wget $PROMETHEUS_SRV_REPO/.env -O .env
 sudo wget $PROMETHEUS_SRV_REPO/install_prometheus_stack.sh -O install_prometheus_stack.sh
 
 echo -e "${GREEN}cd prometheus_server${NC}"
+echo -e "${GREEN}bash install_prometheus_stack.sh${NC}"
