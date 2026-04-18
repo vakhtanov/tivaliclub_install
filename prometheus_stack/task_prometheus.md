@@ -97,7 +97,7 @@ All scripts must comply with the following standards:
 The task is considered complete when ALL of the following are verified:
 
 | **#** | **Acceptance Criterion** | **Verification Method** | **Status** |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | 1   | Grafana UI is accessible and displays the login screen. | Browser access test. | :white_check_mark:|
 | 2   | Prometheus data source is connected with 'Data source connected and labels found.' | Grafana Data Sources panel. | :white_check_mark:|
 | 3   | All VMs appear as targets in Prometheus with status 'UP'. | Prometheus /targets page. | |
