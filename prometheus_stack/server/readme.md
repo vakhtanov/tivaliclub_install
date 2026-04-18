@@ -38,7 +38,7 @@ add in file `prometheus/etc/alert.rules`
 
 path to UI - [HOST]:3000  
 path to prometheus [HOST]:9090  
-add data source `http://prometheus:9090`  
+add data source `http://prometheus:9090` MAST BE CONNECTED IN INSTALATION  
 node status http://localhost:9090/targets  
 add dashboard - 1860  
 
