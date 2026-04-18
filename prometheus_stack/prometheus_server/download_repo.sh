@@ -26,5 +26,6 @@ sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/targets.json -O ./prometheus/etc/t
 sudo wget $PROMETHEUS_SRV_REPO/grafana/provisioning/datasource.yml -O ./grafana/provisioning/datasource.yml
 sudo wget $PROMETHEUS_SRV_REPO/docker-compose.yml -O ./docker-compose.yml
 sudo wget $PROMETHEUS_SRV_REPO/.env -O ./.env
+sudo wget $PROMETHEUS_SRV_REPO/install_prometheus_stack.sh -O ./install_prometheus_stack.sh
 
 echo "${GREEN}cd prometheus_server${NC}"
