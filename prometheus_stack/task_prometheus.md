@@ -44,10 +44,10 @@ The System Administrator must produce and deliver the following artefacts:
 | 1   | grafana_server_install.sh | Bash script to install and configure Grafana server on the monitoring host (Linux). | :white_check_mark:|
 | 2   | node_exporter_install.sh | Bash script to install and configure Prometheus Node Exporter on each Linux VM. | :white_check_mark:|
 | 4   | prometheus_install.sh | Bash script to install Prometheus and configure scrape targets for all VM agents. | :white_check_mark:|
-| 5   | grafana_alloy_install.sh ? | Script to deploy Grafana Alloy agent as an alternative/supplement collector. |
-| 6   | dashboard_provisioning/ | Grafana dashboard JSON files (Node Overview, Disk, Network, Summary) ready for import. |
-| 7   | alert_rules.yml | Prometheus alerting rules file covering critical system thresholds. |
-| 8   | README.md | Installation and runbook guide: prerequisites, execution order, rollback steps, and maintenance notes. |
+| 5   | grafana_alloy_install.sh ? | Script to deploy Grafana Alloy agent as an alternative/supplement collector. | |
+| 6   | dashboard_provisioning/ | Grafana dashboard JSON files (Node Overview, Disk, Network, Summary) ready for import. | |
+| 7   | alert_rules.yml | Prometheus alerting rules file covering critical system thresholds. | |
+| 8   | README.md | Installation and runbook guide: prerequisites, execution order, rollback steps, and maintenance notes. | |
 
 # 4\. Technical Requirements
 
