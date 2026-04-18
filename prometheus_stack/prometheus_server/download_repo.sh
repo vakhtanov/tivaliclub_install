@@ -14,8 +14,6 @@ fi
 
 echo -e "${GREEN}Success: you in home${NC}"
 
-
-
 mkdir -p prometheus_server
 cd prometheus_server
 
