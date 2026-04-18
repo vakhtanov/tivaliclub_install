@@ -10,6 +10,7 @@ services:
     hostname: prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.retention.time=${PROMETHEUS_RETENTION_TIME:-15D}'
     ports:
       - 9090:9090
     restart: unless-stopped
