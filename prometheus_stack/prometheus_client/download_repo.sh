@@ -18,5 +18,6 @@ mkdir -p prometheus_client
 cd prometheus_client
 
 wget $PROMETHEUS_SRV_REPO/docker-compose.yml -O docker-compose.yml
+wget $PROMETHEUS_SRV_REPO/install_node_exporter.sh -O install_node_exporter.sh
 
 echo -e "${GREEN}cd prometheus_client${NC}"
