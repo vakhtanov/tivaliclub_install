@@ -32,7 +32,7 @@ fi
 sudo mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
 
 sudo mkdir -p $INSTALL_DIR/prometheus/etc
-sudo mkdir -p $INSTALL_DIR/grafana/provisioning
+sudo mkdir -p $INSTALL_DIR/grafana/provisioning/datasources
 
 #PATH to DATA DIRECTORY
 sudo mkdir -p $INSTALL_DIR/prometheus/data
@@ -44,7 +44,7 @@ sudo cp alertmanager/config.yml  $INSTALL_DIR/alertmanager/config.yml
 sudo cp prometheus/etc/alert.rules $INSTALL_DIR/prometheus/etc/alert.rules
 sudo cp prometheus/etc/prometheus.yml  $INSTALL_DIR/prometheus/etc/prometheus.yml
 sudo cp prometheus/etc/targets.json $INSTALL_DIR/prometheus/etc/targets.json
-sudo cp grafana/provisioning/datasource.yml  $INSTALL_DIR/grafana/provisioning/datasource.yml
+sudo cp grafana/provisioning/datasource.yml  $INSTALL_DIR/grafana/provisioning/datasources/datasource.yml
 sudo cp docker-compose.yml $INSTALL_DIR/docker-compose.yml
 sudo cp .env $INSTALL_DIR/.env
 
