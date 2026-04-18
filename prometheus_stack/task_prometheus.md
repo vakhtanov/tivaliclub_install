@@ -96,16 +96,16 @@ All scripts must comply with the following standards:
 
 The task is considered complete when ALL of the following are verified:
 
-| **#** | **Acceptance Criterion** | **Verification Method** |
+| **#** | **Acceptance Criterion** | **Verification Method** | **Status** |
 | --- | --- | --- |
-| 1   | Grafana UI is accessible and displays the login screen. | Browser access test. |
-| 2   | Prometheus data source is connected with 'Data source connected and labels found.' | Grafana Data Sources panel. |
-| 3   | All VMs appear as targets in Prometheus with status 'UP'. | Prometheus /targets page. |
-| 4   | Node Overview dashboard shows live metrics for all VMs. | Visual inspection of dashboards. |
-| 5   | Disk alert fires correctly when threshold is simulated. | Alert test using stress tool or manual threshold change. |
-| 6   | All scripts execute without errors on a freshly provisioned VM. | Test run on clean VM. |
-| 7   | README.md is complete with all sections documented. | Document review. |
-| 8   | No credentials are hardcoded in any script. | Code review / grep for secrets. |
+| 1   | Grafana UI is accessible and displays the login screen. | Browser access test. | :white_check_mark:|
+| 2   | Prometheus data source is connected with 'Data source connected and labels found.' | Grafana Data Sources panel. | :white_check_mark:|
+| 3   | All VMs appear as targets in Prometheus with status 'UP'. | Prometheus /targets page. | |
+| 4   | Node Overview dashboard shows live metrics for all VMs. | Visual inspection of dashboards. | |
+| 5   | Disk alert fires correctly when threshold is simulated. | Alert test using stress tool or manual threshold change. | |
+| 6   | All scripts execute without errors on a freshly provisioned VM. | Test run on clean VM. | |
+| 7   | README.md is complete with all sections documented. | Document review. | |
+| 8   | No credentials are hardcoded in any script. | Code review / grep for secrets. | |
 
 # 7\. Suggested Timeline
 
