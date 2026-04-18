@@ -14,6 +14,10 @@ INSTALL_DIR="/opt/prometheus_stack"
 PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server"  
 DOCKER_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/docker"  
 
+## SET VARIABLES in .env
+PROMETHEUS_RETENTION_TIME  
+PROMETHEUS_RETENTION_SIZE
+
 ## ADD NODES
 
 add in file `prometheus/etc/targets.json`
