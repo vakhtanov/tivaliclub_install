@@ -1,11 +1,11 @@
-ssh -i c:/Users/wahha/.ssh/wahha_rsa andrey@192.168.20.62
+`ssh -i c:/Users/wahha/.ssh/wahha_rsa andrey@192.168.20.62`  
+`ssh -i c:/Users/wahha/.ssh/wahha_rsa -L 3000:192.168.20.62:3000 -L 9090:192.168.20.62:9090 andrey@192.168.20.62`  
+_Grafana admin:TIvaliClub_
 
 
 # Prometheus Grafana stack
 
 **Readme for server and nodes is in folders**
-
-_Grafana admin:TIvaliClub_
 
 ## Usefull notes
 
