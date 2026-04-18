@@ -4,13 +4,13 @@
 
 ## IF NEEND Connect VMs SAMPLE
 proxy  
-`ssh -i c:\Users\User\.ssh\wahha_rsa wahha@devopsdemo.ru`  
+```ssh -i c:\Users\User\.ssh\wahha_rsa wahha@devopsdemo.ru```  
 prometheus  
-`ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:\Users\User\.ssh\wahha_rsa wahha@192.168.0.6`  
+```ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:\Users\User\.ssh\wahha_rsa wahha@192.168.0.6```  
 
 ## IF NEEND download files
 
-`wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/download_repo.sh | bash`
+```wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/download_repo.sh | bash```
 
 ## IF NEEND SET VARIABLES in install_prometheus_stack.sh
 
