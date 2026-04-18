@@ -64,7 +64,7 @@ services:
     image: prom/alertmanager:v0.31.1
     user: root
     ports:
-      - 127.0.0.1:9093:9093
+      - 9093:9093
     volumes:
       - ./alertmanager/:/etc/alertmanager/
     container_name: alertmanager
