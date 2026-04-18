@@ -3,7 +3,7 @@ services:
   node-exporter:
     image: prom/node-exporter
     container_name: exporter
-    #network_mode: host  # Контейнер будет использовать имя сервера
+    network_mode: host  # Контейнер будет использовать имя сервера
     pid: host
     volumes:
       - /proc:/host/proc:ro
