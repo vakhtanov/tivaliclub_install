@@ -32,7 +32,11 @@ add in file `prometheus/etc/alert.rules`
 
 ## IN Grafana 
 
-add data source
+path to UI - [HOST]:3000
+
+path to prometheus [HOST]:9090
+
+add data source `http://prometheus:9090`
 
 add dashboard - 1860
 
