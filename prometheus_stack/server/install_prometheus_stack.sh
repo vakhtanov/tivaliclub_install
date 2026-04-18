@@ -25,7 +25,7 @@ sudo wget $PROMETHEUS_SRV_REPO/alertmanager/config.yml -O $INSTALL_DIR/alertmana
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/alert.rules -O $INSTALL_DIR/prometheus/etc/alert.rules
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/prometheus.yml -O $INSTALL_DIR/prometheus/etc/prometheus.yml
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/targets.json -O $INSTALL_DIR/prometheus/etc/targets.json
-sudo wget $PROMETHEUS_SRV_REPO/grafana/etc/provisioning/datasource.yml -O $INSTALL_DIR/grafana/etc/provisioning/datasource.yml
+sudo wget $PROMETHEUS_SRV_REPO/grafana/provisioning/datasource.yml -O $INSTALL_DIR/grafana/provisioning/datasource.yml
 sudo wget $PROMETHEUS_SRV_REPO/docker-compose.yml -O $INSTALL_DIR/docker-compose.yml
 sudo wget $PROMETHEUS_SRV_REPO/.env -O $INSTALL_DIR/.env
 
