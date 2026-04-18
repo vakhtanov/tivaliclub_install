@@ -15,7 +15,7 @@ ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsde
 ## IF NEEND download files
 
 ```
-wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/download_repo.sh | bash
+wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/prometheus_server/download_repo.sh | bash
 ```
 
 ## IF NEEND SET VARIABLES in install_prometheus_stack.sh
