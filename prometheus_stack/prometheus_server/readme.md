@@ -1,20 +1,22 @@
-# Prometheus_stack
+# Prometheus_stack - original article
 
 [https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker](https://www.dmosk.ru/miniinstruktions.php?mini=prometheus-stack-docker)
 
-## Connect VMs SAMPLE
+## IF NEEND Connect VMs SAMPLE
 proxy  
 `ssh -i c:\Users\User\.ssh\wahha_rsa wahha@devopsdemo.ru`  
 prometheus  
 `ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsdemo.ru" -i c:\Users\User\.ssh\wahha_rsa wahha@192.168.0.6`  
 
-## SET VARIABLES in install_prometheus_stack.sh
+## IF NEEND download files
+
+`wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/download_repo.sh | bash`
+
+## IF NEEND SET VARIABLES in install_prometheus_stack.sh
 
 INSTALL_DIR="/opt/prometheus_stack"  
-PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server"  
-DOCKER_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/docker"  
 
-## SET VARIABLES in .env
+## IF NEEND SET VARIABLES in .env
 PROMETHEUS_RETENTION_TIME  
 PROMETHEUS_RETENTION_SIZE
 
@@ -28,11 +30,8 @@ host added on a fly
 
 add in file `prometheus/etc/alert.rules`
 
+## START install_prometheus_stack.sh 
 
-
-## START SCRIPT
-
-`wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/server/install_prometheus_stack.sh | bash`
 
 ## IN Grafana 
 
