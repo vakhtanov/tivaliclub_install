@@ -21,6 +21,12 @@ sudo mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
 
 sudo mkdir -p $INSTALL_DIR/prometheus/etc
 
+#PATH to DATA DIRECTORY
+sudo mkdir -p $INSTALL_DIR/prometheus/data
+sudo chown 65534:65534 $INSTALL_DIR/prometheus/data
+sudo mkdir -p $INSTALL_DIR/grafana/data
+sudo chown 65534:65534 $INSTALL_DIR/grafana/data
+
 sudo wget $PROMETHEUS_SRV_REPO/alertmanager/config.yml -O $INSTALL_DIR/alertmanager/config.yml
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/alert.rules -O $INSTALL_DIR/prometheus/etc/alert.rules
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/prometheus.yml -O $INSTALL_DIR/prometheus/etc/prometheus.yml
@@ -29,11 +35,7 @@ sudo wget $PROMETHEUS_SRV_REPO/grafana/provisioning/datasource.yml -O $INSTALL_D
 sudo wget $PROMETHEUS_SRV_REPO/docker-compose.yml -O $INSTALL_DIR/docker-compose.yml
 sudo wget $PROMETHEUS_SRV_REPO/.env -O $INSTALL_DIR/.env
 
-#PATH to DATA DIRECTORY
-sudo mkdir -p $INSTALL_DIR/prometheus/data
-sudo chown 65534:65534 $INSTALL_DIR/prometheus/data
-sudo mkdir -p $INSTALL_DIR/grafana/data
-sudo chown 65534:65534 $INSTALL_DIR/grafana/data
+
 
 #=============SETUP DOCKER OFFICIAL==============================
 
