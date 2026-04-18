@@ -16,6 +16,8 @@ echo -e "${GREEN}Success: you in home${NC}"
 
 mkdir -p prometheus_server
 cd prometheus_server
+mkdir -p {prometheus,grafana,alertmanager,blackbox}
+mkdir -p {prometheus/etc,prometheus/data,grafana/provisioning,grafana/data}
 
 sudo wget $PROMETHEUS_SRV_REPO/alertmanager/config.yml -O alertmanager/config.yml
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/alert.rules -O prometheus/etc/alert.rules
