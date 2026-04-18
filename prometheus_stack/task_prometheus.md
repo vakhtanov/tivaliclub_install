@@ -40,7 +40,7 @@ Deploy Grafana as the centralised monitoring and observability platform for all 
 The System Administrator must produce and deliver the following artefacts:
 
 | **#** | **Deliverable** | **Description** | **Status** |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | 1   | grafana_server_install.sh | Bash script to install and configure Grafana server on the monitoring host (Linux). | :white_check_mark:|
 | 2   | node_exporter_install.sh | Bash script to install and configure Prometheus Node Exporter on each Linux VM. | :white_check_mark:|
 | 4   | prometheus_install.sh | Bash script to install Prometheus and configure scrape targets for all VM agents. | :white_check_mark:|
