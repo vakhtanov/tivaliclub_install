@@ -28,7 +28,7 @@ if ! docker ps &> /dev/null; then
 fi
 
 sudo mkdir -p $INSTALL_DIR/prometheus/node_exporter
-sudo cp docker-compose.yml -O $INSTALL_DIR/prometheus/node_exporter/docker-compose.yml
+sudo cp docker-compose.yml  $INSTALL_DIR/prometheus/node_exporter/docker-compose.yml
 
 echo -e "${GREEN}Start Node Exporter${NC}"
 cd $INSTALL_DIR/prometheus/node_exporter
