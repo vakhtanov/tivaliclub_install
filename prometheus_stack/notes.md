@@ -1,3 +1,6 @@
+ssh -i c:/Users/wahha/.ssh/wahha_rsa andrey@192.168.20.62
+
+
 # Prometheus Grafana stack
 
 **Readme for server and nodes is in folders**
