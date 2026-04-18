@@ -15,4 +15,6 @@ DOCKER_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs
 
 ## download repo
 
-`wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/prometheus_client/download_repo.sh | bash`
+```
+wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/prometheus_client/download_repo.sh | bash
+```
