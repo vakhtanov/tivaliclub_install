@@ -22,9 +22,9 @@ Deploy Grafana as the centralised monitoring and observability platform for all 
 
 ## 2.1 In Scope
 
-- Installation and configuration of the Grafana server on a dedicated monitoring host.
+- Installation and configuration of the Grafana server on a dedicated monitoring host. :white_check_mark:
 - Deployment of Prometheus Node Exporter agent on all Linux VMs.
-- Configuration of Prometheus as the data source connected to Grafana.
+- Configuration of Prometheus as the data source connected to Grafana. :white_check_mark:
 - Creation of baseline dashboards covering CPU, memory, disk, and network metrics.
 - Alert rule setup for critical thresholds (CPU > 85%, disk > 80%, memory > 90%).
 - Documentation of all scripts, configurations, and runbooks.
@@ -39,11 +39,11 @@ Deploy Grafana as the centralised monitoring and observability platform for all 
 
 The System Administrator must produce and deliver the following artefacts:
 
-| **#** | **Deliverable** | **Description** |
+| **#** | **Deliverable** | **Description** | **Status** |
 | --- | --- | --- |
-| 1   | grafana_server_install.sh | Bash script to install and configure Grafana server on the monitoring host (Linux). |
-| 2   | node_exporter_install.sh | Bash script to install and configure Prometheus Node Exporter on each Linux VM. |
-| 4   | prometheus_install.sh | Bash script to install Prometheus and configure scrape targets for all VM agents. |
+| 1   | grafana_server_install.sh | Bash script to install and configure Grafana server on the monitoring host (Linux). | :white_check_mark:|
+| 2   | node_exporter_install.sh | Bash script to install and configure Prometheus Node Exporter on each Linux VM. | :white_check_mark:|
+| 4   | prometheus_install.sh | Bash script to install Prometheus and configure scrape targets for all VM agents. | :white_check_mark:|
 | 5   | grafana_alloy_install.sh ? | Script to deploy Grafana Alloy agent as an alternative/supplement collector. |
 | 6   | dashboard_provisioning/ | Grafana dashboard JSON files (Node Overview, Disk, Network, Summary) ready for import. |
 | 7   | alert_rules.yml | Prometheus alerting rules file covering critical system thresholds. |
@@ -54,7 +54,7 @@ The System Administrator must produce and deliver the following artefacts:
 ## 4.1 Grafana Server
 
 - Latest stable Grafana OSS release (v10+ recommended).
-- Installed as a docker container; auto-start on boot.
+- Installed as a docker container; auto-start on boot. :white_check_mark:
 - Accessible via HTTPS on port 3000 (TLS/self signed certificate or reverse proxy).
 - Admin credentials stored securely (not hardcoded in scripts). May asked to enter on installation
 - Data source: Prometheus configured and tested automatically via provisioning file.
