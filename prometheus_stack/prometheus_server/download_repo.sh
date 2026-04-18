@@ -22,7 +22,7 @@ cd prometheus_server
 sudo wget $PROMETHEUS_SRV_REPO/alertmanager/config.yml -O alertmanager/config.yml
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/alert.rules -O prometheus/etc/alert.rules
 sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/prometheus.yml -O prometheus/etc/prometheus.yml
-sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/targets.json -O ./prometheus/etc/targets.json
+sudo wget $PROMETHEUS_SRV_REPO/prometheus/etc/targets.json -O prometheus/etc/targets.json
 sudo wget $PROMETHEUS_SRV_REPO/grafana/provisioning/datasource.yml -O grafana/provisioning/datasource.yml
 sudo wget $PROMETHEUS_SRV_REPO/docker-compose.yml -O docker-compose.yml
 sudo wget $PROMETHEUS_SRV_REPO/.env -O .env
