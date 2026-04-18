@@ -32,6 +32,8 @@ sudo wget $PROMETHEUS_SRV_REPO/.env -O $INSTALL_DIR/.env
 #PATH to DATA DIRECTORY
 sudo mkdir -p $INSTALL_DIR/prometheus/data
 sudo chown 65534:65534 $INSTALL_DIR/prometheus/data
+sudo mkdir -p $INSTALL_DIR/grafana/data
+sudo chown 65534:65534 $INSTALL_DIR/grafana/data
 
 #=============SETUP DOCKER OFFICIAL==============================
 
