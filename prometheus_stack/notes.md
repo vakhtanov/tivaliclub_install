@@ -86,3 +86,13 @@ scrape_configs:
 Grafana dashboard
 Docker Monitoring (ID: 10619)
 
+base  1860  
+Modern 11074  
+many hosts 15172  
+
+count(node_cpu_seconds_total) by (job, instance)
+Что это даст:
+Если результат есть — мы увидим точные имена job и instance, которые нужно прописать в переменные дашборда.
+
+
+
