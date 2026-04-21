@@ -3,28 +3,28 @@
     "targets": ["192.168.20.62:9100"],
     "labels": {
       "env": "test",
-      "job": "node_exporter"
+      "instance": "this-node"
     }
   },
   {
     "targets": ["192.168.0.6:9100"],
     "labels": {
       "env": "production",
-      "job": "node_exporter"
+      "instance": "prometeus-node"
     }
   },
   {
     "targets": ["192.168.0.5:9100"],
     "labels": {
       "env": "production",
-      "job": "node_exporter"
+      "instance": "hyperdx-node"
     }
   },
     {
     "targets": ["10.130.0.26:9100"],
     "labels": {
       "env": "production",
-      "job": "node_exporter"
+      "instance": "nat-node"
     }
   }
 ]
