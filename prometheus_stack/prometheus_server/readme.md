@@ -48,7 +48,18 @@ node status http://localhost:9090/targets
 add dashboard - 1860  
 
 ===============================================================
+## NOTES
 
+folder `prometheus_server/grafana/dashboards/` - dashboards  
+folder `prometheus_server/grafana/provisioning/` - deploy sets
+
+
+
+
+
+
+
+===========================================
 # script step -- FOR INFORMATION
 
 Создаем каталоги, где будем создавать наши файлы:
