@@ -11,7 +11,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 
-#===================INIT=============
+#===================INIT==============================
 
 echo -e "${GREEN}INIT PREPARE${NC}"
 
@@ -27,27 +27,55 @@ if ! docker ps &> /dev/null; then
     echo -e "${RED}add user to group DOCKER or run script with SUDO ${NC}"
     exit 1
 fi
+#=====================================================
 
 
-sudo mkdir -p $INSTALL_DIR/{prometheus,grafana,alertmanager,blackbox}
+#=======PATH to DATA DIRECTORY COPY FILES=============
 
-sudo mkdir -p $INSTALL_DIR/prometheus/etc
-sudo mkdir -p $INSTALL_DIR/grafana/provisioning/datasources
+sudo cp -r alertmanager  $INSTALL_DIR/alertmanager
+sudo cp -r prometheus $INSTALL_DIR/prometheus
+sudo cp -r grafana  $INSTALL_DIR/grafana
+sudo cp docker-compose.yml $INSTALL_DIR/docker-compose.yml
+sudo cp .env $INSTALL_DIR/.env
 
-#PATH to DATA DIRECTORY
 sudo mkdir -p $INSTALL_DIR/prometheus/data
 sudo chown 65534:65534 $INSTALL_DIR/prometheus/data
 sudo mkdir -p $INSTALL_DIR/grafana/data
 sudo chown 65534:65534 $INSTALL_DIR/grafana/data
+#====================================================
 
-sudo cp alertmanager/config.yml  $INSTALL_DIR/alertmanager/config.yml
-sudo cp prometheus/etc/alert.rules $INSTALL_DIR/prometheus/etc/alert.rules
-sudo cp prometheus/etc/prometheus.yml  $INSTALL_DIR/prometheus/etc/prometheus.yml
-sudo cp prometheus/etc/targets.json $INSTALL_DIR/prometheus/etc/targets.json
-sudo cp grafana/provisioning/datasources/datasource.yml  $INSTALL_DIR/grafana/provisioning/datasources/datasource.yml
-sudo cp docker-compose.yml $INSTALL_DIR/docker-compose.yml
-sudo cp .env $INSTALL_DIR/.env
-
+#============START PROJECT===========================
 echo -e "${GREEN}Start Prometheus stack${NC}"
 cd $INSTALL_DIR
 docker compose up -d
+echo "Wait start"
+sleep 10
+#=====================================================
+
+
+# =====CHECK DOCKER COMPOSE up======================
+
+echo "Check project status"
+
+# 1. Container STATUS
+STATUSES=$(docker compose ps --format json)
+
+# 2. Check project STARTED
+if [ -z "$STATUSES" ]; then
+    echo -e "${RED}ERROR: Project not started${NC}"
+    exit 1
+fi
+
+# 3. Check container status
+FAILED_CONTAINERS=$(echo "$STATUSES" | grep -vE '"State":"(running|healthy)"')
+
+if [ -z "$FAILED_CONTAINERS" ]; then
+    echo -e "${GREEN}OK: Project started succsed${NC}"
+    docker compose ps
+    exit 0
+else
+    echo -e "${RED}WARNING: Some container not started or error${NC}"
+    docker compose ps
+    exit 1
+fi
+#===========================================

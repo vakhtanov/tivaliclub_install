@@ -33,3 +33,30 @@ sudo cp docker-compose.yml  $INSTALL_DIR/prometheus/node_exporter/docker-compose
 echo -e "${GREEN}Start Node Exporter${NC}"
 cd $INSTALL_DIR/prometheus/node_exporter
 docker compose up -d
+
+# =====CHECK DOCKER COMPOSE up======================
+
+echo "Check project status"
+
+# 1. Container STATUS
+STATUSES=$(docker compose ps --format json)
+
+# 2. Check project STARTED
+if [ -z "$STATUSES" ]; then
+    echo -e "${RED}ERROR: Project not started${NC}"
+    exit 1
+fi
+
+# 3. Check container status
+FAILED_CONTAINERS=$(echo "$STATUSES" | grep -vE '"State":"(running|healthy)"')
+
+if [ -z "$FAILED_CONTAINERS" ]; then
+    echo -e "${GREEN}OK: Project started succsed${NC}"
+    docker compose ps
+    exit 0
+else
+    echo -e "${RED}WARNING: Some container not started or error${NC}"
+    docker compose ps
+    exit 1
+fi
+#===========================================

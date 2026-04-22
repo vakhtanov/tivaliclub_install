@@ -2,7 +2,7 @@ scrape_configs:
   - job_name: 'node_exporter'
     file_sd_configs:
       - files:
-        - '/etc/prometheus/targets.json'
+        - '/etc/prometheus/targets.yml'
 
 
 #scrape_configs:
