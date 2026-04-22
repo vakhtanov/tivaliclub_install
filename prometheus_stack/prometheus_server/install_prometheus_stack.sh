@@ -61,20 +61,20 @@ echo "Check project status"
 STATUSES=$(docker compose ps --format json)
 
 # 2. Check project STARTED
-if [ -z "$STATUSES" ]; then
+if [[ -z "$STATUSES" || "$STATUSES" == "[]" ]]; then
     echo -e "${RED}ERROR: Project not started${NC}"
     exit 1
 fi
 
 # 3. Check container status
-FAILED_CONTAINERS=$(echo "$STATUSES" | grep -vE '"State":"(running|healthy)"')
+FAILED_CONTAINERS=$(echo "$STATUSES" | grep -vE '"State":"(running|healthy)"' | grep -c "State" || true)
 
-if [ -z "$FAILED_CONTAINERS" ]; then
-    echo -e "${GREEN}OK: Project started succsed${NC}"
+if [ "$FAILED_COUNT" -eq "0" ]; then
+    echo -e "${GREEN}OK: All containers are running and healthy!${NC}"
     docker compose ps
     exit 0
 else
-    echo -e "${RED}WARNING: Some container not started or error${NC}"
+    echo -e "${RED}WARNING: Some containers are not started or error${NC}"
     docker compose ps
     exit 1
 fi
