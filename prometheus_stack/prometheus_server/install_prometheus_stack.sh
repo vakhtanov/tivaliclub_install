@@ -50,6 +50,7 @@ cd $INSTALL_DIR
 docker compose up -d
 echo "Wait start"
 sleep 10
+echo -e "${GREEN}Started Prometheus stack${NC}"
 #=====================================================
 
 
