@@ -1,8 +1,13 @@
 scrape_configs:
-  - job_name: 'node_exporter'
+  - job_name: 'wahha_nodes'
     file_sd_configs:
       - files:
-        - '/etc/prometheus/targets.yml'
+        - '/etc/prometheus/wahha_nodes.yml'
+
+  - job_name: 'tivali_nodes'
+    file_sd_configs:
+      - files:
+        - '/etc/prometheus/tivali_nodes.yml'
 
 
 #scrape_configs:

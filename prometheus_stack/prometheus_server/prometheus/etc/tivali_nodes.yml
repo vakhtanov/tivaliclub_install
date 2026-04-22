@@ -1,0 +1,18 @@
+- targets:
+    - "192.168.20.62:9100"
+  labels:
+    env: "test"
+    instance: "sandbox"
+
+- targets:
+    - "192.168.20.63:9100"
+  labels:
+    env: "test"
+    instance: "automation"
+
+- targets:
+    - "192.168.20.17:9100"
+  labels:
+    env: "tets"
+    instance: "development"
+
