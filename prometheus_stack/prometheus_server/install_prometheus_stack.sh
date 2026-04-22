@@ -31,7 +31,7 @@ fi
 
 
 #=======PATH to DATA DIRECTORY COPY FILES=============
-
+sudo mkdir -p $INSTALL_DIR
 sudo cp -r alertmanager  $INSTALL_DIR/alertmanager
 sudo cp -r prometheus $INSTALL_DIR/prometheus
 sudo cp -r grafana  $INSTALL_DIR/grafana
