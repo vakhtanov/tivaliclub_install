@@ -50,6 +50,7 @@ cd $INSTALL_DIR
 docker compose up -d
 echo "Wait start"
 sleep 10
+echo -e "${GREEN}Started Prometheus stack${NC}"
 #=====================================================
 
 
@@ -67,6 +68,7 @@ if [[ -z "$STATUSES" || "$STATUSES" == "[]" ]]; then
 fi
 
 # 3. Check container status
+FAILED_COUNT=0
 FAILED_CONTAINERS=$(echo "$STATUSES" | grep -vE '"State":"(running|healthy)"' | grep -c "State" || true)
 
 if [ "$FAILED_COUNT" -eq "0" ]; then
