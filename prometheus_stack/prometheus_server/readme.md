@@ -28,7 +28,7 @@ PROMETHEUS_RETENTION_SIZE
 
 ## ADD NODES
 
-add in file `prometheus/etc/targets.json`
+add in file `prometheus/etc/targets.yml`
 
 host added on a fly
 
