@@ -25,8 +25,9 @@ git config core.sparseCheckout true
 echo $PROMETHEUS_REPO_FOLDER >> .git/info/sparse-checkout
 git pull origin main
 rm -rf .git
-mv $PROMETHEUS_REPO_FOLDER prometheus_server
-
+# remove folder tree
+mv $PROMETHEUS_REPO_FOLDER "${PROMETHEUS_REPO_FOLDER%/*}"
+rm -r "${PROMETHEUS_REPO_FOLDER%%/*}"
 
 echo -e "${GREEN}cd prometheus_server${NC}"
 echo -e "${GREEN}bash install_prometheus_stack.sh${NC}"
