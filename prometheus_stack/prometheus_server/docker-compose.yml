@@ -76,7 +76,7 @@ services:
       SMTP_USER_FROM: ${SMTP_USER_FROM}
       SMTP_LOGIN: ${SMTP_LOGIN}
       ALERT_EMAIL_TO: ${ALERT_EMAIL_TO}
-      TG_CHAT_ID: ${TG_CHAT_ID}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID}
     restart: unless-stopped
     # activate ENV support 
     command:
