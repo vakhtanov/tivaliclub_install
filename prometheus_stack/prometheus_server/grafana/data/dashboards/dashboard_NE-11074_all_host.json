@@ -3,21 +3,10 @@
   "kind": "Dashboard",
   "metadata": {
     "name": "xfpJB9FGz",
-    "namespace": "default",
-    "uid": "d0acf97d-4e32-4746-b0f7-57c8b75c27cb",
-    "resourceVersion": "1776805381276989",
-    "generation": 4,
-    "creationTimestamp": "2026-04-21T20:39:49Z",
-    "labels": {
-      "grafana.app/deprecatedInternalID": "2056160452993024"
-    },
-    "annotations": {
-      "grafana.app/createdBy": "user:cfjhyvqlwx2psa",
-      "grafana.app/folder": "",
-      "grafana.app/saved-from-ui": "Grafana v13.0.0 (e9de482b)",
-      "grafana.app/updatedBy": "user:cfjhyvqlwx2psa",
-      "grafana.app/updatedTimestamp": "2026-04-21T21:03:01Z"
-    }
+    "generation": 1,
+    "creationTimestamp": "2026-04-22T20:55:42Z",
+    "labels": {},
+    "annotations": {}
   },
   "spec": {
     "annotations": [
@@ -63,9 +52,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_load1{instance=~\"$node\"}",
                         "format": "time_series",
@@ -76,6 +62,9 @@
                         "metric": "",
                         "step": 20,
                         "target": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -89,9 +78,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_load5{instance=~\"$node\"}",
                         "format": "time_series",
@@ -100,6 +86,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "5m",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -113,9 +102,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_load15{instance=~\"$node\"}",
                         "format": "time_series",
@@ -124,6 +110,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "15m",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -137,9 +126,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": " sum(count(node_cpu_seconds_total{instance=~\"$node\", mode='system'}) by (cpu,instance)) by(instance)",
                         "format": "time_series",
@@ -148,6 +134,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "CPU cores",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -366,9 +355,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "count(node_cpu_seconds_total{instance=~\"$node\", mode='system'})",
                         "format": "time_series",
@@ -377,6 +363,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -468,9 +457,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(time() - node_boot_time_seconds{instance=~\"$node\"})",
                         "format": "time_series",
@@ -479,6 +465,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "",
                         "step": 40
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -571,9 +560,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_MemTotal_bytes{instance=~\"$node\"}",
                         "format": "time_series",
@@ -582,6 +568,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Total",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -595,9 +584,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_MemTotal_bytes{instance=~\"$node\"} - node_memory_MemAvailable_bytes{instance=~\"$node\"}",
                         "format": "time_series",
@@ -605,6 +591,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Used",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -618,9 +607,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_MemAvailable_bytes{instance=~\"$node\"}",
                         "format": "time_series",
@@ -628,6 +614,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Avaliable",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -641,9 +630,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_Buffers_bytes{instance=~\"$node\"}",
                         "format": "time_series",
@@ -651,6 +637,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "内存_Buffers",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -664,15 +653,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_MemFree_bytes{instance=~\"$node\"}",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "内存_Free",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -686,15 +675,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_Cached_bytes{instance=~\"$node\"}",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "内存_Cached",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "E",
@@ -708,13 +697,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_MemTotal_bytes{instance=~\"$node\"} - (node_memory_Cached_bytes{instance=~\"$node\"} + node_memory_Buffers_bytes{instance=~\"$node\"} + node_memory_MemFree_bytes{instance=~\"$node\"})",
                         "format": "time_series",
                         "intervalFactor": 1
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "G",
@@ -728,15 +717,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(1 - (node_memory_MemAvailable_bytes{instance=~\"$node\"} / (node_memory_MemTotal_bytes{instance=~\"$node\"})))* 100",
                         "format": "time_series",
                         "interval": "30m",
                         "intervalFactor": 10,
                         "legendFormat": "Used%"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "H",
@@ -1093,9 +1082,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_network_receive_bytes_total{instance=~'$node',device=~\"$device\"}[$interval])*8",
                         "format": "time_series",
@@ -1103,6 +1089,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_receive",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -1116,9 +1105,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_network_transmit_bytes_total{instance=~'$node',device=~\"$device\"}[$interval])*8",
                         "format": "time_series",
@@ -1126,6 +1112,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_transmit",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -1326,9 +1315,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_netstat_Tcp_CurrEstab{instance=~'$node'}",
                         "format": "time_series",
@@ -1337,6 +1323,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "CurrEstab",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -1350,15 +1339,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_sockstat_TCP_tw{instance=~'$node'}",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "TCP_tw"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -1372,14 +1361,14 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_sockstat_sockets_used{instance=~'$node'}",
                         "interval": "30m",
                         "intervalFactor": 1,
                         "legendFormat": "Sockets_used"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -1393,13 +1382,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_sockstat_UDP_inuse{instance=~'$node'}",
                         "interval": "",
                         "legendFormat": "UDP_inuse"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -1413,13 +1402,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_sockstat_TCP_alloc{instance=~'$node'}",
                         "interval": "",
                         "legendFormat": "TCP_alloc"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "E",
@@ -1433,13 +1422,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_netstat_Tcp_PassiveOpens{instance=~'$node'}[$interval])",
                         "interval": "",
                         "legendFormat": "{{instance}}_Tcp_PassiveOpens"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "G",
@@ -1453,13 +1442,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_netstat_Tcp_ActiveOpens{instance=~'$node'}[$interval])",
                         "interval": "",
                         "legendFormat": "{{instance}}_Tcp_ActiveOpens"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -1473,13 +1462,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_netstat_Tcp_InSegs{instance=~'$node'}[$interval])",
                         "interval": "",
                         "legendFormat": "Tcp_InSegs"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "H",
@@ -1493,13 +1482,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_netstat_Tcp_OutSegs{instance=~'$node'}[$interval])",
                         "interval": "",
                         "legendFormat": "Tcp_OutSegs"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "I",
@@ -1513,13 +1502,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_netstat_Tcp_RetransSegs{instance=~'$node'}[$interval])",
                         "interval": "",
                         "legendFormat": "Tcp_RetransSegs"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "J",
@@ -1533,13 +1522,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_netstat_TcpExt_ListenDrops{instance=~'$node'}[$interval])",
                         "interval": "",
                         "legendFormat": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "K",
@@ -1776,9 +1765,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_filefd_allocated{instance=~\"$node\"}",
                         "format": "time_series",
@@ -1786,6 +1772,9 @@
                         "interval": "",
                         "intervalFactor": 5,
                         "legendFormat": "used filefd"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -1799,14 +1788,14 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_context_switches_total{instance=~\"$node\"}[$interval])",
                         "interval": "",
                         "intervalFactor": 5,
                         "legendFormat": "switches"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -1820,9 +1809,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "  (node_filefd_allocated{instance=~\"$node\"}/node_filefd_maximum{instance=~\"$node\"}) *100",
                         "format": "time_series",
@@ -1830,6 +1816,9 @@
                         "interval": "",
                         "intervalFactor": 5,
                         "legendFormat": "使用的文件描述符占比_{{instance}}"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -2070,9 +2059,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_read_time_seconds_total{instance=~\"$node\"}[$interval]) / rate(node_disk_reads_completed_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
@@ -2080,6 +2066,9 @@
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_Read time"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -2093,9 +2082,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_write_time_seconds_total{instance=~\"$node\"}[$interval]) / rate(node_disk_writes_completed_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
@@ -2103,6 +2089,9 @@
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_Write time"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -2116,9 +2105,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_io_time_seconds_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
@@ -2126,6 +2112,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -2139,15 +2128,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_io_time_weighted_seconds_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_加权"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -2333,9 +2322,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_reads_completed_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
@@ -2343,6 +2329,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_Reads completed",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -2356,9 +2345,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_writes_completed_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
@@ -2366,6 +2352,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_Writes completed",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -2379,15 +2368,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_disk_io_now{instance=~\"$node\"}",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -2573,9 +2562,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_read_bytes_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
@@ -2583,6 +2569,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_Read bytes",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -2596,9 +2585,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_written_bytes_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
@@ -2606,6 +2592,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_Written bytes",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -2791,9 +2780,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}))",
                         "format": "time_series",
@@ -2801,6 +2787,9 @@
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{mountpoint}}"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -2814,13 +2803,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_filesystem_files_free{instance=~'$node',fstype=~\"ext.?|xfs\"} / node_filesystem_files{instance=~'$node',fstype=~\"ext.?|xfs\"}",
                         "interval": "",
                         "legendFormat": "Inodes：{{instance}}：{{mountpoint}}"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -3009,15 +2998,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "rate(node_disk_io_time_seconds_total{instance=~\"$node\"}[$interval])",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_ IO time"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -3355,14 +3344,14 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "100 - (avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"idle\"}[$interval])) * 100)",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "CPU Busy"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -3376,14 +3365,14 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"iowait\"}[$interval])) * 100",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "IOwait使用率"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -3397,14 +3386,14 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(1 - (node_memory_MemAvailable_bytes{instance=~\"$node\"} / (node_memory_MemTotal_bytes{instance=~\"$node\"})))* 100",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "Used RAM Memory"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -3418,14 +3407,14 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"})*100 /(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}))",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "Used Max Mount($maxmount)"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -3439,14 +3428,14 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(1 - ((node_memory_SwapFree_bytes{instance=~\"$node\"} + 1)/ (node_memory_SwapTotal_bytes{instance=~\"$node\"} + 1))) * 100",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "Used SWAP"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -3548,9 +3537,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(node_filefd_maximum{instance=~\"$node\"})",
                         "format": "time_series",
@@ -3558,6 +3544,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -3649,9 +3638,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(node_filesystem_files_free{instance=~\"$node\",mountpoint=\"$maxmount\",fstype=~\"ext.?|xfs\"})",
                         "format": "time_series",
@@ -3660,6 +3646,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -3757,9 +3746,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-0",
                         "format": "table",
@@ -3767,6 +3753,9 @@
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "总量"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -3780,9 +3769,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-0",
                         "format": "table",
@@ -3790,6 +3776,9 @@
                         "interval": "10s",
                         "intervalFactor": 1,
                         "legendFormat": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -3803,9 +3792,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~'$node',fstype=~\"ext.*|xfs\",mountpoint !~\".*pod.*\"}))",
                         "format": "table",
@@ -3813,6 +3799,9 @@
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -4102,9 +4091,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "increase(node_network_receive_bytes_total{instance=~\"$node\",device=~\"$device\"}[60m])",
                         "interval": "60m",
@@ -4113,6 +4099,9 @@
                         "metric": "",
                         "step": 600,
                         "target": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -4126,15 +4115,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "increase(node_network_transmit_bytes_total{instance=~\"$node\",device=~\"$device\"}[60m])",
                         "interval": "60m",
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}_transmit",
                         "step": 600
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -4395,15 +4384,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "主机名"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -4417,15 +4406,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "sum(time() - node_boot_time_seconds{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})by(instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "运行时间"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -4439,15 +4428,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "总内存"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -4461,15 +4450,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "count(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode='system'}) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "总核数"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -4483,15 +4472,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_load5{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "5分钟负载"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "L",
@@ -4505,15 +4494,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(1 - avg(rate(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode=\"idle\"}[$interval])) by (instance)) * 100",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "CPU使用率"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -4527,15 +4516,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(1 - (node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} / (node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})))* 100",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "内存使用率"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "G",
@@ -4549,15 +4538,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "max((node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}-node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}) *100/(node_filesystem_avail_bytes {origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}+(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}-node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"})))by(instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "分区使用率"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "E",
@@ -4571,15 +4560,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "max(rate(node_disk_read_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "最大读取"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "H",
@@ -4593,15 +4582,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "max(rate(node_disk_written_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "最大写入"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "I",
@@ -4615,15 +4604,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_netstat_Tcp_CurrEstab{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "连接数"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "M",
@@ -4637,15 +4626,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_sockstat_TCP_tw{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "TIME_WAIT"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "N",
@@ -4659,15 +4648,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "max(rate(node_network_receive_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])*8) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "下载带宽"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "J",
@@ -4681,15 +4670,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "max(rate(node_network_transmit_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])*8) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
                         "legendFormat": "上传带宽"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "K",
@@ -5356,9 +5345,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "count(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\", mode='system'})",
                         "format": "time_series",
@@ -5367,6 +5353,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "CPU Cores",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -5380,9 +5369,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "sum(node_load5{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
                         "format": "time_series",
@@ -5390,6 +5376,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Total 5m load",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -5403,9 +5392,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(1 - avg(rate(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode=\"idle\"}[$interval])) by (instance)) * 100",
                         "format": "time_series",
@@ -5413,6 +5399,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Overall average used%",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -5814,9 +5803,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
                         "format": "time_series",
@@ -5825,6 +5811,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Total",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -5838,9 +5827,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
                         "format": "time_series",
@@ -5848,6 +5834,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Total Used",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -5861,15 +5850,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}) / sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}))*100",
                         "format": "time_series",
                         "interval": "30m",
                         "intervalFactor": 1,
                         "legendFormat": "Overall Average Used%"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "H",
@@ -6157,9 +6146,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))",
                         "format": "time_series",
@@ -6167,6 +6153,9 @@
                         "interval": "30m",
                         "intervalFactor": 1,
                         "legendFormat": "Total"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "E",
@@ -6180,9 +6169,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))",
                         "format": "time_series",
@@ -6190,6 +6176,9 @@
                         "interval": "30m",
                         "intervalFactor": 1,
                         "legendFormat": "Total Used"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -6203,9 +6192,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))) *100/(sum(avg(node_filesystem_avail_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))+(sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))))",
                         "format": "time_series",
@@ -6213,6 +6199,9 @@
                         "interval": "30m",
                         "intervalFactor": 1,
                         "legendFormat": "Overall Average Used%"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -6377,9 +6366,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"iowait\"}[$interval])) * 100",
                         "format": "time_series",
@@ -6388,6 +6374,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -6482,9 +6471,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"system\"}[$interval])) by (instance) *100",
                         "format": "time_series",
@@ -6493,6 +6479,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "System",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -6506,9 +6495,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"user\"}[$interval])) by (instance) *100",
                         "format": "time_series",
@@ -6516,6 +6502,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "User",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -6529,9 +6518,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"iowait\"}[$interval])) by (instance) *100",
                         "format": "time_series",
@@ -6540,6 +6526,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Iowait",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -6553,9 +6542,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(1 - avg(rate(node_cpu_seconds_total{instance=~\"$node\",mode=\"idle\"}[$interval])) by (instance))*100",
                         "format": "time_series",
@@ -6563,6 +6549,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "Total",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -6936,9 +6925,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "sum(node_memory_MemTotal_bytes{instance=~\"$node\"})",
                         "format": "time_series",
@@ -6947,6 +6933,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{instance}}",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -7450,8 +7439,8 @@
         "spec": {
           "name": "job",
           "current": {
-            "text": "node_exporter",
-            "value": "node_exporter"
+            "text": "",
+            "value": ""
           },
           "label": "JOB",
           "hide": "dontHide",
@@ -7483,8 +7472,8 @@
         "spec": {
           "name": "hostname",
           "current": {
-            "text": "All",
-            "value": "$__all"
+            "text": "",
+            "value": ""
           },
           "label": "Host",
           "hide": "dontHide",
@@ -7516,12 +7505,8 @@
         "spec": {
           "name": "node",
           "current": {
-            "text": [
-              "192.168.0.5:9100"
-            ],
-            "value": [
-              "192.168.0.5:9100"
-            ]
+            "text": "",
+            "value": ""
           },
           "label": "Instance",
           "hide": "dontHide",
@@ -7553,10 +7538,8 @@
         "spec": {
           "name": "device",
           "current": {
-            "text": "All",
-            "value": [
-              "$__all"
-            ]
+            "text": "",
+            "value": ""
           },
           "label": "NIC",
           "hide": "dontHide",
@@ -7643,8 +7626,8 @@
         "spec": {
           "name": "maxmount",
           "current": {
-            "text": "/",
-            "value": "/"
+            "text": "",
+            "value": ""
           },
           "label": "maxmount",
           "hide": "hideVariable",
@@ -7676,8 +7659,8 @@
         "spec": {
           "name": "show_hostname",
           "current": {
-            "text": "hyperdx",
-            "value": "hyperdx"
+            "text": "",
+            "value": ""
           },
           "label": "show_hostname",
           "hide": "hideVariable",
@@ -7709,8 +7692,8 @@
         "spec": {
           "name": "total",
           "current": {
-            "text": "3",
-            "value": "3"
+            "text": "",
+            "value": ""
           },
           "label": "total_servers",
           "hide": "hideVariable",
@@ -7745,8 +7728,8 @@
           "refresh": "onDashboardLoad",
           "regex": "",
           "current": {
-            "text": "Prometheus",
-            "value": "PBFA97CFB590B2093"
+            "text": "",
+            "value": ""
           },
           "options": [],
           "multi": false,

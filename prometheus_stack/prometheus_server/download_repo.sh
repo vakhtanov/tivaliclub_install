@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail ## EXIT SCRIPT ON ANY ERROR!
+set -x #Debug mode
 
 TIVALICLUB_REPO="https://github.com/vakhtanov/tivaliclub_install.git"
 PROMETHEUS_REPO_FOLDER="prometheus_stack/prometheus_server"

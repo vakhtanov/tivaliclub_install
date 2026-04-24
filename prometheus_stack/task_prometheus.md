@@ -45,7 +45,7 @@ The System Administrator must produce and deliver the following artefacts:
 | 2   | node_exporter_install.sh | Bash script to install and configure Prometheus Node Exporter on each Linux VM. | :white_check_mark:|
 | 4   | prometheus_install.sh | Bash script to install Prometheus and configure scrape targets for all VM agents. | :white_check_mark:|
 | 5   | grafana_alloy_install.sh ? | Script to deploy Grafana Alloy agent as an alternative/supplement collector. | |
-| 6   | dashboard_provisioning/ | Grafana dashboard JSON files (Node Overview, Disk, Network, Summary) ready for import. | |
+| 6   | dashboard_provisioning/ | Grafana dashboard JSON files (Node Overview, Disk, Network, Summary) ready for import. | :white_check_mark:|
 | 7   | alert_rules.yml | Prometheus alerting rules file covering critical system thresholds. | |
 | 8   | README.md | Installation and runbook guide: prerequisites, execution order, rollback steps, and maintenance notes. | |
 
@@ -105,7 +105,7 @@ The task is considered complete when ALL of the following are verified:
 | 5   | Disk alert fires correctly when threshold is simulated. | Alert test using stress tool or manual threshold change. | |
 | 6   | All scripts execute without errors on a freshly provisioned VM. | Test run on clean VM. | |
 | 7   | README.md is complete with all sections documented. | Document review. | |
-| 8   | No credentials are hardcoded in any script. | Code review / grep for secrets. | |
+| 8   | No credentials are hardcoded in any script. | Code review / grep for secrets. | :white_check_mark:|
 
 # 7\. Suggested Timeline
 

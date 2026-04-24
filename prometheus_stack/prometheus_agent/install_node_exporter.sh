@@ -27,30 +27,31 @@ if ! docker ps &> /dev/null; then
     exit 1
 fi
 
-sudo mkdir -p $INSTALL_DIR/prometheus/node_exporter
-sudo cp docker-compose.yml  $INSTALL_DIR/prometheus/node_exporter/docker-compose.yml
+sudo mkdir -p "$INSTALL_DIR/prometheus/node_exporter"
+sudo cp docker-compose.yml  "$INSTALL_DIR/prometheus/node_exporter/docker-compose.yml"
 
 echo -e "${GREEN}Start Node Exporter${NC}"
-cd $INSTALL_DIR/prometheus/node_exporter
-docker compose up -d
+cd "$INSTALL_DIR/prometheus/node_exporter"
+docker compose up -d --remove-orphans
 
 # =====CHECK DOCKER COMPOSE up======================
 
 echo "Check project status"
+sleep 2
 
 # 1. Container STATUS
 STATUSES=$(docker compose ps --format json)
 
 # 2. Check project STARTED
-if [ -z "$STATUSES" ]; then
+if [[ -z "$STATUSES" || "$STATUSES" == "[]" ]]; then
     echo -e "${RED}ERROR: Project not started${NC}"
     exit 1
 fi
 
 # 3. Check container status
-FAILED_CONTAINERS=$(echo "$STATUSES" | grep -vE '"State":"(running|healthy)"')
+FAILED_COUNT=$(echo "$STATUSES" | grep "State" | grep -vE '"State":"(running|healthy)"' | wc -l || true)
 
-if [ -z "$FAILED_CONTAINERS" ]; then
+if [ "$FAILED_COUNT" -eq 0 ]; then
     echo -e "${GREEN}OK: Project started succsed${NC}"
     docker compose ps
     exit 0

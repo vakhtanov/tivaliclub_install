@@ -2,22 +2,11 @@
   "apiVersion": "dashboard.grafana.app/v2",
   "kind": "Dashboard",
   "metadata": {
-    "name": "StarsL-TenSunS-node",
-    "namespace": "default",
-    "uid": "e618ebf1-6462-4980-9957-2bf5ef2a5f0f",
-    "resourceVersion": "1776806117421980",
-    "generation": 3,
-    "creationTimestamp": "2026-04-21T21:11:23Z",
-    "labels": {
-      "grafana.app/deprecatedInternalID": "2064105064554496"
-    },
-    "annotations": {
-      "grafana.app/createdBy": "user:cfjhyvqlwx2psa",
-      "grafana.app/folder": "",
-      "grafana.app/saved-from-ui": "Grafana v13.0.0 (e9de482b)",
-      "grafana.app/updatedBy": "user:cfjhyvqlwx2psa",
-      "grafana.app/updatedTimestamp": "2026-04-21T21:15:17Z"
-    }
+    "name": "StarsL-TenSunS-node-tivali",
+    "generation": 1,
+    "creationTimestamp": "2026-04-23T20:12:32Z",
+    "labels": {},
+    "annotations": {}
   },
   "spec": {
     "annotations": [
@@ -28,14 +17,14 @@
             "kind": "DataQuery",
             "group": "grafana",
             "version": "v0",
-            "datasource": {
-              "name": "grafana"
-            },
             "spec": {
               "limit": 100,
               "matchAny": false,
               "tags": [],
               "type": "dashboard"
+            },
+            "labels": {
+              "grafana.app/export-label": "grafana-1"
             }
           },
           "enable": true,
@@ -50,14 +39,14 @@
       }
     ],
     "cursorSync": "Off",
-    "description": "【中文版本】2024.05.20更新，基于TenSunS采集的ECS，可匹配自动同步方式采集ECS信息字段的展示，优化重要指标展示。使用Grafana10新样式重建，新增健康评分概念，并新增了整体资源消耗信息的一些图表。包含整体资源展示与资源明细图表：CPU 内存 磁盘 IO 网络等监控指标。https://github.com/starsliao/TenSunS",
+    "description": "[Chinese version] Updated on 2024.05.20, based on the ECS collected by TenSunS, it can match the display of ECS information fields collected in automatic synchronization to optimize the display of important indicators.Rebuilt using the new style of Grafana10, the concept of health scoring has been added, and some charts of overall resource consumption information have been added.Contains the overall resource display and resource detailed chart: CPU, memory, disk, IO network and other monitoring indicators.https://github.com/starsliao/TenSunS ",
     "editable": true,
     "elements": {
       "panel-13": {
         "kind": "Panel",
         "spec": {
           "id": 13,
-          "title": "系统平均负载",
+          "title": "Average system load",
           "description": "",
           "links": [],
           "data": {
@@ -71,9 +60,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "node_load1{instance=~\"$instance\"}",
@@ -81,10 +67,13 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "1分钟负载",
+                        "legendFormat": "1m load",
                         "metric": "",
                         "step": 20,
                         "target": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -98,9 +87,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": " sum(count(node_cpu_seconds_total{instance=~\"$instance\", mode='system'}) by (cpu,instance)) by(instance)",
@@ -108,8 +94,11 @@
                         "instant": false,
                         "interval": "2m",
                         "intervalFactor": 1,
-                        "legendFormat": "CPU总核数",
+                        "legendFormat": "Total CPU cores",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -123,17 +112,17 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_load5{instance=~\"$instance\"}",
                         "format": "time_series",
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "5分钟负载",
+                        "legendFormat": "5m load",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -147,17 +136,17 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_load15{instance=~\"$instance\"}",
                         "format": "time_series",
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "15分钟负载",
+                        "legendFormat": "15m load",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -218,7 +207,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "series",
-                    "axisLabel": "1分钟负载",
+                    "axisLabel": "1m load",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
                     "barWidthFactor": 0.6,
@@ -253,7 +242,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "15分钟负载"
+                      "options": "15m load"
                     },
                     "properties": [
                       {
@@ -268,7 +257,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "1分钟负载"
+                      "options": "1m load"
                     },
                     "properties": [
                       {
@@ -283,7 +272,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "5分钟负载"
+                      "options": "5m load"
                     },
                     "properties": [
                       {
@@ -298,7 +287,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/.*总核数/"
+                      "options": "/.*Total number of audits/"
                     },
                     "properties": [
                       {
@@ -332,7 +321,7 @@
         "kind": "Panel",
         "spec": {
           "id": 156,
-          "title": "内存信息",
+          "title": "Memory information",
           "description": "",
           "links": [],
           "data": {
@@ -346,16 +335,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_MemAvailable_bytes{instance=~\"$instance\"}",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "可用",
+                        "legendFormat": "Available",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -369,9 +358,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "node_memory_MemTotal_bytes{instance=~\"$instance\"}",
@@ -379,8 +365,11 @@
                         "instant": false,
                         "interval": "2m",
                         "intervalFactor": 1,
-                        "legendFormat": "总内存",
+                        "legendFormat": "Total memory",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -394,16 +383,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_memory_MemTotal_bytes{instance=~\"$instance\"} - node_memory_MemAvailable_bytes{instance=~\"$instance\"}",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "已用",
+                        "legendFormat": "Used",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -417,16 +406,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "(1 - (node_memory_MemAvailable_bytes{instance=~\"$instance\"} / (node_memory_MemTotal_bytes{instance=~\"$instance\"})))* 100",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "使用率"
+                        "legendFormat": "Usage rate"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "H",
@@ -489,7 +478,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "series",
-                    "axisLabel": "剩余内存",
+                    "axisLabel": "Remaining memory",
                     "axisPlacement": "left",
                     "axisSoftMin": 0,
                     "barAlignment": 0,
@@ -525,7 +514,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "可用"
+                      "options": "available"
                     },
                     "properties": [
                       {
@@ -544,7 +533,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总内存"
+                      "options": "Total memory"
                     },
                     "properties": [
                       {
@@ -571,7 +560,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "使用率"
+                      "options": "Usage rate"
                     },
                     "properties": [
                       {
@@ -591,7 +580,7 @@
                       },
                       {
                         "id": "custom.axisLabel",
-                        "value": "内存使用率"
+                        "value": "Memory usage"
                       },
                       {
                         "id": "custom.pointSize",
@@ -613,7 +602,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "已用"
+                      "options": "Used"
                     },
                     "properties": [
                       {
@@ -635,7 +624,7 @@
         "kind": "Panel",
         "spec": {
           "id": 157,
-          "title": "每秒网络带宽使用$device",
+          "title": "Network bandwidth usage per second$device",
           "description": "",
           "links": [],
           "data": {
@@ -649,17 +638,17 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "irate(node_network_receive_bytes_total{instance=~\"$instance\",device=~\"$device\"}[$interval])*8",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_in下载",
+                        "legendFormat": "{{device}}_in download",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -673,16 +662,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_network_transmit_bytes_total{instance=~\"$instance\",device=~\"$device\"}[$interval])*8",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_out上传",
+                        "legendFormat": "{{device}}_out upload",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -738,7 +727,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "text",
-                    "axisLabel": "上传（-）/下载（+）",
+                    "axisLabel": "Upload (-)/download (+)",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
                     "drawStyle": "line",
@@ -771,7 +760,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/.*_out上传$/"
+                      "options": "/.*_out upload$/"
                     },
                     "properties": [
                       {
@@ -830,7 +819,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/.*_in下载$/"
+                      "options": "/.*_in download$/"
                     },
                     "properties": [
                       {
@@ -852,8 +841,8 @@
         "kind": "Panel",
         "spec": {
           "id": 158,
-          "title": "网络Socket连接信息",
-          "description": "Sockets_used - 已使用的所有协议套接字总量\n\nCurrEstab - 当前状态为 ESTABLISHED 或 CLOSE-WAIT 的 TCP 连接数\n\nTCP_alloc - 已分配（已建立、已申请到sk_buff）的TCP套接字数量\n\nTCP_tw - 等待关闭的TCP连接数\n\nUDP_inuse - 正在使用的 UDP 套接字数量\n\nRetransSegs - TCP 重传报文数\n\nOutSegs - TCP 发送的报文数\n\nInSegs - TCP 接收的报文数",
+          "title": "Network Socket connection information",
+          "description": "Sockets_used-The total amount of all protocol sockets used \n\nCurrEstab-the number of TCP connections whose current status is ESTABLISHED or CLOSE-WAIT \n\nTCP_alloc-the number of TCP sockets allocated (established, applied to sk_buff) \n\nTCP_tw-the number of TCP connections waiting to be closed \n\nUDP_inuse-the number of UDP sockets in use \n\nRetransSegs-TCP replay Number of packets transmitted \n\nOutSegs-TCP Number of packets sent by \n\nInSegs-TCP Number of packets received by",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -866,9 +855,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_netstat_Tcp_CurrEstab{instance=~\"$instance\"}",
                         "format": "time_series",
@@ -877,6 +863,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "CurrEstab",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -890,15 +879,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_sockstat_TCP_tw{instance=~\"$instance\"}",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "TCP_tw"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -912,15 +901,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "node_sockstat_sockets_used{instance=~\"$instance\"}",
                         "interval": "2m",
                         "intervalFactor": 1,
                         "legendFormat": "Sockets_used"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -934,13 +923,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_sockstat_UDP_inuse{instance=~\"$instance\"}",
                         "interval": "",
                         "legendFormat": "UDP_inuse"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -954,13 +943,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_sockstat_TCP_alloc{instance=~\"$instance\"}",
                         "interval": "",
                         "legendFormat": "TCP_alloc"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "E",
@@ -974,13 +963,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_netstat_Tcp_PassiveOpens{instance=~\"$instance\"}[$interval])",
                         "interval": "",
                         "legendFormat": "{{instance}}_Tcp_PassiveOpens"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "G",
@@ -994,13 +983,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_netstat_Tcp_ActiveOpens{instance=~\"$instance\"}[$interval])",
                         "interval": "",
                         "legendFormat": "{{instance}}_Tcp_ActiveOpens"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -1014,13 +1003,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_netstat_Tcp_InSegs{instance=~\"$instance\"}[$interval])",
                         "interval": "",
                         "legendFormat": "Tcp_InSegs"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "H",
@@ -1034,13 +1023,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_netstat_Tcp_OutSegs{instance=~\"$instance\"}[$interval])",
                         "interval": "",
                         "legendFormat": "Tcp_OutSegs"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "I",
@@ -1054,13 +1043,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_netstat_Tcp_RetransSegs{instance=~\"$instance\"}[$interval])",
                         "interval": "",
                         "legendFormat": "Tcp_RetransSegs"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "J",
@@ -1074,13 +1063,13 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_netstat_TcpExt_ListenDrops{instance=~\"$instance\"}[$interval])",
                         "interval": "",
                         "legendFormat": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "K",
@@ -1201,7 +1190,7 @@
                       },
                       {
                         "id": "custom.axisLabel",
-                        "value": "已使用的所有协议套接字总量"
+                        "value": "Total amount of all protocol sockets used"
                       },
                       {
                         "id": "custom.showPoints",
@@ -1219,7 +1208,7 @@
         "kind": "Panel",
         "spec": {
           "id": 16,
-          "title": "文件描述符(FD)/每秒上下文切换",
+          "title": "File description (FD)/context switch per second",
           "description": "",
           "links": [],
           "data": {
@@ -1233,17 +1222,17 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
                         "expr": "irate(node_context_switches_total{instance=~\"$instance\"}[$interval])",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "每秒上下文切换",
+                        "legendFormat": "Context switch per second",
                         "range": true
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -1257,9 +1246,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -1268,7 +1254,10 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总使用FD"
+                        "legendFormat": "Always use FD"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -1282,9 +1271,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -1293,7 +1279,10 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总使用FD占比"
+                        "legendFormat": "Proportion of total FD used"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -1307,9 +1296,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -1318,7 +1304,10 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "进程使用FD占比"
+                        "legendFormat": "The proportion of FD used by the process"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -1411,7 +1400,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总使用FD"
+                      "options": "Always use FD"
                     },
                     "properties": [
                       {
@@ -1426,7 +1415,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总使用FD占比"
+                      "options": "Proportion of total FD used"
                     },
                     "properties": [
                       {
@@ -1441,7 +1430,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "每秒上下文切换"
+                      "options": "Context switch per second"
                     },
                     "properties": [
                       {
@@ -1456,7 +1445,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/.*占比/"
+                      "options": "/.*Proportion/"
                     },
                     "properties": [
                       {
@@ -1488,7 +1477,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "进程使用FD占比"
+                      "options": "The proportion of FD used by the process"
                     },
                     "properties": [
                       {
@@ -1510,8 +1499,8 @@
         "kind": "Panel",
         "spec": {
           "id": 160,
-          "title": "每次IO读写的耗时（参考：小于100ms）",
-          "description": "Read time seconds 每个磁盘分区读操作花费的秒数\n\nWrite time seconds 每个磁盘分区写操作花费的秒数\n\nIO time seconds 每个磁盘分区输入/输出操作花费的秒数\n\nIO time weighted seconds每个磁盘分区输入/输出操作花费的加权秒数",
+          "title": "Time-consuming for each IO read and write (reference: less than 100ms)",
+          "description": "Read time seconds The number of seconds spent on each disk partition read operation \n\nWrite time seconds The number of seconds spent on each disk partition write operation \n\nIO time seconds The number of seconds spent on each disk partition input/output operation \n\nIO time weighted seconds The number of weighted seconds spent on each disk partition input/output operation",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -1524,16 +1513,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_disk_read_time_seconds_total{instance=~\"$instance\"}[$interval]) / irate(node_disk_reads_completed_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_读取"
+                        "legendFormat": "{{device}}_read"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -1547,16 +1536,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_disk_write_time_seconds_total{instance=~\"$instance\"}[$interval]) / irate(node_disk_writes_completed_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_写入"
+                        "legendFormat": "{{device}}_Write"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -1570,9 +1559,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_disk_io_time_seconds_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
@@ -1580,6 +1566,9 @@
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -1593,15 +1582,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_disk_io_time_weighted_seconds_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_加权"
+                        "legendFormat": "{{device}}_weighted"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -1657,7 +1646,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "text",
-                    "axisLabel": "读取（-）/写入（+）",
+                    "axisLabel": "Read (-)/write (+)",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
                     "drawStyle": "line",
@@ -1705,7 +1694,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/,*_读取$/"
+                      "options": "/,*_read$/"
                     },
                     "properties": [
                       {
@@ -1764,8 +1753,8 @@
         "kind": "Panel",
         "spec": {
           "id": 161,
-          "title": "磁盘读写速率（IOPS）",
-          "description": "Reads completed: 每个磁盘分区每秒读完成次数\n\nWrites completed: 每个磁盘分区每秒写完成次数\n\nIO now 每个磁盘分区每秒正在处理的输入/输出请求数",
+          "title": "Disk read and write rate (IOPS)",
+          "description": "Reads completed: The number of reads completed per second for each disk partition \n\nWrites completed: the number of writes completed per second for each disk partition \n\nIO now The number of input/output requests being processed per second for each disk partition",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -1778,16 +1767,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_disk_reads_completed_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_读取",
+                        "legendFormat": "{{device}}_read",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -1801,16 +1790,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_disk_writes_completed_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_写入",
+                        "legendFormat": "{{device}}_Write",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -1824,15 +1813,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "node_disk_io_now{instance=~\"$instance\"}",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{device}}"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -1888,7 +1877,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "text",
-                    "axisLabel": "读取（-）/写入（+）I/O ops/sec",
+                    "axisLabel": "Read(-)/write(+)I/O ops/sec",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
                     "drawStyle": "line",
@@ -1936,7 +1925,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/.*_读取$/"
+                      "options": "/.*_Read$/"
                     },
                     "properties": [
                       {
@@ -1995,8 +1984,8 @@
         "kind": "Panel",
         "spec": {
           "id": 168,
-          "title": "每秒磁盘读写容量",
-          "description": "Read bytes 每个磁盘分区每秒读取的比特数\nWritten bytes 每个磁盘分区每秒写入的比特数",
+          "title": "Disk read and write capacity per second",
+          "description": "Read bytes The number of bits read per second per disk partition \nWritten bytes The number of bits written per second per disk partition",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -2009,16 +1998,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_disk_read_bytes_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_读取",
+                        "legendFormat": "{{device}}_read",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -2032,16 +2021,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "irate(node_disk_written_bytes_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_写入",
+                        "legendFormat": "{{device}}_Write",
                         "step": 10
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -2097,7 +2086,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "text",
-                    "axisLabel": "读取（-）/写入（+）",
+                    "axisLabel": "Read(-)/write(+)",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
                     "drawStyle": "line",
@@ -2145,7 +2134,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/.*_读取$/"
+                      "options": "/.*_Read$/"
                     },
                     "properties": [
                       {
@@ -2204,7 +2193,7 @@
         "kind": "Panel",
         "spec": {
           "id": 174,
-          "title": "磁盘使用率",
+          "title": "Disk usage",
           "description": "",
           "links": [],
           "data": {
@@ -2218,9 +2207,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -2229,7 +2215,10 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "容量%：{{mountpoint}}"
+                        "legendFormat": "Capacity%: {{mountpoint}}"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -2243,9 +2232,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -2253,6 +2239,9 @@
                         "interval": "",
                         "legendFormat": "Inodes%：{{mountpoint}}",
                         "range": true
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -2313,7 +2302,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "series",
-                    "axisLabel": "容量使用率",
+                    "axisLabel": "Capacity usage rate",
                     "axisPlacement": "auto",
                     "axisSoftMax": 100,
                     "axisSoftMin": 0,
@@ -2374,7 +2363,7 @@
                       },
                       {
                         "id": "custom.axisLabel",
-                        "value": "Inodes使用率"
+                        "value": "Inodes usage rate"
                       }
                     ]
                   }
@@ -2388,8 +2377,8 @@
         "kind": "Panel",
         "spec": {
           "id": 175,
-          "title": "每1秒内I/O操作耗时占比（I/O Util）",
-          "description": "每一秒钟的自然时间内，花费在I/O上的耗时。（wall-clock time）\n\nnode_disk_io_time_seconds_total：\n磁盘花费在输入/输出操作上的秒数。该值为累加值。（Milliseconds Spent Doing I/Os）\n\nirate(node_disk_io_time_seconds_total[1m])：\n计算每秒的速率：(last值-last前一个值)/时间戳差值，即：1秒钟内磁盘花费在I/O操作的时间占比。",
+          "title": "The proportion of I/O operation time spent every 1 second (I/O Util)",
+          "description": "The time spent on I/O in every second of natural time.(Wall-clock time) \n\nnode_disk_io_time_seconds_total: \n The number of seconds the disk spends on input/output operations.This value is the cumulative value.(Milliseconds Spent Doing I/Os)\n\nirate (node_disk_io_time_seconds_total[1m]): \n calculates the rate per second: (last value-last previous value)/Timestamp difference, that is: the proportion of time the disk spends on I/O operations within 1 second.",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -2402,16 +2391,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "irate(node_disk_io_time_seconds_total{instance=~\"$instance\"}[$interval])",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "{{device}}_每秒I/O操作%"
+                        "legendFormat": "{{device}}_% of I/O operations per second"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -2590,7 +2579,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "sdb_每秒I/O操作%"
+                      "options": "sdb_% of I/O operations per second"
                     },
                     "properties": [
                       {
@@ -2665,7 +2654,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "磁盘花费在I/O操作占比"
+                      "options": "The proportion of disk spent on I/O operations"
                     },
                     "properties": [
                       {
@@ -2741,15 +2730,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "100 - (avg(irate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"idle\"}[$interval])) * 100)",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "总CPU使用率"
+                        "legendFormat": "Total CPU usage"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -2763,16 +2752,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
                         "expr": "avg(irate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"iowait\"}[$interval])) * 100",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "IOwait使用率"
+                        "legendFormat": "IOwait usage rate"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -2786,15 +2775,15 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "(1 - (node_memory_MemAvailable_bytes{instance=~\"$instance\"} / (node_memory_MemTotal_bytes{instance=~\"$instance\"})))* 100",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "内存使用率"
+                        "legendFormat": "Memory usage"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -2808,16 +2797,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
                         "expr": "(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"})*100 /(node_filesystem_avail_bytes {instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}+(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}))",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "最大分区使用率({{mountpoint}})"
+                        "legendFormat": "Maximum partition usage ({{mountpoint}})"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -2831,16 +2820,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
                         "expr": "(1 - ((node_memory_SwapFree_bytes{instance=~\"$instance\"} + 1)/ (node_memory_SwapTotal_bytes{instance=~\"$instance\"} + 1))) * 100",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "交换分区使用率"
+                        "legendFormat": "Swap partition usage rate"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -2928,8 +2917,8 @@
         "kind": "Panel",
         "spec": {
           "id": 181,
-          "title": "【$show_name】：分区可用空间(EXT.*/XFS/NFS)",
-          "description": "本看板中的：磁盘总量、使用量、可用量、使用率保持和df命令的Size、Used、Avail、Use% 列的值一致，并且Use%的值会四舍五入保留一位小数，会更加准确。\n\n注：df中Use%算法为：(size - free) * 100 / (avail + (size - free))，结果是整除则为该值，非整除则为该值+1，结果的单位是%。\n参考df命令源码：",
+          "title": "[$show_name]: Partition free space (EXT.*/XFS/NFS)",
+          "description": "In this Kanban board: the total amount of disk, usage, available usage, and usage rate remain the same as the values of the Size, Used, Available, and Use% columns of the df command, and the value of Use% will be rounded to retain a decimal place, which will be more accurate.\n\n Note: The Use% algorithm in df is: (size-free) * 100 / (avail + (size-free)). If the result is divisible by, it is the value, and if it is not divisible by, it is the value + 1. The unit of the result is %.\n Refer to the source code of the df command: ",
           "links": [
             {
               "title": "https://github.com/coreutils/coreutils/blob/master/src/df.c",
@@ -2948,9 +2937,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
@@ -2959,7 +2945,10 @@
                         "instant": true,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总量"
+                        "legendFormat": "Total amount"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -2973,9 +2962,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
@@ -2985,6 +2971,9 @@
                         "interval": "10s",
                         "intervalFactor": 1,
                         "legendFormat": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -2998,9 +2987,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*pod.*\"}) *100/(node_filesystem_avail_bytes {instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*pod.*\"}+(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*pod.*\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*pod.*\"}))",
@@ -3009,6 +2995,9 @@
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -3052,12 +3041,12 @@
                       "excludeByName": {},
                       "indexByName": {},
                       "renameByName": {
-                        "Value #A": "剩余空间",
-                        "Value #B": "使用率",
-                        "Value #C": "总空间",
-                        "device": "设备名",
-                        "fstype": "类型",
-                        "mountpoint": "分区"
+                        "Value #A": "Remaining space",
+                        "Value #B": "Usage rate",
+                        "Value #C": "Total space",
+                        "device": "device name",
+                        "fstype": "Type",
+                        "mountpoint": "partition"
                       }
                     }
                   }
@@ -3077,7 +3066,7 @@
                 "sortBy": [
                   {
                     "desc": true,
-                    "displayName": "使用率"
+                    "displayName": "Usage rate"
                   }
                 ]
               },
@@ -3112,7 +3101,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "分区"
+                      "options": "Partition"
                     },
                     "properties": [
                       {
@@ -3124,7 +3113,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "剩余空间"
+                      "options": "remaining space"
                     },
                     "properties": [
                       {
@@ -3169,7 +3158,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "使用率"
+                      "options": "usage rate"
                     },
                     "properties": [
                       {
@@ -3210,7 +3199,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总空间"
+                      "options": "Total space"
                     },
                     "properties": [
                       {
@@ -3239,7 +3228,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "类型"
+                      "options": "type"
                     },
                     "properties": [
                       {
@@ -3251,7 +3240,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "设备名"
+                      "options": "device name"
                     },
                     "properties": [
                       {
@@ -3270,7 +3259,7 @@
         "kind": "Panel",
         "spec": {
           "id": 183,
-          "title": "每分钟流量$device",
+          "title": "Traffic per minute$device",
           "description": "",
           "links": [],
           "data": {
@@ -3284,18 +3273,18 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "increase(node_network_receive_bytes_total{instance=~\"$instance\",device=~\"$device\"}[1m])",
                         "interval": "1m",
                         "intervalFactor": 2,
-                        "legendFormat": "{{device}}_in下载",
+                        "legendFormat": "{{device}}_in download",
                         "metric": "",
                         "step": 600,
                         "target": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -3309,16 +3298,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "increase(node_network_transmit_bytes_total{instance=~\"$instance\",device=~\"$device\"}[1m])",
                         "interval": "1m",
                         "intervalFactor": 2,
-                        "legendFormat": "{{device}}_out上传",
+                        "legendFormat": "{{device}}_out upload",
                         "step": 600
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -3426,7 +3415,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "cn-shenzhen.i-wz9cq1dcb6zwc39ehw59_cni0_in下载"
+                      "options": "cn-shenzhen.i-wz9cq1dcb6zwc39ehw59_cni0_in download"
                     },
                     "properties": [
                       {
@@ -3441,7 +3430,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "cn-shenzhen.i-wz9cq1dcb6zwc39ehw59_cni0_out上传"
+                      "options": "cn-shenzhen.i-wz9cq1dcb6zwc39ehw59_cni0_out upload"
                     },
                     "properties": [
                       {
@@ -3456,7 +3445,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "cn-shenzhen.i-wz9cq1dcb6zwc39ehw59_eth0_in下载"
+                      "options": "cn-shenzhen.i-wz9cq1dcb6zwc39ehw59_eth0_in download"
                     },
                     "properties": [
                       {
@@ -3486,7 +3475,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "cn-shenzhen.i-wz9cq1dcb6zwc39ehw59_eth0_out上传"
+                      "options": "cn-shenzhen.i-wz9cq1dcb6zwc39ehw59_eth0_out upload"
                     },
                     "properties": [
                       {
@@ -3508,7 +3497,7 @@
         "kind": "Panel",
         "spec": {
           "id": 191,
-          "title": "整体总负载与整体平均CPU使用率",
+          "title": "Overall total load and overall average CPU usage",
           "description": "",
           "links": [],
           "data": {
@@ -3522,9 +3511,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -3532,9 +3518,12 @@
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "5m负载",
+                        "legendFormat": "5m load",
                         "range": true,
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -3548,9 +3537,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -3559,8 +3545,11 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "核数",
+                        "legendFormat": "Audit",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -3574,9 +3563,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -3584,9 +3570,12 @@
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "平均%",
+                        "legendFormat": "Average%",
                         "range": true,
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -3646,7 +3635,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "series",
-                    "axisLabel": "总5分钟负载",
+                    "axisLabel": "Total 5m load",
                     "axisPlacement": "auto",
                     "axisSoftMin": 0,
                     "barAlignment": 0,
@@ -3682,7 +3671,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "平均%"
+                      "options": "average%"
                     },
                     "properties": [
                       {
@@ -3691,7 +3680,7 @@
                       },
                       {
                         "id": "custom.axisLabel",
-                        "value": "总平均使用率"
+                        "value": "Total average usage rate"
                       },
                       {
                         "id": "custom.pointSize",
@@ -3713,7 +3702,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "核数"
+                      "options": "Number of cores"
                     },
                     "properties": [
                       {
@@ -3736,7 +3725,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "5m负载"
+                      "options": "5m load"
                     },
                     "properties": [
                       {
@@ -3758,7 +3747,7 @@
         "kind": "Panel",
         "spec": {
           "id": 195,
-          "title": "整体总内存与整体平均内存使用率",
+          "title": "Overall total memory and overall average memory usage",
           "description": "",
           "links": [],
           "data": {
@@ -3772,9 +3761,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -3782,9 +3768,12 @@
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总已用",
+                        "legendFormat": "Always used",
                         "range": true,
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -3798,9 +3787,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "sum(node_memory_MemTotal_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"})",
@@ -3808,8 +3794,11 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总内存",
+                        "legendFormat": "Total memory",
                         "step": 4
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -3823,9 +3812,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -3833,8 +3819,11 @@
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总平均%",
+                        "legendFormat": "Total average%",
                         "range": true
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "H",
@@ -3895,7 +3884,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "series",
-                    "axisLabel": "总已用内存",
+                    "axisLabel": "Total used memory",
                     "axisPlacement": "auto",
                     "axisSoftMin": 0,
                     "barAlignment": 0,
@@ -3931,7 +3920,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总内存"
+                      "options": "Total memory"
                     },
                     "properties": [
                       {
@@ -3954,7 +3943,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总平均%"
+                      "options": "Total average%"
                     },
                     "properties": [
                       {
@@ -3967,7 +3956,7 @@
                       },
                       {
                         "id": "custom.axisLabel",
-                        "value": "总平均使用率"
+                        "value": "Total average usage rate"
                       },
                       {
                         "id": "custom.showPoints",
@@ -3989,7 +3978,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总已用"
+                      "options": "Always used"
                     },
                     "properties": [
                       {
@@ -4011,7 +4000,7 @@
         "kind": "Panel",
         "spec": {
           "id": 197,
-          "title": "整体总磁盘与整体平均磁盘使用率",
+          "title": "Overall total disk and overall average disk usage",
           "description": "",
           "links": [],
           "data": {
@@ -4025,9 +4014,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "sum(avg(node_filesystem_size_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",fstype=~\"xfs|ext.*\"})by(device,instance))",
@@ -4035,7 +4021,10 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总使用量"
+                        "legendFormat": "Total usage"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -4049,9 +4038,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": true,
                         "expr": "sum(avg(node_filesystem_size_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",fstype=~\"xfs|ext.*\"})by(device,instance))",
@@ -4059,7 +4045,10 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总磁盘量"
+                        "legendFormat": "Total disk volume"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "E",
@@ -4073,9 +4062,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
@@ -4084,7 +4070,10 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "平均%"
+                        "legendFormat": "Average%"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -4144,7 +4133,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "series",
-                    "axisLabel": "总磁盘使用量",
+                    "axisLabel": "Total disk usage",
                     "axisPlacement": "auto",
                     "axisSoftMin": 0,
                     "barAlignment": 0,
@@ -4180,7 +4169,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "平均%"
+                      "options": "average%"
                     },
                     "properties": [
                       {
@@ -4193,7 +4182,7 @@
                       },
                       {
                         "id": "custom.axisLabel",
-                        "value": "总平均使用率"
+                        "value": "Total average usage rate"
                       },
                       {
                         "id": "custom.lineWidth",
@@ -4215,7 +4204,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总磁盘量"
+                      "options": "Total disk volume"
                     },
                     "properties": [
                       {
@@ -4238,7 +4227,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总使用量"
+                      "options": "Total usage"
                     },
                     "properties": [
                       {
@@ -4260,8 +4249,8 @@
         "kind": "Panel",
         "spec": {
           "id": 198,
-          "title": "服务器资源总览表【分组：$group，主机总数：$total】",
-          "description": "分区使用率、磁盘读取、磁盘写入、下载带宽、上传带宽，如果有多个网卡或者多个分区，是采集的使用率最高的网卡或者分区的数值。\n\n连接数：CurrEstab - 当前状态为 ESTABLISHED 或 CLOSE-WAIT 的 TCP 连接数。\n\n健康值是一个新增的指标，根据CPU，内存，IO计算出来的一个值，低于90分说明系统的资源使用情况需要注意了，这是一个正在测试的指标，参数可能需要根据实际情况再优化。",
+          "title": "Server resource overview table [group: $group, total number of hosts: $total]",
+          "description": "Partition usage rate, disk read, disk write, download bandwidth, upload bandwidth, if there are multiple network cards or multiple partitions, it is the value of the network card or partition with the highest usage rate collected.\n\n Number of connections: CurrEstab-The number of TCP connections whose current status is ESTABLISHED or CLOSE-WAIT.\n\n health value is a new indicator. It is calculated based on CPU, memory, and IO. A value below 90 points indicates that the system's resource usage needs to be paid attention to. This is an indicator being tested, and the parameters may need to be optimized according to the actual situation.",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -4274,9 +4263,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
@@ -4284,7 +4270,10 @@
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "主机名"
+                        "legendFormat": "Host name"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -4298,9 +4287,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
@@ -4308,7 +4294,10 @@
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "运行时间"
+                        "legendFormat": "Running time"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -4322,16 +4311,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "node_memory_MemTotal_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"} - 0",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "总内存"
+                        "legendFormat": "Total memory"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -4345,16 +4334,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "count(node_cpu_seconds_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",mode='system',name=~\".*$sname.*\"}) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "总核数"
+                        "legendFormat": "Total number of audits"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -4368,16 +4357,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "node_load5{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"}",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "5分钟负载"
+                        "legendFormat": "5m load"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "L",
@@ -4391,16 +4380,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "(1 - avg(irate(node_cpu_seconds_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",mode=\"idle\",name=~\".*$sname.*\"}[$interval])) by (instance)) * 100",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "CPU使用率"
+                        "legendFormat": "CPU usage"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -4414,16 +4403,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "(1 - (node_memory_MemAvailable_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"} / (node_memory_MemTotal_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"})))* 100",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "内存使用率"
+                        "legendFormat": "Memory usage"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "G",
@@ -4437,16 +4426,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "max((node_filesystem_size_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",fstype=~\"ext.?|xfs\"}-node_filesystem_free_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",fstype=~\"ext.?|xfs\"}) *100/(node_filesystem_avail_bytes {vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",fstype=~\"ext.?|xfs\"}+(node_filesystem_size_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",fstype=~\"ext.?|xfs\"}-node_filesystem_free_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",fstype=~\"ext.?|xfs\"})))by(instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "分区使用率"
+                        "legendFormat": "Partition Usage rate"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "E",
@@ -4460,16 +4449,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "max(irate(node_disk_read_bytes_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"}[$interval])) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "最大读取"
+                        "legendFormat": "Maximum read"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "H",
@@ -4483,16 +4472,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "max(irate(node_disk_written_bytes_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"}[$interval])) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "最大写入"
+                        "legendFormat": "Maximum input"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "I",
@@ -4506,16 +4495,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "node_netstat_Tcp_CurrEstab{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"} - 0",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "连接数"
+                        "legendFormat": "Number of connections"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "M",
@@ -4529,9 +4518,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "node_sockstat_TCP_tw{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"} - 0",
@@ -4539,6 +4525,9 @@
                         "instant": true,
                         "interval": "",
                         "legendFormat": "TIME_WAIT"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "N",
@@ -4552,16 +4541,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "max(irate(node_network_receive_bytes_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"}[$interval])*8) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "下载带宽"
+                        "legendFormat": "Download bandwidth"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "J",
@@ -4575,16 +4564,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "max(irate(node_network_transmit_bytes_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"}[$interval])*8) by (instance)",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "上传带宽"
+                        "legendFormat": "Upload bandwidth"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "K",
@@ -4598,16 +4587,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "((1-(1 - avg(irate(node_cpu_seconds_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\",mode=\"idle\"}[$interval])) by (instance))^1.3)^(1/3)*0.5 + \r\n(1-(1 - avg(node_memory_MemAvailable_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"} / node_memory_MemTotal_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"})by (instance))^6)^(1/3)*0.3 + \r\n(1 - max(irate(node_disk_io_time_seconds_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"}[$interval]))by (instance)^1.1)^(1/2)*0.2)*100",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "健康评分"
+                        "legendFormat": "Health Score"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "O",
@@ -4621,16 +4610,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "max(irate(node_disk_io_time_seconds_total{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"}[$interval])) by (instance) *100",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "IOutil使用率"
+                        "legendFormat": "IOutil usage rate"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "P",
@@ -4689,26 +4678,26 @@
                         "name": 0
                       },
                       "renameByName": {
-                        "Value #B": "内存",
+                        "Value #B": "Memory",
                         "Value #C": "CPU",
-                        "Value #D": "启动(天)",
-                        "Value #E": "分区使用率*",
-                        "Value #F": "CPU使用率",
-                        "Value #G": "内存使用率",
-                        "Value #H": "磁盘读取*",
-                        "Value #I": "磁盘写入*",
-                        "Value #J": "下载带宽*",
-                        "Value #K": "上传带宽*",
-                        "Value #L": "负载",
-                        "Value #M": "连接数",
+                        "Value #D": "Start(day)",
+                        "Value #E": "Partition usage*",
+                        "Value #F": "CPU usage",
+                        "Value #G": "Memory usage",
+                        "Value #H": "Disk read*",
+                        "Value #I": "Disk write*",
+                        "Value #J": "Download BW*",
+                        "Value #K": "Upload BW*",
+                        "Value #L": "Load",
+                        "Value #M": "N of connect",
                         "Value #N": "TCP_tw",
-                        "Value #O": "健康值",
-                        "Value #P": "IOutil使用率*",
-                        "exp": "到期日",
-                        "iid": "实例ID",
+                        "Value #O": "Health",
+                        "Value #P": "IOutil usage*",
+                        "exp": "Expiration date",
+                        "iid": "Instance ID",
                         "instance": "IP",
-                        "name": "名称",
-                        "nodename": "主机名"
+                        "name": "name",
+                        "nodename": "host name"
                       }
                     }
                   }
@@ -4728,7 +4717,7 @@
                 "sortBy": [
                   {
                     "desc": true,
-                    "displayName": "到期日"
+                    "displayName": "Expiration Date"
                   }
                 ]
               },
@@ -4765,7 +4754,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "内存"
+                      "options": "Memory"
                     },
                     "properties": [
                       {
@@ -4801,7 +4790,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "启动(天)"
+                      "options": "Start(day)"
                     },
                     "properties": [
                       {
@@ -4820,7 +4809,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "磁盘读取*"
+                      "options": "Disk read*"
                     },
                     "properties": [
                       {
@@ -4863,7 +4852,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "磁盘写入*"
+                      "options": "Disk write*"
                     },
                     "properties": [
                       {
@@ -4906,7 +4895,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "下载带宽*"
+                      "options": "Download BW*"
                     },
                     "properties": [
                       {
@@ -4942,7 +4931,7 @@
                       },
                       {
                         "id": "custom.width",
-                        "value": 91
+                        "value": 110
                       },
                       {
                         "id": "decimals"
@@ -4952,7 +4941,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "上传带宽*"
+                      "options": "Upload BW*"
                     },
                     "properties": [
                       {
@@ -4988,7 +4977,7 @@
                       },
                       {
                         "id": "custom.width",
-                        "value": 85
+                        "value": 90
                       },
                       {
                         "id": "decimals"
@@ -4998,7 +4987,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "负载"
+                      "options": "Load"
                     },
                     "properties": [
                       {
@@ -5014,7 +5003,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "连接数"
+                      "options": "N of connect"
                     },
                     "properties": [
                       {
@@ -5046,7 +5035,7 @@
                       },
                       {
                         "id": "custom.width",
-                        "value": 59
+                        "value": 100
                       },
                       {
                         "id": "decimals"
@@ -5132,7 +5121,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 91
+                        "value": 150
                       },
                       {
                         "id": "custom.filterable",
@@ -5158,7 +5147,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "名称"
+                      "options": "Name"
                     },
                     "properties": [
                       {
@@ -5174,7 +5163,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "健康值"
+                      "options": "Health"
                     },
                     "properties": [
                       {
@@ -5219,7 +5208,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/.*使用率.*/"
+                      "options": "/.*usage.*/"
                     },
                     "properties": [
                       {
@@ -5248,7 +5237,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "到期日"
+                      "options": "Expiration date"
                     },
                     "properties": [
                       {
@@ -5260,7 +5249,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "实例ID"
+                      "options": "Instance ID"
                     },
                     "properties": [
                       {
@@ -5279,8 +5268,8 @@
         "kind": "Panel",
         "spec": {
           "id": 200,
-          "title": "最近7天P99资源使用率",
-          "description": "- P99：数据集按升序排列，第99分位置大的数据。（即升序排列后排在99%位置的数据）\n- 该表格需要在Prometheus增加记录规则（参考看板下载页）\n- 采集1小时后出数据\n- 时间范围[7d:1h]表示要查看过去 7 天内每小时的数据点。",
+          "title": "resource usage rate P99 in the last 7 days",
+          "description": "- P99: The data sets are arranged in ascending order, with the largest data in the 99th point.(That is, the data in 99% of the positions in ascending order) \n-This table needs to add recording rules to Prometheus (refer to the Kanban download page) \n-The data will be released after 1 hour of collection \n-The time range [7d:1h] indicates that you want to view the hourly data points in the past 7 days.",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -5293,16 +5282,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "exemplar": false,
                         "expr": "node_uname_info{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"} - 0",
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "主机名"
+                        "legendFormat": "Host name"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -5316,9 +5305,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
@@ -5326,7 +5312,10 @@
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "CPU使用率P99"
+                        "legendFormat": "CPU usage P99"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -5340,9 +5329,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
@@ -5350,7 +5336,10 @@
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "内存使用率P99"
+                        "legendFormat": "Memory usage P99"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -5364,9 +5353,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
@@ -5374,7 +5360,10 @@
                         "format": "table",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "内存使用率P99"
+                        "legendFormat": "Memory usage P99"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -5417,11 +5406,11 @@
                       },
                       "renameByName": {
                         "Value #B": "P99CPU%",
-                        "Value #C": "P99内存%",
+                        "Value #C": "P99memory%",
                         "instance": "IP",
-                        "name": "名称",
-                        "name 1": "名称",
-                        "nodename": "主机名"
+                        "name": "name",
+                        "name 1": "name",
+                        "nodename": "host name"
                       }
                     }
                   }
@@ -5441,7 +5430,7 @@
                 "sortBy": [
                   {
                     "desc": true,
-                    "displayName": "P99内存%"
+                    "displayName": "P99 memory%"
                   }
                 ]
               },
@@ -5539,7 +5528,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "P99内存使用率"
+                      "options": "P99 memory usage"
                     },
                     "properties": [
                       {
@@ -5551,7 +5540,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "P99CPU使用率"
+                      "options": "P99CPU usage rate"
                     },
                     "properties": [
                       {
@@ -5563,7 +5552,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "名称"
+                      "options": "Name"
                     },
                     "properties": [
                       {
@@ -5582,7 +5571,7 @@
         "kind": "Panel",
         "spec": {
           "id": 202,
-          "title": "进程运行状态",
+          "title": "Process running status",
           "description": "",
           "links": [],
           "data": {
@@ -5596,9 +5585,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "calculatedInterval": "2m",
                         "datasourceErrors": {},
@@ -5608,11 +5594,14 @@
                         "format": "time_series",
                         "interval": "1m",
                         "intervalFactor": 1,
-                        "legendFormat": "运行态的进程",
+                        "legendFormat": "Running process",
                         "metric": "",
                         "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22node_procs_running%7Binstance%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2013%3A46%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Atrue%2C%22tab%22%3A0%7D%5D",
                         "step": 5,
                         "target": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -5626,9 +5615,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "calculatedInterval": "2m",
                         "datasourceErrors": {},
@@ -5638,11 +5624,14 @@
                         "format": "time_series",
                         "interval": "1m",
                         "intervalFactor": 1,
-                        "legendFormat": "等待IO完成阻塞的进程",
+                        "legendFormat": "Waiting for IO to complete the blocked process",
                         "metric": "",
                         "prometheusLink": "/api/datasources/proxy/1/graph#%5B%7B%22expr%22%3A%22node_procs_blocked%7Binstance%3D%5C%22%24host%5C%22%7D%22%2C%22range_input%22%3A%2243200s%22%2C%22end_input%22%3A%222015-9-18%2013%3A46%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Atrue%2C%22tab%22%3A0%7D%5D",
                         "step": 5,
                         "target": ""
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -5739,7 +5728,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "等待IO完成阻塞的进程"
+                      "options": "Waiting for IO to complete the blocked process"
                     },
                     "properties": [
                       {
@@ -5754,7 +5743,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "运行态的进程"
+                      "options": "Running process"
                     },
                     "properties": [
                       {
@@ -5830,9 +5819,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "alias": "",
                         "bucketAggs": [
@@ -5848,7 +5834,7 @@
                         "expr": "avg(time() - node_boot_time_seconds{instance=~\"$instance\"})",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "运行时间",
+                        "legendFormat": "Running time",
                         "metrics": [
                           {
                             "id": "1",
@@ -5857,6 +5843,9 @@
                         ],
                         "query": "",
                         "timeField": "@timestamp"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "C",
@@ -5870,9 +5859,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "alias": "",
                         "bucketAggs": [
@@ -5888,7 +5874,7 @@
                         "expr": "count(node_cpu_seconds_total{instance=~\"$instance\", mode='system'})",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "CPU 核数",
+                        "legendFormat": "Number of CPU cores",
                         "metrics": [
                           {
                             "id": "1",
@@ -5897,6 +5883,9 @@
                         ],
                         "query": "",
                         "timeField": "@timestamp"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -5910,9 +5899,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "alias": "",
                         "bucketAggs": [
@@ -5928,7 +5914,7 @@
                         "expr": "sum(node_memory_MemTotal_bytes{instance=~\"$instance\"})",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "总内存",
+                        "legendFormat": "Total memory",
                         "metrics": [
                           {
                             "id": "1",
@@ -5937,6 +5923,9 @@
                         ],
                         "query": "",
                         "timeField": "@timestamp"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -5950,9 +5939,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "alias": "",
                         "bucketAggs": [
@@ -5977,6 +5963,9 @@
                         ],
                         "query": "",
                         "timeField": "@timestamp"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -5990,9 +5979,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "alias": "",
                         "bucketAggs": [
@@ -6008,7 +5994,7 @@
                         "expr": "node_filefd_maximum{instance=~\"$instance\"}",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "总文件描述符",
+                        "legendFormat": "Total file descriptors",
                         "metrics": [
                           {
                             "id": "1",
@@ -6017,6 +6003,9 @@
                         ],
                         "query": "",
                         "timeField": "@timestamp"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "E",
@@ -6030,9 +6019,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "alias": "",
                         "bucketAggs": [
@@ -6049,7 +6035,7 @@
                         "expr": "process_max_fds{job=\"node_exporter\",instance=~\"$instance\"}",
                         "instant": true,
                         "interval": "",
-                        "legendFormat": "最大打开文件",
+                        "legendFormat": "Maximum open file",
                         "metrics": [
                           {
                             "id": "1",
@@ -6058,6 +6044,9 @@
                         ],
                         "query": "",
                         "timeField": "@timestamp"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -6116,7 +6105,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "运行时间"
+                      "options": "Running time"
                     },
                     "properties": [
                       {
@@ -6148,7 +6137,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总内存"
+                      "options": "Total memory"
                     },
                     "properties": [
                       {
@@ -6200,7 +6189,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "总文件描述符"
+                      "options": "Total file descriptors"
                     },
                     "properties": [
                       {
@@ -6232,7 +6221,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "最大打开文件"
+                      "options": "Maximum open file"
                     },
                     "properties": [
                       {
@@ -6271,7 +6260,7 @@
         "kind": "Panel",
         "spec": {
           "id": 207,
-          "title": "CPU使用率",
+          "title": "CPU usage",
           "description": "",
           "links": [],
           "data": {
@@ -6285,16 +6274,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "(1 - avg(irate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"idle\"}[$interval])) by (instance))*100",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "总使用率",
+                        "legendFormat": "Total usage rate",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "F",
@@ -6308,9 +6297,6 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "editorMode": "code",
                         "expr": "avg(irate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"system\"}[$interval])) by (instance) *100",
@@ -6318,8 +6304,11 @@
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "系统使用率",
+                        "legendFormat": "System usage rate",
                         "step": 20
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "A",
@@ -6333,16 +6322,16 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(irate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"user\"}[$interval])) by (instance) *100",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "用户使用率",
+                        "legendFormat": "User usage rate",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "B",
@@ -6356,17 +6345,17 @@
                       "kind": "DataQuery",
                       "group": "prometheus",
                       "version": "v0",
-                      "datasource": {
-                        "name": "PBFA97CFB590B2093"
-                      },
                       "spec": {
                         "expr": "avg(irate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"iowait\"}[$interval])) by (instance) *100",
                         "format": "time_series",
                         "instant": false,
                         "interval": "",
                         "intervalFactor": 1,
-                        "legendFormat": "磁盘IO使用率",
+                        "legendFormat": "Disk IO usage",
                         "step": 240
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
                       }
                     },
                     "refId": "D",
@@ -6430,7 +6419,7 @@
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
                     "axisColorMode": "series",
-                    "axisLabel": "总使用率",
+                    "axisLabel": "Total usage rate",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
                     "barWidthFactor": 0.6,
@@ -6465,7 +6454,7 @@
                   {
                     "matcher": {
                       "id": "byRegexp",
-                      "options": "/.*总使用率/"
+                      "options": "/.*Total usage rate/"
                     },
                     "properties": [
                       {
@@ -6488,7 +6477,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "磁盘IO使用率"
+                      "options": "Disk IO usage"
                     },
                     "properties": [
                       {
@@ -6497,7 +6486,7 @@
                       },
                       {
                         "id": "custom.axisLabel",
-                        "value": "磁盘IO使用率"
+                        "value": "Disk IO usage"
                       },
                       {
                         "id": "color",
@@ -6511,7 +6500,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "用户使用率"
+                      "options": "User usage rate"
                     },
                     "properties": [
                       {
@@ -6526,7 +6515,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "系统使用率"
+                      "options": "System usage"
                     },
                     "properties": [
                       {
@@ -6552,7 +6541,7 @@
           {
             "kind": "RowsLayoutRow",
             "spec": {
-              "title": "🏡资源总览：当前选中主机：$show_name，实例：$instance",
+              "title": "Resource overview: currently selected host: $show_name, instance: $instance",
               "collapse": false,
               "layout": {
                 "kind": "GridLayout",
@@ -6631,7 +6620,7 @@
           {
             "kind": "RowsLayoutRow",
             "spec": {
-              "title": "🧮资源明细：【$show_name】【$instance】【$iid】",
+              "title": "Resource details: [showshow_name][$instance][$iid]",
               "collapse": false,
               "layout": {
                 "kind": "GridLayout",
@@ -6858,7 +6847,7 @@
         "title": "Update",
         "type": "link",
         "icon": "bolt",
-        "tooltip": "更多仪表板",
+        "tooltip": "More dashboards",
         "url": "https://grafana.com/orgs/starsliao/dashboards",
         "tags": [],
         "asDropdown": false,
@@ -6916,7 +6905,7 @@
       "hideTimepicker": false,
       "fiscalYearStartMonth": 0
     },
-    "title": "Node Exporter Dashboard 20240520 TenSunS自动同步版",
+    "title": "Node Exporter Dashboard 20240520 TenSunS Automatic Synchronization Version",
     "variables": [
       {
         "kind": "QueryVariable",
@@ -6926,7 +6915,7 @@
             "text": "",
             "value": ""
           },
-          "label": "云厂商",
+          "label": "Cloud vendor",
           "hide": "dontHide",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -6934,12 +6923,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "label_values(node_uname_info, vendor)",
               "refId": "StandardVariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "",
@@ -6960,7 +6949,7 @@
             "text": "",
             "value": ""
           },
-          "label": "账户",
+          "label": "account",
           "hide": "dontHide",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -6968,12 +6957,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "label_values(node_uname_info{vendor=~\"$vendor\"}, account)",
               "refId": "StandardVariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "",
@@ -6994,7 +6983,7 @@
             "text": "",
             "value": ""
           },
-          "label": "分组",
+          "label": "group",
           "hide": "dontHide",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -7002,12 +6991,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "label_values(node_uname_info{vendor=~\"$vendor\",account=~\"$account\"},group)",
               "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "",
@@ -7028,7 +7017,7 @@
             "text": "",
             "value": ""
           },
-          "label": "名称",
+          "label": "name",
           "hide": "dontHide",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -7036,12 +7025,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "label_values(node_uname_info{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\"},name)",
               "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "",
@@ -7070,12 +7059,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "label_values(node_uname_info{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\"},instance)",
               "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "",
@@ -7108,7 +7097,7 @@
           "auto_min": "1m",
           "auto_count": 100,
           "refresh": "onTimeRangeChanged",
-          "label": "间隔",
+          "label": "interval",
           "hide": "hideVariable",
           "skipUrlSync": false,
           "description": ""
@@ -7122,7 +7111,7 @@
             "text": "",
             "value": ""
           },
-          "label": "主机数",
+          "label": "Number of hosts",
           "hide": "hideVariable",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -7130,12 +7119,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "query_result(count(node_uname_info{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",name=~\".*$sname.*\"}))",
               "refId": "StandardVariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "/{} (.*) .*/",
@@ -7156,7 +7145,7 @@
             "text": "",
             "value": ""
           },
-          "label": "网卡",
+          "label": "Network card",
           "hide": "dontHide",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -7164,12 +7153,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "label_values(node_network_info{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",instance=~\"$instance\",device!~'tap.*|veth.*|br.*|docker.*|virbr.*|lo.*|cni.*'},device)",
               "refId": "StandardVariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "",
@@ -7190,7 +7179,7 @@
             "text": "",
             "value": ""
           },
-          "label": "最大挂载目录",
+          "label": "Maximum mount directory",
           "hide": "hideVariable",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -7198,12 +7187,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "query_result(topk(1,sort_desc (max(node_filesystem_size_bytes{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",instance=~\"$instance\",fstype=~\"ext.?|xfs\",mountpoint!~\".*pods.*\"}) by (mountpoint))))",
               "refId": "StandardVariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "/.*\\\"(.*)\\\".*/",
@@ -7224,7 +7213,7 @@
             "text": "",
             "value": ""
           },
-          "label": "展示使用的名称",
+          "label": "Name used for display",
           "hide": "hideVariable",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -7232,12 +7221,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "label_values(node_uname_info{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\",instance=~\"$instance\"}, name)",
               "refId": "StandardVariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "",
@@ -7258,7 +7247,7 @@
             "text": "",
             "value": ""
           },
-          "label": "实例ID",
+          "label": "instance ID",
           "hide": "hideVariable",
           "refresh": "onTimeRangeChanged",
           "skipUrlSync": false,
@@ -7266,12 +7255,12 @@
             "kind": "DataQuery",
             "group": "prometheus",
             "version": "v0",
-            "datasource": {
-              "name": "PBFA97CFB590B2093"
-            },
             "spec": {
               "query": "label_values(node_uname_info{vendor=~\"$vendor\",account=~\"$account\",group=~\"$group\",name=~\"$name\"},iid)",
               "refId": "StandardVariableQuery"
+            },
+            "labels": {
+              "grafana.app/export-label": "prometheus-1"
             }
           },
           "regex": "",
@@ -7293,10 +7282,10 @@
             "value": ""
           },
           "query": "",
-          "label": "查询",
+          "label": "query",
           "hide": "dontHide",
           "skipUrlSync": false,
-          "description": "总览表名称字段支持筛选，可以使用正则，如：.*aa.*bb.*"
+          "description": "The name field of the overview table supports filtering, and regular rules can be used, such as:.*aa.*bb.*"
         }
       }
     ]

@@ -3,19 +3,10 @@
   "kind": "Dashboard",
   "metadata": {
     "name": "rYdddlPWk",
-    "namespace": "default",
-    "uid": "664c3b21-d5c9-492a-92ce-18c2b34ae226",
-    "resourceVersion": "1776548355732987",
     "generation": 1,
-    "creationTimestamp": "2026-04-18T21:39:15Z",
-    "labels": {
-      "grafana.app/deprecatedInternalID": "983954214211584"
-    },
-    "annotations": {
-      "grafana.app/createdBy": "user:cfjhyvqlwx2psa",
-      "grafana.app/folder": "",
-      "grafana.app/saved-from-ui": "Grafana v13.0.0 (e9de482b)"
-    }
+    "creationTimestamp": "2026-04-22T20:55:42Z",
+    "labels": {},
+    "annotations": {}
   },
   "spec": {
     "annotations": [
@@ -26,14 +17,14 @@
             "kind": "DataQuery",
             "group": "datasource",
             "version": "v0",
-            "datasource": {
-              "name": "grafana"
-            },
             "spec": {
               "limit": 100,
               "matchAny": false,
               "tags": [],
               "type": "dashboard"
+            },
+            "labels": {
+              "grafana.app/export-label": "datasource-1"
             }
           },
           "enable": true,

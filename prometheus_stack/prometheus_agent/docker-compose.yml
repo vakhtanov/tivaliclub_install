@@ -1,9 +1,9 @@
 services:
 #=========Node-Exporter==COLLECT=======================
   node-exporter:
-    image: prom/node-exporter
+    image: prom/node-exporter:v1.11.1
     container_name: exporter
-    network_mode: host  # Контейнер будет использовать имя сервера
+    network_mode: host  # Use host name
     pid: host
     volumes:
       - /proc:/host/proc:ro

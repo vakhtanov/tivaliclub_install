@@ -2,7 +2,7 @@ services:
 
 #=========Prometheus=====STORAGE==================
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v3.11.2
     volumes:
       - ./prometheus/etc:/etc/prometheus/
       - ./prometheus/data:/prometheus
@@ -20,10 +20,11 @@ services:
 
 #=========Node-Exporter==COLLECT=======================
   node-exporter:
-    image: prom/node-exporter
+    image: prom/node-exporter:v1.11.1
     container_name: exporter
     #hostname: exporter
-    network_mode: host  # Контейнер будет использовать имя сервера
+    network_mode: host  # Use host name
+    pid: host
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -34,8 +35,8 @@ services:
       - '--path.sysfs=/host/sys'
       - '--path.rootfs=/rootfs' #for correct disk size
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)'
-    ports:
-      - 9100:9100
+#    ports:
+#      - 9100:9100
     restart: unless-stopped
     environment:
       TZ: "Europe/Moscow"
@@ -43,7 +44,7 @@ services:
 
 #=========Grafana=======================
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:v13.0.0
     user: root
     depends_on:
       - prometheus
@@ -68,10 +69,18 @@ services:
       - ./alertmanager/:/etc/alertmanager/
     container_name: alertmanager
     hostname: alertmanager
+    # send host env to container ENV
     environment:
       TZ: "Europe/Moscow"
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_USER_FROM: ${SMTP_USER_FROM}
+      SMTP_LOGIN: ${SMTP_LOGIN}
+      ALERT_EMAIL_TO: ${ALERT_EMAIL_TO}
+      TG_CHAT_ID: ${TG_CHAT_ID}
     restart: unless-stopped
+    # activate ENV support 
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/etc/alertmanager/data'
+      - '--config.expand-env'
 

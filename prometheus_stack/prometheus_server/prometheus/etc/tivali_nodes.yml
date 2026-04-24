@@ -1,18 +1,23 @@
 - targets:
-    - "192.168.20.62:9100"
+    - "hyperdx-test.tivaliclub.com:9100"
   labels:
     env: "test"
-    instance: "sandbox"
+    instance: "dashboards"
 
 - targets:
-    - "192.168.20.63:9100"
+    - "audomation.local.tivaliclub.com:9100"
   labels:
     env: "test"
     instance: "automation"
 
 - targets:
-    - "192.168.20.17:9100"
+    - "dev.local.tivaliclub.com:9100"
   labels:
-    env: "tets"
+    env: "dev"
     instance: "development"
 
+- targets:
+    - "test.local.tivaliclub.com:9100"
+  labels:
+    env: "test"
+    instance: "test"
