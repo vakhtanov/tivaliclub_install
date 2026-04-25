@@ -32,7 +32,8 @@ fi
 
 #=======REMOVE PREVIOS VERSION, SAVE DATA=============
 # stop docker
-#docker compose down --remove-orphans || true
+
+docker compose down -f "$INSTALL_DIR/docker-compose.yml" --remove-orphans || true
 
 #remove inst folder, but no data
 
