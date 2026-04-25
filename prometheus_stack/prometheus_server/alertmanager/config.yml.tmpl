@@ -1,12 +1,14 @@
 
-global:
+#UNCOMMENT when set the real SMTP DATA 
+#global:
   # SMTP sets
   #resolve_timeout: 5m
-  smtp_smarthost: '$SMTP_HOST'
-  smtp_from: '$SMTP_USER_FROM'
-  smtp_auth_username: '$SMTP_LOGIN'
-  smtp_auth_password_file: '/etc/alertmanager/secrets/smtp_password'
-  smtp_require_tls: true
+
+#  smtp_smarthost: '$SMTP_HOST'
+#  smtp_from: '$SMTP_USER_FROM'
+#  smtp_auth_username: '$SMTP_LOGIN'
+#  smtp_auth_password_file: '/etc/alertmanager/secrets/smtp_password'
+#  smtp_require_tls: true
 
 route:
   # Send to
@@ -21,12 +23,13 @@ route:
 receivers:
 - name: 'all-notifications'
 #===========email alerts===================
-  email_configs:
-  - to: '$ALERT_EMAIL_TO'
+#UNCOMMENT when set the real SMTP DATA 
+#  email_configs:
+#  - to: '$ALERT_EMAIL_TO'
     # You can customize the title and text of the letter (optional)
-    send_resolved: true
-    headers:
-      subject: '[Alert] {{ .Status | ToUpper }} - {{ .GroupLabels.alertname }}'
+#    send_resolved: true
+#    headers:
+#      subject: '[Alert] {{ .Status | ToUpper }} - {{ .GroupLabels.alertname }}'
 
 #=====telegramm alerts======
   telegram_configs:
