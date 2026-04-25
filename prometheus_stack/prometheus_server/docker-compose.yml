@@ -91,8 +91,8 @@ services:
             -e "s|\$SMTP_LOGIN|$$SMTP_LOGIN|g" \
             -e "s|\$ALERT_EMAIL_TO|$$ALERT_EMAIL_TO|g" \
             -e "s|\$TELEGRAM_CHAT_ID|$$TELEGRAM_CHAT_ID|g" \
-            /etc/alertmanager/alertmanager.yml.tmpl > /etc/alertmanager/alertmanager.yml &&
-        exec /bin/alertmanager --config.file=/etc/alertmanager/alertmanager.yml --storage.path=/etc/alertmanager/data
+            /etc/alertmanager/config.yml.tmpl > /etc/alertmanager/config.yml &&
+        exec /bin/alertmanager --config.file=/etc/alertmanager/config.yml --storage.path=/etc/alertmanager/data
 
 
 
