@@ -20,6 +20,9 @@ fi
 
 echo -e "${GREEN}Success: you in home${NC}"
 
+rm -rf "${PROMETHEUS_REPO_FOLDER##*/}"
+rm -rf $PROMETHEUS_REPO_FOLDER
+
 git init
 git remote add origin $TIVALICLUB_REPO
 git config core.sparseCheckout true
@@ -29,7 +32,7 @@ rm -rf .git
 # remove folder tree
 rm -rf "${PROMETHEUS_REPO_FOLDER##*/}"
 mv -v $PROMETHEUS_REPO_FOLDER "${PROMETHEUS_REPO_FOLDER##*/}"
-rm -r "${PROMETHEUS_REPO_FOLDER%%/*}"
+rm -rf "${PROMETHEUS_REPO_FOLDER%%/*}"
 
 echo -e "${GREEN}cd prometheus_server${NC}"
 echo -e "${GREEN}bash install_prometheus_stack.sh${NC}"
