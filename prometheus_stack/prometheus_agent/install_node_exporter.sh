@@ -27,11 +27,11 @@ if ! docker ps &> /dev/null; then
     exit 1
 fi
 
-sudo mkdir -p "$INSTALL_DIR/prometheus/node_exporter"
-sudo cp docker-compose.yml  "$INSTALL_DIR/prometheus/node_exporter/docker-compose.yml"
+sudo mkdir -p "$INSTALL_DIR/node_exporter"
+sudo cp docker-compose.yml  "$INSTALL_DIR/node_exporter/docker-compose.yml"
 
 echo -e "${GREEN}Start Node Exporter${NC}"
-cd "$INSTALL_DIR/prometheus/node_exporter"
+cd "$INSTALL_DIR/node_exporter"
 docker compose up -d --remove-orphans
 
 # =====CHECK DOCKER COMPOSE up======================

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail ## EXIT SCRIPT ON ANY ERROR!
 
-PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/prometheus_client"
+PROMETHEUS_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/prometheus_agent"
 
 ## COLORS FOR BASH
 GREEN='\033[0;32m'
