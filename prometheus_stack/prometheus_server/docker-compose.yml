@@ -45,7 +45,7 @@ services:
 #=========Grafana=======================
   grafana:
     image: grafana/grafana
-#    user: root
+    user: root
     depends_on:
       - prometheus
     ports:
@@ -62,7 +62,7 @@ services:
 #=======AlertManager======================
   alertmanager:
     image: prom/alertmanager:v0.31.1
-#    user: root
+    user: root
     ports:
       - 9093:9093
     volumes:
