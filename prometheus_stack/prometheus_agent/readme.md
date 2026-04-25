@@ -12,7 +12,7 @@ ssh -o ProxyCommand="ssh -i c:\Users\User\.ssh\wahha_rsa -W %h:%p wahha@devopsde
 ## IF NEED download repo from VAH
 
 ```
-wget -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/prometheus_client/download_repo.sh | bash
+wget --no-cache -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/prometheus_client/download_repo.sh | bash
 ```
 
 ## IF NEED set VARIABLES in install_node_exporter.sh 
