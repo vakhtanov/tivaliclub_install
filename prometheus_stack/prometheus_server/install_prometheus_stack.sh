@@ -33,9 +33,9 @@ fi
 #=======REMOVE PREVIOS VERSION, SAVE DATA=============
 # stop docker
 
-docker compose down -f "$INSTALL_DIR/docker-compose.yml" --remove-orphans || true
+#docker compose down -f "$INSTALL_DIR/docker-compose.yml" --remove-orphans || true
 ##!!!!!!!!!!!!!!!!!!REMOVE ALL PROMETHEUS DATA!!!!!!!!!!!!!!!!!!
-sudo rm -rf "$INSTALL_DIR"
+#sudo rm -rf "$INSTALL_DIR"
 
 #remove inst folder, but no data
 
