@@ -45,7 +45,7 @@ services:
 #=========Grafana=======================
   grafana:
     image: grafana/grafana
-    user: root
+#    user: root
     depends_on:
       - prometheus
     ports:
@@ -62,7 +62,7 @@ services:
 #=======AlertManager======================
   alertmanager:
     image: prom/alertmanager:v0.31.1
-    user: root
+#    user: root
     ports:
       - 9093:9093
     volumes:
@@ -72,15 +72,28 @@ services:
     # send host env to container ENV
     environment:
       TZ: "Europe/Moscow"
-      SMTP_HOST: ${SMTP_HOST}
-      SMTP_USER_FROM: ${SMTP_USER_FROM}
-      SMTP_LOGIN: ${SMTP_LOGIN}
-      ALERT_EMAIL_TO: ${ALERT_EMAIL_TO}
-      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID}
+    env_file:
+      - .env
     restart: unless-stopped
     # activate ENV support 
-    command:
-      - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=/etc/alertmanager/data'
-      - '--config.expand-env'
+#    command:
+#      - '--config.file=/etc/alertmanager/config.yml'
+#      - '--storage.path=/etc/alertmanager/data'
+#      - '--config.expand-env=true'
+    # activate ENV support 
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        # IN Docker Compose use double $ ($$) for variables in section enviroment 
+        sed -e "s|\$SMTP_HOST|$$SMTP_HOST|g" \
+            -e "s|\$SMTP_USER_FROM|$$SMTP_USER_FROM|g" \
+            -e "s|\$SMTP_LOGIN|$$SMTP_LOGIN|g" \
+            -e "s|\$ALERT_EMAIL_TO|$$ALERT_EMAIL_TO|g" \
+            -e "s|\$TELEGRAM_CHAT_ID|$$TELEGRAM_CHAT_ID|g" \
+            /etc/alertmanager/alertmanager.yml.tmpl > /etc/alertmanager/alertmanager.yml &&
+        exec /bin/alertmanager --config.file=/etc/alertmanager/alertmanager.yml --storage.path=/etc/alertmanager/data
+
+
+
 
