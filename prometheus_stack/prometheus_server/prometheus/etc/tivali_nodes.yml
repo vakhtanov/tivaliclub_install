@@ -5,7 +5,7 @@
     instance: "dashboards"
 
 - targets:
-    - "audomation.local.tivaliclub.com:9100"
+    - "automation.local.tivaliclub.com:9100"
   labels:
     env: "test"
     instance: "automation"
