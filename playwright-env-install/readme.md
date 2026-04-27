@@ -7,6 +7,10 @@ install PlayWright on server - some number of docker containers? one to one QA f
 ## Install 
 
 if need - download files and install docker
+```
+wget --no-cache -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/playwright-env-install/download_repo.sh
+```
+
 
 **put public keys in  folder `authorized_keys`**
 
