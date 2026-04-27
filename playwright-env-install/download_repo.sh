@@ -20,6 +20,7 @@ fi
 echo -e "${GREEN}Success: you in home${NC}"
 
 mkdir -p playwright-env-install 
+mkdir -p playwright-env-install/authorized_keys
 cd playwright-env-install
 
 wget $PLAYWRIGHT_SRV_REPO/docker-compose.yml -O docker-compose.yml

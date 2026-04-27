@@ -62,12 +62,13 @@ echo "--- Start install Playwright Environment ---"
 
 cd $INSTALL_DIR
 
-docker-compose up -d --build
+docker compose up -d --build
 
 # Init Playwright (Software --init)
 for i in $(seq 1 "$DEV_COUNT"); do
     echo ">>> Initializing Playwright in dev$i..."
-    sudo docker compose exec -w /app "dev$i" npm init playwright@latest -- --yes --typescript
+    sudo docker compose exec -w /app "dev$i" npx -y create-playwright@latest -- --lang=TypeScript --maybe-gha=false --quiet
+    №sudo docker compose exec -w /app "dev$i" npm init playwright@latest -- --yes --typescript
 done
 
 

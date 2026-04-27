@@ -1,5 +1,5 @@
 ARG PW_VERSION=latest
-FROM mcr.microsoft.com/playwright:{PW_VERSION}
+FROM mcr.microsoft.com/playwright:${PW_VERSION}
 ARG PW_VERSION=latest
 
 # Set SSH, clear cache
