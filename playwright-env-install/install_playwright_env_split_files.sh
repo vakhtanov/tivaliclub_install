@@ -48,7 +48,7 @@ fi
 
 # 3. Combine file authorized_keys
 cat "$KEYS_DIR"/*.pub | sudo tee $INSTALL_DIR/authorized_keys > /dev/null
-sudo chmod 600 "$INSTALL_DIR/authorized_keys"
+
 
 # 2. Create tree
 for i in $(seq 1 $DEV_COUNT); do sudo mkdir -p "$INSTALL_DIR/dev$i"; done
