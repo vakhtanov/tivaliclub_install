@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail ## EXIT SCRIPT ON ANY ERROR!
 
-PLAYWRIGHT_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/prometheus_stack/playwright-env-install"
+PLAYWRIGHT_SRV_REPO="https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/playwright-env-install"
+
+
 
 ## COLORS FOR BASH
 GREEN='\033[0;32m'
