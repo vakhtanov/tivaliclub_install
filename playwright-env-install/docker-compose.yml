@@ -23,7 +23,7 @@ services:
     <<: *common
     container_name: playwright_dev2
     ports:
-      - "2223:22"
+      - "2222:22"
     volumes:
       - ./dev2:/app
       - playwright_browsers:/ms-playwright
