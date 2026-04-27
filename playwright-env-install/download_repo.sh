@@ -25,7 +25,8 @@ cd playwright-env-install
 wget $PLAYWRIGHT_SRV_REPO/docker-compose.yml -O docker-compose.yml
 wget $PLAYWRIGHT_SRV_REPO/install_playwright_env_split_files.sh -O install_playwright_env_split_files.sh
 wget $PLAYWRIGHT_SRV_REPO/Dockerfile -O Dockerfile
-wget $PLAYWRIGHT_SRV_REPO/playwright.config.ts -O playwright.config.ts
+wget $PLAYWRIGHT_SRV_REPO/.env -O .env
+#wget $PLAYWRIGHT_SRV_REPO/playwright.config.ts -O playwright.config.ts
 
 echo -e "${GREEN}cd playwright-env-install${NC}"
 echo -e "${GREEN}install_playwright_env_split_files.sh${NC}"
