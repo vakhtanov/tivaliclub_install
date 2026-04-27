@@ -8,6 +8,10 @@ x-common: &common
   ipc: host # Recommended for Chtomium repair leack of memory
   restart: unless-stopped
   working_dir: /app
+  environment:
+    - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright ##
+  volumes:
+    - playwright_browsers:/ms-playwright ##
 
 services:
   dev1:

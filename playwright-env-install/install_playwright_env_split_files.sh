@@ -64,6 +64,10 @@ cd $INSTALL_DIR
 
 docker compose up -d --build
 
+# Install browsers
+echo ">>> Installing browsers into SHARED volume..."
+docker exec playwright_dev1 npx playwright install --with-deps ##
+
 # Init Playwright (Software --init)
 for i in $(seq 1 "$DEV_COUNT"); do
     echo ">>> Initializing Playwright in dev$i..."
@@ -81,6 +85,9 @@ fi
 
 # 5. Rules
 sudo chown -R $USER:$USER "$INSTALL_DIR"
+
+
+
 
 # =====CHECK DOCKER COMPOSE up======================
 
