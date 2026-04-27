@@ -1,0 +1,43 @@
+version: '3.8'
+
+x-common: &common
+  build: 
+    context: .
+    dockerfile: Dockerfile
+    args:
+      - PW_VERSION=${PW_VERSION}
+  init: true  # SysFlag (PID 1) No zomby
+  ipc: host # Recommended for Chtomium repair leack of memory
+  restart: unless-stopped
+  working_dir: /app
+
+services:
+  dev1:
+    <<: *common
+    container_name: playwright_dev1
+    ports:
+      - "2221:22"
+    volumes:
+      - ./dev1:/app
+      - playwright_browsers:/ms-playwright # folder with browsers, common for all DONT USE Template
+
+  dev2:
+    <<: *common
+    container_name: playwright_dev2
+    ports:
+      - "2223:22"
+    volumes:
+      - ./dev2:/app
+      - playwright_browsers:/ms-playwright
+
+#  dev3:
+#    <<: *common
+#    container_name: playwright_dev3
+#    ports: ["2223:22"]
+#    volumes:
+#      - ./dev3:/app"
+#      - playwright_browsers:/ms-playwright
+
+volumes:
+  playwright_browsers:
+    external: true
