@@ -73,4 +73,4 @@ for generate test
 Скорее всего, не хватает библиотек. Снова запустите на сервере:
 sudo npx playwright install-deps
 
-
+X410 - X Server for Windows Installer.exe
