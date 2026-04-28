@@ -514,7 +514,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "available"
+                      "options": "Available"
                     },
                     "properties": [
                       {
@@ -2519,7 +2519,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "idle"
+                      "options": "Idle"
                     },
                     "properties": [
                       {
@@ -2534,7 +2534,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "iowait"
+                      "options": "Iowait"
                     },
                     "properties": [
                       {
@@ -2549,7 +2549,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "irq"
+                      "options": "Irq"
                     },
                     "properties": [
                       {
@@ -2564,7 +2564,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "nice"
+                      "options": "Nice"
                     },
                     "properties": [
                       {
@@ -2594,7 +2594,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "softirq"
+                      "options": "Softirq"
                     },
                     "properties": [
                       {
@@ -2609,7 +2609,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "steal"
+                      "options": "Steal"
                     },
                     "properties": [
                       {
@@ -2624,7 +2624,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "system"
+                      "options": "System"
                     },
                     "properties": [
                       {
@@ -2639,7 +2639,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "user"
+                      "options": "User"
                     },
                     "properties": [
                       {
@@ -3041,12 +3041,12 @@
                       "excludeByName": {},
                       "indexByName": {},
                       "renameByName": {
-                        "Value #A": "Remaining space",
+                        "Value #A": "Free space",
                         "Value #B": "Usage rate",
                         "Value #C": "Total space",
-                        "device": "device name",
+                        "device": "Device name",
                         "fstype": "Type",
-                        "mountpoint": "partition"
+                        "mountpoint": "Partition"
                       }
                     }
                   }
@@ -3113,7 +3113,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "remaining space"
+                      "options": "Free space"
                     },
                     "properties": [
                       {
@@ -3151,14 +3151,14 @@
                       },
                       {
                         "id": "custom.width",
-                        "value": 72
+                        "value": 95
                       }
                     ]
                   },
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "usage rate"
+                      "options": "Usage rate"
                     },
                     "properties": [
                       {
@@ -3208,7 +3208,7 @@
                       },
                       {
                         "id": "custom.width",
-                        "value": 75
+                        "value": 85
                       },
                       {
                         "id": "color",
@@ -3228,7 +3228,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "type"
+                      "options": "Type"
                     },
                     "properties": [
                       {
@@ -3240,12 +3240,12 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "device name"
+                      "options": "Device name"
                     },
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 120
+                        "value": 110
                       }
                     ]
                   }
@@ -3259,7 +3259,7 @@
         "kind": "Panel",
         "spec": {
           "id": 183,
-          "title": "Traffic per minute$device",
+          "title": "Traffic per interval $device",
           "description": "",
           "links": [],
           "data": {
@@ -3275,7 +3275,7 @@
                       "version": "v0",
                       "spec": {
                         "exemplar": true,
-                        "expr": "increase(node_network_receive_bytes_total{instance=~\"$instance\",device=~\"$device\"}[1m])",
+                        "expr": "increase(node_network_receive_bytes_total{instance=~\"$instance\",device=~\"$device\"}[$__rate_interval])",
                         "interval": "1m",
                         "intervalFactor": 2,
                         "legendFormat": "{{device}}_in download",
@@ -3300,7 +3300,7 @@
                       "version": "v0",
                       "spec": {
                         "exemplar": true,
-                        "expr": "increase(node_network_transmit_bytes_total{instance=~\"$instance\",device=~\"$device\"}[1m])",
+                        "expr": "increase(node_network_transmit_bytes_total{instance=~\"$instance\",device=~\"$device\"}[$__rate_interval])",
                         "interval": "1m",
                         "intervalFactor": 2,
                         "legendFormat": "{{device}}_out upload",
@@ -3671,7 +3671,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "average%"
+                      "options": "Average%"
                     },
                     "properties": [
                       {
@@ -4169,7 +4169,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "average%"
+                      "options": "Average%"
                     },
                     "properties": [
                       {
@@ -4783,7 +4783,7 @@
                       },
                       {
                         "id": "decimals",
-                        "value": 0
+                        "value": 1
                       }
                     ]
                   },
@@ -5121,7 +5121,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 150
+                        "value": 120
                       },
                       {
                         "id": "custom.filterable",
@@ -5430,7 +5430,7 @@
                 "sortBy": [
                   {
                     "desc": true,
-                    "displayName": "P99 memory%"
+                    "displayName": "P99memory%"
                   }
                 ]
               },
@@ -5528,7 +5528,7 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "P99 memory usage"
+                      "options": "P99memory usage"
                     },
                     "properties": [
                       {
