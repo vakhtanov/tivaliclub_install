@@ -37,8 +37,71 @@ https://mcr.microsoft.com/en-us/artifact/mar/playwright/about
 Запись теста: Использовать кнопку Record new в расширении Playwright внутри VS Code.
 Обновление: Если они хотят обновить Playwright, им нужно попросить тебя перезапустить скрипт, а затем снова сделать npm install.
 
+#### codegen
+for generate test
+
+Чтобы codegen работал через эту схему, VS Code автоматически пробросит нужные порты. Единственное требование — у разработчика должно быть установлено расширение Playwright Test внутри этого удаленного подключения (VS Code предложит его установить «на удаленный сервер»).
+
 ### Trace Viewer
 Готов к запуску? Если тестировщики планируют использовать Trace Viewer, 
 им понадобится проброс еще одного порта или использование npx playwright show-trace с флагом хоста. 
 
+### USER WORKSPACE
 
+Этап 3: Настройка рабочих мест разработчиков
+Каждый разработчик на своем ноутбуке выполняет следующие действия:
+1. Установка софта
+Установить VS Code.
+Установить расширение Remote - SSH (Microsoft).
+Установить расширение Playwright Test for VSCode.
+2. Подключение к серверу
+В VS Code нажать кнопку в левом нижнем углу (><) или F1 -> Remote-SSH: Connect to Host.
+Ввести: ssh username@ip-адрес-сервера.
+Когда VS Code откроется внутри сервера (внизу будет надпись SSH: IP), открыть папку /opt/playwright-testing.
+
+Этап 4: Запуск и использование Codegen
+Теперь разработчик готов записывать тесты:
+В VS Code на сервере открыть вкладку Testing (значок колбы).
+В секции Playwright поставить галочку "Show browser".
+Нажать кнопку "Record new".
+Магия: На локальном компьютере разработчика всплывет окно Chromium, запущенного на сервере. Все действия (клики, ввод текста) будут автоматически превращаться в код в новом файле на сервере.
+
+Этап 5: Решение проблем (Troubleshooting)
+Если окно браузера не появляется:
+В VS Code на локальном компьютере проверьте вкладку Ports. Playwright использует динамические порты для трансляции интерфейса. Убедитесь, что VS Code не блокирует автоматический проброс портов (обычно это порты в диапазоне 8000–9000).
+Если браузер «падает» с ошибкой:
+Скорее всего, не хватает библиотек. Снова запустите на сервере:
+sudo npx playwright install-deps
+
+X410 - X Server for Windows Installer.exe
+
+####playwright help==============
+Inside that directory, you can run several commands:
+
+  npx playwright test
+    Runs the end-to-end tests.
+
+  npx playwright test --ui
+    Starts the interactive UI mode.
+
+  npx playwright test --project=chromium
+    Runs the tests only on Desktop Chrome.
+
+  npx playwright test example
+    Runs the tests in a specific file.
+
+  npx playwright test --debug
+    Runs the tests in debug mode.
+
+  npx playwright codegen
+    Auto generate tests with Codegen.
+
+We suggest that you begin by typing:
+
+    npx playwright test
+
+And check out the following files:
+  - ./e2e/example.spec.ts - Example end-to-end test
+  - ./playwright.config.ts - Playwright Test configuration
+
+Visit https://playwright.dev/docs/intro for more information.
