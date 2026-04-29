@@ -10,8 +10,8 @@ x-common: &common
   working_dir: /app
   environment:
     - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright ##
-  volumes:
-    - playwright_browsers:/ms-playwright ##
+#  volumes:
+#    - playwright_browsers:/ms-playwright ##
 
 services:
   dev1:
@@ -21,7 +21,7 @@ services:
       - "2221:22"
     volumes:
       - ./dev1:/app
-      - playwright_browsers:/ms-playwright # folder with browsers, common for all DONT USE Template
+#      - playwright_browsers:/ms-playwright # folder with browsers, common for all DONT USE Template
 
   dev2:
     <<: *common
@@ -30,7 +30,7 @@ services:
       - "2222:22"
     volumes:
       - ./dev2:/app
-      - playwright_browsers:/ms-playwright
+#      - playwright_browsers:/ms-playwright
 
 #  dev3:
 #    <<: *common
@@ -40,6 +40,14 @@ services:
 #      - ./dev3:/app"
 #      - playwright_browsers:/ms-playwright
 
-volumes:
-  playwright_browsers:
-    external: true
+#volumes:
+#  playwright_browsers:
+#    external: true
+
+
+  # --- ДОПОЛНИТЕЛЬНЫЙ СЕРВИС для SHARED ---
+  # Если нужно, чтобы shared была доступна как отдельный volume внутри контейнера,
+  # можно смонтировать её дополнительно, но обычно достаточно симлинков.
+  # В данном примере разработчики видят только свою папку (/app),
+  # но могут получить доступ к shared через путь /opt/playwright/shared,
+  # так как это host-path, или через симлинк внутри /app.

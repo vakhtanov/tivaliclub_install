@@ -55,7 +55,7 @@ for i in $(seq 1 $DEV_COUNT); do sudo mkdir -p "$INSTALL_DIR/dev$i"; done
 
 
 # Create volume for browsers
-docker volume create playwright_browsers || true
+#docker volume create playwright_browsers || true
 
 
 echo "--- Start install Playwright Environment ---"
@@ -65,8 +65,8 @@ cd $INSTALL_DIR
 docker compose up -d --build
 
 # Install browsers
-echo ">>> Installing browsers into SHARED volume..."
-docker exec playwright_dev1 npx playwright install --with-deps ##
+#echo ">>> Installing browsers into SHARED volume..."
+#docker exec playwright_dev1 npx playwright install --with-deps ##
 
 # Init Playwright (Software --init)
 for i in $(seq 1 "$DEV_COUNT"); do
