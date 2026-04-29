@@ -67,7 +67,7 @@ root@d878c4a05d27:~# npx playwright install
 ║     npm install @playwright/test                                              ║
 ║     npx playwright install
 ```
-
+Windows: Установите VcXsrv или Xming. Запустите VcXsrv с опцией Disable access control
 
 
 
