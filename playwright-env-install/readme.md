@@ -46,6 +46,31 @@ for generate test
 Готов к запуску? Если тестировщики планируют использовать Trace Viewer, 
 им понадобится проброс еще одного порта или использование npx playwright show-trace с флагом хоста. 
 
+
+###########=============from PLAYVIEW=============
+```
+root@d878c4a05d27:~# npx playwright install
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║ WARNING: It looks like you are running 'npx playwright install' without first ║
+║ installing your project's dependencies.                                       ║
+║                                                                               ║
+║ To avoid unexpected behavior, please install your dependencies first, and     ║
+║ then run Playwright's install command:                                        ║
+║                                                                               ║
+║     npm install                                                               ║
+║     npx playwright install                                                    ║
+║                                                                               ║
+║ If your project does not yet depend on Playwright, first install the          ║
+║ applicable npm package (most commonly @playwright/test), and                  ║
+║ then run Playwright's install command to download the browsers:               ║
+║                                                                               ║
+║     npm install @playwright/test                                              ║
+║     npx playwright install
+```
+
+
+
+
 ### USER WORKSPACE
 
 Этап 3: Настройка рабочих мест разработчиков
