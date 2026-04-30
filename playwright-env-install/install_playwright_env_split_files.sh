@@ -79,11 +79,10 @@ docker exec -w /app playwright_dev1 npx playwright install --with-deps ##
 for i in $(seq 1 "$DEV_COUNT"); do
     echo ">>> Initializing Playwright in dev$i..."
     if [ ! -f "$INSTALL_DIR/dev$i/package.json" ]; then
-    docker compose exec -w /app "playwright_dev$i" npm init playwright@latest -- \
+    docker compose exec -w /app "dev$i" npm init -y playwright@latest -- \
            --lang=TypeScript \
            --quiet \
-           --no-browsers \
-           --yes
+           --no-browsers
     fi
 done
 
