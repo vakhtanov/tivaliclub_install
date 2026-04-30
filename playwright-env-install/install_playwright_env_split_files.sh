@@ -73,24 +73,23 @@ docker compose up -d --build
 
 # Install browsers
 echo ">>> Installing browsers into SHARED volume..."
-docker exec playwright_dev1 npx playwright install --with-deps ##
+docker exec -w /app playwright_dev1 npx playwright install --with-deps ##
 
 # Init Playwright (Software --init)
 for i in $(seq 1 "$DEV_COUNT"); do
     echo ">>> Initializing Playwright in dev$i..."
     if [ ! -f "$INSTALL_DIR/dev$i/package.json" ]; then
-    docker compose exec -w /app "dev$i" npm init playwright@latest -- \
+    docker compose exec -w /app "playwright_dev$i" npm init playwright@latest -- \
            --lang=TypeScript \
            --quiet \
-           --no-browser \
+           --no-browsers \
            --yes
     fi
 done
 
-
 #Smoke Test
 echo ">>> Running Smoke Test in dev1..."
-if docker compose exec -w /app dev1 npx playwright test --project=chromium; then
+if docker compose exec -w /app playwright_dev1 npx playwright test --project=chromium; then
     echo -e "${GREEN}SMOKE TEST PASSED${NC}"
 else
     echo -e "${RED}SMOKE TEST FAILED${NC}"
