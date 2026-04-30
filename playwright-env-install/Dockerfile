@@ -15,17 +15,18 @@ RUN chmod 600 /root/.ssh/authorized_keys
 
 # Config security
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config && \
-    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-    echo "export PATH=$PATH" >> /root/.bashrc
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config 
+
+RUN echo "export PATH=\$PATH:/usr/bin:/usr/local/bin" >> /root/.bashrc && \
+    echo "export PLAYWRIGHT_BROWSERS_PATH=/ms-playwright" >> /root/.bashrc
+
 
 # Allow X11 Forwarding SSH config
 RUN echo "X11Forwarding yes" >> /etc/ssh/sshd_config && \
     echo "X11UseLocalhost no" >> /etc/ssh/sshd_config && \
     echo "AddressFamily inet" >> /etc/ssh/sshd_config
 
-# Install Playwright and browsers
-# ENV path to browsers
-ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+# Install Playwright libs
 RUN npx playwright install-deps
 
 
