@@ -2,31 +2,125 @@
 
 ## Description
 
-install PlayWright on server - some number of docker containers? one to one QA for isolating
+install PlayWright on server - number of docker containers one to one QA for isolating
 
-## Install 
+QA use VsCode and connect TO CONTAINER via SSH (SSH key). Use playwright VsCode plugin to create, start and view tests
 
-if need - download files and install docker
+## Install on desktop ============================================================
+Instruction for Win only (Win 10, 11)
+
+1. Install VsCode
+
+[https://code.visualstudio.com/download](https://code.visualstudio.com/download)
+
+Extention --> Install Remote - SSH (Microsoft)
+
+2. Install X server (VcXsrv)
+
+[https://sourceforge.net/projects/vcxsrv/](https://sourceforge.net/projects/vcxsrv/)
+
+3. Config SSH settings
+
+```
+## BASTION HOST (IF PRESENT)
+Host [Name for SSH] 
+  HostName [HostName/IP]
+  User [USER]
+  Port 22
+  IdentityFile "C:\Users\User\.ssh\wahha_rsa"
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  Compression yes
+
+## Server for PlayWright
+Host [Name for SSH]
+  HostName [HostName/IP]
+  User [USER]
+  Port 22
+  IdentityFile "C:\Users\User\.ssh\wahha_rsa"
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  Compression yes
+  ProxyJump devopsdemo.ru ## IF NEED
+
+
+## Docker container with playwright for do tests
+Host [Name for SSH]
+  HostName [HostName/IP]
+  User root
+  Port 2221
+  IdentityFile "C:\Users\User\.ssh\wahha_rsa"
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  Compression yes
+  Ciphers aes128-gcm@openssh.com,chacha20-poly1305@openssh.com #More simple coding
+  ProxyJump devopsdemo.ru ## IF NEED
+
+```
+
+4. Config Win USER enviroment
+
+Win Settings --> "Переменные среды пользователя"
+
+DISPLAY  =  localhost:0.0
+
+Relogin to System
+
+5. Start and config X server
+
+XLaunch --> Multiple windows --> Start on client --> Disable access control --> Save --> Finish
+
+Approve access
+
+6. Start VsCode
+
+F1 --> RemoteSSH: Connect curent ... --> playwright_dev1 (for dev1)
+
+Open Folder --> /app
+
+Extention --> Install Playwright Test for VSCode (Microsoft)
+
+## Files in working dir (/app) and some information
+
+Language for test - TypeScript  
+
+`playwright.config.ts` - PlayWright config  
+`tests` - Tests  
+`test-results` - Test result  
+`playwright-report` - reports  
+
+
+## Install on SERVER =============================================================
+
+1. if need  install docker, add current user to docker group
+
+2. If need download application files 
+
 ```
 wget --no-cache -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/playwright-env-install/download_repo.sh | bash
 ```
 
 
-**put public keys in  folder `authorized_keys`**
+3. **put public keys in  folder `authorized_keys`**
 
-set application variables in `install_playwright_env_split_files.sh`  
+4. set application variables in `install_playwright_env_split_files.sh`  
+```
 BASE_DIR="/opt/playwright-env-install"  
 KEYS_DIR="$(pwd)/authorized_keys"  
 DEV_COUNT=2  #Number of users
 PW_VERSION="noble"   
+```
+5. edit docker-compose.yml for set number of needed containers and ports
 
-edit docker-compose.yml for set number of needed containers and ports
+** Install xauth on server**
 
-## QA connect ssh by key
 
-then start `npm install`
 
-### Docker documentation
+## ==========================================================================
+## Additional information
+
+
+### Playwright in Docker documentation
 
 https://playwright.dev/docs/docker  
 https://mcr.microsoft.com/en-us/artifact/mar/playwright/about  
@@ -37,10 +131,6 @@ https://mcr.microsoft.com/en-us/artifact/mar/playwright/about
 Запись теста: Использовать кнопку Record new в расширении Playwright внутри VS Code.
 Обновление: Если они хотят обновить Playwright, им нужно попросить тебя перезапустить скрипт, а затем снова сделать npm install.
 
-#### codegen
-for generate test
-
-Чтобы codegen работал через эту схему, VS Code автоматически пробросит нужные порты. Единственное требование — у разработчика должно быть установлено расширение Playwright Test внутри этого удаленного подключения (VS Code предложит его установить «на удаленный сервер»).
 
 ### Trace Viewer
 Готов к запуску? Если тестировщики планируют использовать Trace Viewer, 
@@ -50,21 +140,9 @@ for generate test
 
 Этап 3: Настройка рабочих мест разработчиков
 Каждый разработчик на своем ноутбуке выполняет следующие действия:
-1. Установка софта
-Установить VS Code.
-Установить расширение Remote - SSH (Microsoft).
-Установить расширение Playwright Test for VSCode.
-2. Подключение к серверу
-В VS Code нажать кнопку в левом нижнем углу (><) или F1 -> Remote-SSH: Connect to Host.
-Ввести: ssh username@ip-адрес-сервера.
-Когда VS Code откроется внутри сервера (внизу будет надпись SSH: IP), открыть папку /opt/playwright-testing.
 
-Этап 4: Запуск и использование Codegen
-Теперь разработчик готов записывать тесты:
-В VS Code на сервере открыть вкладку Testing (значок колбы).
-В секции Playwright поставить галочку "Show browser".
-Нажать кнопку "Record new".
-Магия: На локальном компьютере разработчика всплывет окно Chromium, запущенного на сервере. Все действия (клики, ввод текста) будут автоматически превращаться в код в новом файле на сервере.
+
+
 
 Этап 5: Решение проблем (Troubleshooting)
 Если окно браузера не появляется:

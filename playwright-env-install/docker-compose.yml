@@ -21,7 +21,7 @@ services:
       - "2221:22"
     volumes:
       - ./dev1:/app
-#      - playwright_browsers:/ms-playwright # folder with browsers, common for all DONT USE Template
+      - playwright_browsers:/ms-playwright # folder with browsers, common for all DONT USE Template
 
   dev2:
     <<: *common
@@ -30,7 +30,7 @@ services:
       - "2222:22"
     volumes:
       - ./dev2:/app
-#      - playwright_browsers:/ms-playwright
+      - playwright_browsers:/ms-playwright
 
 #  dev3:
 #    <<: *common
@@ -40,9 +40,9 @@ services:
 #      - ./dev3:/app"
 #      - playwright_browsers:/ms-playwright
 
-#volumes:
-#  playwright_browsers:
-#    external: true
+volumes:
+  playwright_browsers:
+    external: true
 
 
   # --- ДОПОЛНИТЕЛЬНЫЙ СЕРВИС для SHARED ---
