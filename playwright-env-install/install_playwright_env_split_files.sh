@@ -128,4 +128,5 @@ fi
 #===========================================
 
 echo -e "${GREEN}--- DEPLOYMENT FINISHED.  ---${NC}"
-echo "${GREEN}Access: ssh root@$(hostname -I | awk '{print $1}') -p 2221 (or 2222)${NC}"
+
+echo -e "${GREEN}Access: ssh root@$(hostname -I | awk '{print $1}') -p 2221 (or 2222)${NC}"
