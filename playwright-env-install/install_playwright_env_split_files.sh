@@ -4,10 +4,14 @@ set -euo pipefail ## EXIT SCRIPT ON ANY ERROR!
 
 
 #================VARIABLES==============================
-INSTALL_DIR="/opt/playwright-env-install"
-KEYS_DIR="$(pwd)/authorized_keys"
-DEV_COUNT=2 # Number of QA - add or remove section in docker-compose.yml
-# Set playwright version in .env
+
+# Load .env
+if [ -f .env ]; then
+    source .env
+else
+    echo "ERROR: No .env file"
+    exit 1
+fi
 
 
 ## COLORS FOR BASH!!!!
@@ -53,15 +57,18 @@ cat "$KEYS_DIR"/*.pub | sudo tee $INSTALL_DIR/authorized_keys > /dev/null
 # 2. Create tree
 for i in $(seq 1 $DEV_COUNT); do sudo mkdir -p "$INSTALL_DIR/dev$i"; done
 
+# Common folder for devs
+sudo mkdir -p $INSTALL_DIR/shared
 
 # Create volume for browsers
-#docker volume create playwright_browsers || true
+docker volume create playwright_browsers || true
 
 
 echo "--- Start install Playwright Environment ---"
 
 cd $INSTALL_DIR
 
+###### START DOKER COMPOSE ============================######
 docker compose up -d --build
 
 # Install browsers
@@ -71,13 +78,19 @@ docker exec playwright_dev1 npx playwright install --with-deps ##
 # Init Playwright (Software --init)
 for i in $(seq 1 "$DEV_COUNT"); do
     echo ">>> Initializing Playwright in dev$i..."
-    docker compose exec -w /app "dev$i" npm init -y playwright@latest -- --lang=TypeScript --quiet
+    if [ ! -f "$INSTALL_DIR/dev$i/package.json" ]; then
+    docker compose exec -w /app "dev$i" npm init playwright@latest -- \
+           --lang=TypeScript \
+           --quiet \
+           --no-browser \
+           --yes
+    fi
 done
 
 
 #Smoke Test
 echo ">>> Running Smoke Test in dev1..."
-if docker compose exec -w /app dev1 npx playwright test; then
+if docker compose exec -w /app dev1 npx playwright test --project=chromium; then
     echo -e "${GREEN}SMOKE TEST PASSED${NC}"
 else
     echo -e "${RED}SMOKE TEST FAILED${NC}"
@@ -85,9 +98,6 @@ fi
 
 # 5. Rules
 sudo chown -R $USER:$USER "$INSTALL_DIR"
-
-
-
 
 # =====CHECK DOCKER COMPOSE up======================
 

@@ -80,6 +80,10 @@ Open Folder --> /app
 
 Extention --> Install Playwright Test for VSCode (Microsoft)
 
+7. Init playwright project
+
+`npx playwright install`
+
 ## Files in working dir (/app) and some information
 
 Language for test - TypeScript  
@@ -88,6 +92,12 @@ Language for test - TypeScript
 `tests` - Tests  
 `test-results` - Test result  
 `playwright-report` - reports  
+
+`xhost +`  
+или  
+`xhost +local:root`  
+Если при запуске браузера вы получаете ошибку: Error: Can't open display: :0 или Protocol not specified.  
+Её нужно вводить на самом сервере (не внутри контейнера) перед запуском docker-compose up.
 
 
 ## Install on SERVER ========================================================
@@ -100,19 +110,22 @@ Language for test - TypeScript
 wget --no-cache -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/playwright-env-install/download_repo.sh | bash
 ```
 
+3. CD PlayWright folder
 
-3. **put public keys in  folder `authorized_keys`**
+4. **put public keys in  folder `authorized_keys`**
 
-4. set application variables in `install_playwright_env_split_files.sh`  
+5. Set application variables in `.env`  
 ```
 BASE_DIR="/opt/playwright-env-install"  
 KEYS_DIR="$(pwd)/authorized_keys"  
 DEV_COUNT=2  #Number of users
-PW_VERSION="noble"   
+PW_VERSION="v1.59.1-noble"   
 ```
-5. edit docker-compose.yml for set number of needed containers and ports
+6. Edit docker-compose.yml for adjast number containers with .env and set ports
 
-** Install xauth on server**
+7. Start install_playwright_env_split_files.sh
+
+`bash install_playwright_env_split_files.sh`
 
 
 
@@ -141,6 +154,7 @@ https://mcr.microsoft.com/en-us/artifact/mar/playwright/about
 ###########=============from PLAYVIEW=============
 ```
 root@d878c4a05d27:~# npx playwright install
+npm warn exec The following package was not found and will be installed: playwright@1.59.1
 ╔═══════════════════════════════════════════════════════════════════════════════╗
 ║ WARNING: It looks like you are running 'npx playwright install' without first ║
 ║ installing your project's dependencies.                                       ║
@@ -156,7 +170,9 @@ root@d878c4a05d27:~# npx playwright install
 ║ then run Playwright's install command to download the browsers:               ║
 ║                                                                               ║
 ║     npm install @playwright/test                                              ║
-║     npx playwright install
+║     npx playwright install                                                    ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
 ```
 Windows: Установите VcXsrv или Xming. Запустите VcXsrv с опцией Disable access control  
 `npm init playwright@latest`

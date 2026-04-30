@@ -1,10 +1,10 @@
 ARG PW_VERSION=latest
 FROM mcr.microsoft.com/playwright:${PW_VERSION}
-ARG PW_VERSION=latest
 
 # Set SSH, clear cache
 RUN apt-get update && apt-get install -y \
     openssh-server \
+    xauth \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir /var/run/sshd
 
@@ -22,6 +22,12 @@ RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/s
 RUN echo "X11Forwarding yes" >> /etc/ssh/sshd_config && \
     echo "X11UseLocalhost no" >> /etc/ssh/sshd_config && \
     echo "AddressFamily inet" >> /etc/ssh/sshd_config
+
+# Install Playwright and browsers
+# ENV path to browsers
+ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+RUN npx playwright install-deps
+
 
 WORKDIR /app
 EXPOSE 22
