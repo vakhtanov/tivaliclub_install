@@ -6,7 +6,7 @@ install PlayWright on server - number of docker containers one to one QA for iso
 
 QA use VsCode and connect TO CONTAINER via SSH (SSH key). Use playwright VsCode plugin to create, start and view tests
 
-## Install on desktop ============================================================
+## Install on desktop ========================================================
 Instruction for Win only (Win 10, 11)
 
 1. Install VsCode
@@ -90,7 +90,7 @@ Language for test - TypeScript
 `playwright-report` - reports  
 
 
-## Install on SERVER =============================================================
+## Install on SERVER ========================================================
 
 1. if need  install docker, add current user to docker group
 
