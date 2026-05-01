@@ -20,17 +20,23 @@ RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/s
 ENV PATH="$PATH:/usr/bin:/usr/local/bin" 
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
+RUN echo "export PLAYWRIGHT_BROWSERS_PATH=/ms-playwright" >> /root/.bashrc &&
+    echo "export PATH="\$PATH:/usr/bin:/usr/local/bin"" >> /root/.bashrc
 
 # Allow X11 Forwarding SSH config
 RUN echo "X11Forwarding yes" >> /etc/ssh/sshd_config && \
     echo "X11UseLocalhost no" >> /etc/ssh/sshd_config && \
     echo "AddressFamily inet" >> /etc/ssh/sshd_config
+    
+RUN mkdir -p /ms-playwright && chmod 777 /ms-playwright
+
+WORKDIR /app
+
+
 
 # Install Playwright libs
 RUN npx playwright install-deps
 
-
-WORKDIR /app
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]

@@ -12,8 +12,11 @@ x-common: &common
     - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright ##
   volumes:
     - ./shared:/app/shared # Common folder for devs
-    - playwright_browsers:/ms-playwright ##
-
+    - playwright_browsers:"/ms-playwright" ##
+  security_opt:
+    - seccomp:unconfined # Позволяет Chromium работать корректно
+    
+    
 services:
   dev1:
     <<: *common
@@ -34,7 +37,6 @@ services:
       - ./dev2:/app
 #      - ./shared:/app/shared # Common folder for devs
 #      - playwright_browsers:/ms-playwright
-
 
 volumes:
   playwright_browsers:

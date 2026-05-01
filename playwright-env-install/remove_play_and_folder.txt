@@ -1,3 +1,8 @@
 docker compose -f /opt/playwright-env-install/docker-compose.yml down \
 && sudo rm -rf /opt/playwright-env-install/
 
+docker volume rm playwright_browsers
+
+
+
+/root/.cache/ms-playwright/.links
