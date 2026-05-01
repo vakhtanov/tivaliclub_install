@@ -20,7 +20,7 @@ RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/s
 ENV PATH="$PATH:/usr/bin:/usr/local/bin" 
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
-RUN echo "export PLAYWRIGHT_BROWSERS_PATH=/ms-playwright" >> /root/.bashrc &&
+RUN echo "export PLAYWRIGHT_BROWSERS_PATH=/ms-playwright" >> /root/.bashrc && \
     echo "export PATH="\$PATH:/usr/bin:/usr/local/bin"" >> /root/.bashrc
 
 # Allow X11 Forwarding SSH config
