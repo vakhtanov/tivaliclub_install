@@ -71,9 +71,15 @@ cd $INSTALL_DIR
 ###### START DOKER COMPOSE ============================######
 docker compose up -d --build
 
+sleep 5
+
+
+#### DOCKER COMPOSE - TAKE SEVECES NAME. NOT CONTAINER
+
 # Install browsers
 echo ">>> Installing browsers into SHARED volume..."
-docker exec -w /app playwright_dev1 npx playwright install --with-deps ##
+docker compose exec -w /app dev1 npx playwright install --with-deps ##
+
 
 # Init Playwright (Software --init)
 for i in $(seq 1 "$DEV_COUNT"); do
@@ -88,14 +94,15 @@ done
 
 #Smoke Test
 echo ">>> Running Smoke Test in dev1..."
-if docker compose exec -w /app playwright_dev1 npx playwright test --project=chromium; then
+if docker compose exec -w /app dev1 npx playwright test --project=chromium; then
     echo -e "${GREEN}SMOKE TEST PASSED${NC}"
 else
     echo -e "${RED}SMOKE TEST FAILED${NC}"
 fi
 
 # 5. Rules
-sudo chown -R $USER:$USER "$INSTALL_DIR"
+ACTUAL_USER=${SUDO_USER:-$USER}
+sudo chown -R "$ACTUAL_USER:$ACTUAL_USER" "$INSTALL_DIR"
 
 # =====CHECK DOCKER COMPOSE up======================
 

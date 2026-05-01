@@ -80,9 +80,19 @@ Open Folder --> /app
 
 Extention --> Install Playwright Test for VSCode (Microsoft)
 
-7. Init playwright project
+7. Work normaly 
 
-`npx playwright install`
+ - create test ./tests
+ 
+ - run test `npx playwright test`
+ 
+ - next you can view report 'npx playwright show-report'
+
+ `Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.`
+
+port 9323 mast go thou SSH
+
+`ssh -L 9323:localhost:9323 [SRV_NAME]`
 
 ## Files in working dir (/app) and some information
 
@@ -127,7 +137,7 @@ PW_VERSION="v1.59.1-noble"
 
 `bash install_playwright_env_split_files.sh`
 
-
+8. Wait for succsse
 
 ## =================================================
 
@@ -139,89 +149,30 @@ PW_VERSION="v1.59.1-noble"
 https://playwright.dev/docs/docker  
 https://mcr.microsoft.com/en-us/artifact/mar/playwright/about  
 
-#### VS Code extension
 
-Первый вход: Обязательно выполнить npm install.
-Запись теста: Использовать кнопку Record new в расширении Playwright внутри VS Code.
-Обновление: Если они хотят обновить Playwright, им нужно попросить тебя перезапустить скрипт, а затем снова сделать npm install.
-
-
-### Trace Viewer
-Готов к запуску? Если тестировщики планируют использовать Trace Viewer, 
-им понадобится проброс еще одного порта или использование npx playwright show-trace с флагом хоста. 
-
-
-###########=============from PLAYVIEW=============
-```
-root@d878c4a05d27:~# npx playwright install
-npm warn exec The following package was not found and will be installed: playwright@1.59.1
-╔═══════════════════════════════════════════════════════════════════════════════╗
-║ WARNING: It looks like you are running 'npx playwright install' without first ║
-║ installing your project's dependencies.                                       ║
-║                                                                               ║
-║ To avoid unexpected behavior, please install your dependencies first, and     ║
-║ then run Playwright's install command:                                        ║
-║                                                                               ║
-║     npm install                                                               ║
-║     npx playwright install                                                    ║
-║                                                                               ║
-║ If your project does not yet depend on Playwright, first install the          ║
-║ applicable npm package (most commonly @playwright/test), and                  ║
-║ then run Playwright's install command to download the browsers:               ║
-║                                                                               ║
-║     npm install @playwright/test                                              ║
-║     npx playwright install                                                    ║
-║                                                                               ║
-╚═══════════════════════════════════════════════════════════════════════════════╝
-```
-Windows: Установите VcXsrv или Xming. Запустите VcXsrv с опцией Disable access control  
-`npm init playwright@latest`
-
-
-### USER WORKSPACE
-
-Этап 3: Настройка рабочих мест разработчиков
-Каждый разработчик на своем ноутбуке выполняет следующие действия:
-
-
-
-
-Этап 5: Решение проблем (Troubleshooting)
-Если окно браузера не появляется:
-В VS Code на локальном компьютере проверьте вкладку Ports. Playwright использует динамические порты для трансляции интерфейса. Убедитесь, что VS Code не блокирует автоматический проброс портов (обычно это порты в диапазоне 8000–9000).
-Если браузер «падает» с ошибкой:
-Скорее всего, не хватает библиотек. Снова запустите на сервере:
-sudo npx playwright install-deps
-
-X410 - X Server for Windows Installer.exe
-
-####playwright help==============
+####==========playwright help==============
 Inside that directory, you can run several commands:
 
-  npx playwright test
+  `npx playwright test`
     Runs the end-to-end tests.
 
-  npx playwright test --ui
+  `npx playwright test --ui`
     Starts the interactive UI mode.
 
-  npx playwright test --project=chromium
+  `npx playwright test --project=chromium`
     Runs the tests only on Desktop Chrome.
 
-  npx playwright test example
+  `npx playwright test example`
     Runs the tests in a specific file.
 
-  npx playwright test --debug
+  `npx playwright test --debug`
     Runs the tests in debug mode.
 
-  npx playwright codegen
+  `npx playwright codegen`
     Auto generate tests with Codegen.
 
-We suggest that you begin by typing:
-
-    npx playwright test
-
 And check out the following files:
-  - ./e2e/example.spec.ts - Example end-to-end test
+  - ./tests/example.spec.ts - Example end-to-end test
   - ./playwright.config.ts - Playwright Test configuration
 
-Visit https://playwright.dev/docs/intro for more information.
+Visit [https://playwright.dev/docs/intro](https://playwright.dev/docs/intro) for more information.

@@ -12,7 +12,7 @@ x-common: &common
     - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright ##
   volumes:
     - ./shared:/app/shared # Common folder for devs
-#    - playwright_browsers:/ms-playwright ##
+    - playwright_browsers:/ms-playwright ##
 
 services:
   dev1:
@@ -22,7 +22,8 @@ services:
       - "2221:22"
     volumes:
       - ./dev1:/app
-      - playwright_browsers:/ms-playwright # folder with browsers, common for all DONT USE Template
+#      - ./shared:/app/shared # Common folder for devs
+#      - playwright_browsers:/ms-playwright # folder with browsers, common for all DONT USE Template
 
   dev2:
     <<: *common
@@ -30,10 +31,12 @@ services:
     ports:
       - "2222:22"
     volumes:
-      - ./dev2:/apз
-      - playwright_browsers:/ms-playwright
+      - ./dev2:/app
+#      - ./shared:/app/shared # Common folder for devs
+#      - playwright_browsers:/ms-playwright
 
 
 volumes:
   playwright_browsers:
     external: true
+

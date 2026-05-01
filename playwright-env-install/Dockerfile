@@ -17,8 +17,8 @@ RUN chmod 600 /root/.ssh/authorized_keys
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config 
 
-RUN echo "export PATH=\$PATH:/usr/bin:/usr/local/bin" >> /root/.bashrc && \
-    echo "export PLAYWRIGHT_BROWSERS_PATH=/ms-playwright" >> /root/.bashrc
+ENV PATH="$PATH:/usr/bin:/usr/local/bin" 
+ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
 
 # Allow X11 Forwarding SSH config
