@@ -30,4 +30,5 @@ wget $PLAYWRIGHT_SRV_REPO/.env -O .env
 #wget $PLAYWRIGHT_SRV_REPO/playwright.config.ts -O playwright.config.ts
 
 echo -e "${GREEN}cd playwright-env-install${NC}"
+echo -e "${GREEN}put public ssh keys into autorised_keys dir${NC}"
 echo -e "${GREEN}install_playwright_env_split_files.sh${NC}"
