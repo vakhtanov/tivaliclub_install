@@ -11,7 +11,7 @@ x-common: &common
   environment:
     - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright ##
   volumes:
-    - ./shared:/app/shared # Common folder for devs
+    - ./shared:/shared # Common folder for devs
     - playwright_browsers:"/ms-playwright" ##
   security_opt:
     - seccomp:unconfined # Позволяет Chromium работать корректно
@@ -25,7 +25,7 @@ services:
       - "2221:22"
     volumes:
       - ./dev1:/app
-#      - ./shared:/app/shared # Common folder for devs
+#      - ./shared:/shared # Common folder for devs
 #      - playwright_browsers:/ms-playwright # folder with browsers, common for all DONT USE Template
 
   dev2:
@@ -35,7 +35,7 @@ services:
       - "2222:22"
     volumes:
       - ./dev2:/app
-#      - ./shared:/app/shared # Common folder for devs
+#      - ./shared:/shared # Common folder for devs
 #      - playwright_browsers:/ms-playwright
 
 volumes:
