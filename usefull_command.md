@@ -47,6 +47,12 @@ https://www.dmosk.ru/miniinstruktions.php?mini=ssh-tunnels
 откройте файл настроек: `sudo nano /etc/ssh/sshd_config`  
 Вход по ключу `PubkeyAuthentication yes` 
 
+Скопировать ключ по виндой
+```
+type c:\Users\wahha\.ssh\wahha_rsa.pub | ssh andrey@192.168.20.35 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+
 Отключить вход по паролю для одного пользователя  
 ```
 Match User имя_пользователя
