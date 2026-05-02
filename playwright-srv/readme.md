@@ -117,7 +117,7 @@ Language for test - TypeScript
 2. If need download application files 
 
 ```
-https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/playwright-srv/download_repo.sh
+wget --no-cache -O - https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/playwright-srv/download_repo.sh | bash
 ```
 
 3. CD PlayWright folder
