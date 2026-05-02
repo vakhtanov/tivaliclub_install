@@ -45,8 +45,9 @@ https://www.dmosk.ru/miniinstruktions.php?mini=ssh-tunnels
 **Доступ по сертификату**
 
 откройте файл настроек: `sudo nano /etc/ssh/sshd_config`  
+Вход по ключу `PubkeyAuthentication yes` 
+
 Отключить вход по паролю для одного пользователя  
-PubkeyAuthentication yes
 ```
 Match User имя_пользователя
     PasswordAuthentication no
