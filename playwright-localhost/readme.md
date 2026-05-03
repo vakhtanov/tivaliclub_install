@@ -271,7 +271,150 @@ npx playwright codegen https://tivaliclub.com/ru
    2. Пушит код в main.
    3. Остальные делают git clone и npm install.
 
-Уже решили, какую именно функциональность (регистрацию, поиск или чат) будете автоматизировать первой?
+
+
+
+
+# BEST PRACTICE REPO ========================
+
+Для командной работы в Playwright лучше всего использовать структуру, которая отделяет логику страниц (локаторы) от сценариев (тестов). Это позволит вашим тестировщикам не конфликтовать при редактировании одних и тех же файлов.
+## 📂 Рекомендуемая структура репозитория
+```
+tivali-tests/
+├── .github/
+│   └── workflows/
+│       └── playwright.yml      # Автозапуск тестов при push в GitHub
+├── pages/                      # Page Object Model (POM)
+│   ├── base.page.ts            # Общие методы для всех страниц
+│   ├── login.page.ts           # Страница входа
+│   └── main.page.ts            # Главная страница
+├── tests/                      # Сами тесты
+│   ├── auth/                   # Тесты авторизации
+│   │   └── login.spec.ts
+│   └── smoke/                  # Быстрые тесты на проверку доступности
+│       └── main.spec.ts
+├── data/                       # Тестовые данные (пользователи, тексты)
+│   └── users.json
+├── playwright.config.ts        # Глобальные настройки Playwright
+├── package.json                # Зависимости и скрипты запуска
+├── .env.example                # Образец файла с паролями
+└── .gitignore                  # Исключения для Git
+```
+------------------------------
+## ⚙️ Код основных файлов настроек## 1. playwright.config.ts (Главный конфиг)
+Этот файл определяет, как тесты будут бегать у всех участников команды.
+```
+import { defineConfig, devices } from '@playwright/test';
+export default defineConfig({
+  testDir: './tests',
+  fullyParallel: true,                // Запуск тестов в несколько потоков
+  forbidOnly: !!process.env.CI,       // Запрет .only в CI
+  retries: process.env.CI ? 2 : 1,    // Перезапуск упавших тестов (2 раза в CI, 1 локально)
+  workers: process.env.CI ? 1 : undefined,
+  reporter: [['html'], ['list']],    // Отчеты в консоли и HTML
+
+  use: {
+    baseURL: 'https://tivaliclub.com', // Базовый URL, чтобы не дублировать в тестах
+    trace: 'on-first-retry',          // Запись логов при первой неудаче
+    screenshot: 'only-on-failure',    // Скриншот только при ошибке
+    video: 'retain-on-failure',       // Видео только при ошибке
+  },
+
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+  ],
+});
+```
+## 2. .gitignore
+Чтобы не засорять репозиторий гигабайтами видео и скриншотов.
+```
+node_modules/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+.env
+```
+## 3. package.json (Скрипты для команды)
+Добавьте в секцию scripts, чтобы всем было удобно запускать тесты одинаковыми командами.
+```
+"scripts": {
+  "test": "npx playwright test",
+  "test:ui": "npx playwright test --ui",
+  "test:report": "npx playwright show-report",
+  "codegen": "npx playwright codegen https://tivaliclub.com"
+}
+```
+------------------------------
+## 🤝 Как начать работу в команде
+
+   1. Лид создает репозиторий, кладет туда эти файлы и делает git push.
+   2. Тестировщики делают git clone.
+   3. Каждый выполняет в Cmder: npm install и npx playwright install.
+   4. Для новой задачи каждый создает свою ветку: git checkout -b task/login-scenarios.
+
+Совет: Договоритесь использовать одинаковые расширения в VS Code (рекомендую официальное Playwright Test), чтобы у всех был одинаковый интерфейс запуска.
+Нужно ли подготовить пример GitHub Actions файла, чтобы тесты сами запускались после каждого вашего коммита?
+
+
+Ниже представлен код файла для GitHub Actions. Он позволит вашей команде автоматически прогонять тесты при каждом пуше в ветку main или создании Pull Request.
+Создайте файл по пути: .github/workflows/playwright.yml
+```
+name: Playwright Testson:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Playwright tests
+      run: npx playwright test
+
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
+```
+## Что делает этот файл:
+
+   1. Триггеры: Запускает тесты, как только кто-то из тестировщиков отправляет код в main или открывает PR.
+   2. Среда: Использует свежую версию Ubuntu.
+   3. Установка:
+   * npm ci — чистая установка всех библиотек из вашего package.json.
+      * install --with-deps — устанавливает браузеры и те самые системные библиотеки Linux, о которых мы говорили раньше.
+   4. Отчеты: Если тесты упадут, GitHub сохранит папку playwright-report. Вы сможете скачать её из вкладки Actions, открыть и посмотреть видео или скриншот ошибки.
+
+------------------------------
+## 🚀 Финальный чек-лист для команды:
+
+* Файл .env: Если у вас есть тесты с авторизацией, не забудьте прописать секреты в настройках репозитория GitHub (Settings > Secrets and variables > Actions), чтобы тесты в облаке могли «подхватить» логины и пароли.
+* Статус: После пуша этого файла в репозиторий, рядом с вашими коммитами появится зеленая галочка (успех) или красный крестик (ошибка).
+
+
+
 
 
 
