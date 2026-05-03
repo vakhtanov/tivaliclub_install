@@ -21,6 +21,8 @@ Extention --> Install Remote - SSH (Microsoft)
 
 3. Config SSH settings
 
+`ssh-keygen -t ed25519 -C "your_email@example.com"`
+
 ```
 ## BASTION HOST (IF PRESENT)
 Host [Name for SSH] 
