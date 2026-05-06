@@ -120,7 +120,7 @@
 ```
 Создаем папку для работы и заходим в нее
 git clone --filter=blob:none --no-checkout [URL_РЕПОЗИТОРИЯ] .
-git sparse-checkout set tests
+git sparse-checkout set [FOLDER] 
 git checkout main
 ```
 
