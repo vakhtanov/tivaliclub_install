@@ -13,7 +13,7 @@
 5. Установить VSCode и расширение Playwright
 6. Изучить структуру репозитория - файл [project_structure.md](./project_structure.md)
 
-# Требвоание к версии ОС
+# Требование к версии ОС
 
 * Windows 10-11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
 * macOS 14 (Ventura) or later.
