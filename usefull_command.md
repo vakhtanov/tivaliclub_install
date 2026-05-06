@@ -32,6 +32,13 @@
 
 https://www.dmosk.ru/miniinstruktions.php?mini=ssh-tunnels
 
+## Генерировать SSH ключ
+
+`ssh-keygen -t ed25519 -C "your_email@example.com"`
+
+If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
+`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+
 ## Пароль и сертификат
 `passwd`  
 
