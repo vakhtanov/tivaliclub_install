@@ -1,4 +1,4 @@
-# Инструкция для установки и настройки стека NODE.JS PLAYWRIGHT VSCODE для тестирвоания web приложений
+# Инструкция для установки и настройки стека NODE.JS, PLAYWRIGHT, VSCODE для тестирвоания web приложений
 
 Описана установка для Desktop версий ОС.
 
@@ -12,6 +12,12 @@
 4. Проверить работу
 5. Установить VSCode и расширение Playwright
 6. Изучить структуру репозитория - файл [project_structure.md](./project_structure.md)
+
+# Требвоание к версии ОС
+
+* Windows 10-11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
+* macOS 14 (Ventura) or later.
+* Debian 12 / 13, Ubuntu 22.04 / 24.04 (x86-64 or arm64).
 
 # Принципы совместной работы по тестированию
 
@@ -86,52 +92,96 @@
 ------------------------------
 
 
-# 2. Клонируем репозиторий
+# 2. Клонируем репозиторий с шаблоном для создания тестов
 
-`git clone`
+Для каждого сайта создается отдельынй шаблон с общими настройками для тестирвоания (ссылками, плагинами и т.д)
+
+Для доступа к репозиторию возможно нужно будет добавить на сайт публичную часть своего ssh ключа
+
+## Клонирование репозитория целиком (одельный репозиторий для тестов)
+`git clone https://github.com/[REPO address]`
+
+Создать новую ветку и переключиться в нее  
+`git switch -c [BRANCH]`
+
+Переключиться в существующую ветку  
+`git switch [BRANCH]`
+
+Коммит изменений и отправка в репозиторий
+```
+ git add .
+ git commit -am "[COMMENT]"
+ git push -u origin [BRANCH] - первый раз если ветки нет в репозитории
+ git push -u origin [BRANCH] - следующие разы
+```
+
+## Клонирвоание папки для тестов из общего репозитория (например DevOps)
+
+```
+Создаем папку для работы и заходим в нее
+git clone --filter=blob:none --no-checkout [URL_РЕПОЗИТОРИЯ] .
+git sparse-checkout set tests
+git checkout main
+```
+
+Создать новую ветку и переключиться в нее  
+`git switch -c [BRANCH]`
+
+Переключиться в существующую ветку  
+`git switch [BRANCH]`
+
+Коммит изменений и отправка в репозиторий
+```
+ git add .
+ git commit -am "[COMMENT]"
+ git push -u origin [BRANCH] - первый раз если ветки нет в репозитории
+ git push -u origin [BRANCH] - следующие разы
+```
+
+Файл **.env_example** переименуй в **.env** и пропиши свои креды для доступа
 
 # 3. Устанавливаем PLAYWRIGHT Если скачен репозиторий.
 
-Заходим в папку и:
- `npm install` - скачивает библиотеки согласно `package.json`
- `npx playwright install` - установка браузеров  
- `npx playwright install-deps` (только для Linux) - установка дополнение к браузерам - шрифты и т.д.
- 
+Переходим в папку проекта, выполняем комманды:  
+ `npm install` - скачивает библиотеки согласно `package.json`  
+ `npx playwright install` - установка браузеров   
+ `npx playwright install-deps` (только для Linux) - установка дополнение к браузерам - шрифты и т.д.  
+   
  Различия в браузере WebKit (Safari)  
-* Playwright позволяет тестировать Safari на Windows и Linux.
-* Но: На Windows это будет «эмуляция» через сборку WebKit. На macOS это работает максимально близко к реальному Safari.
+* Playwright позволяет тестировать Safari на Windows и Linux.  
+* Но: На Windows это будет «эмуляция» через сборку WebKit. На macOS это работает максимально близко к реальному Safari.  
 
 
 # 4. Основные команды PLAYWRIGHT
 
 Чтобы убедиться, что всё встало ровно, запустите тестовый пример:
 
-  `npx playwright test`
-    Runs the end-to-end tests.
+  `npx playwright test`  
+    Runs the end-to-end tests.  
 
 По умолчанию тесты пройдут в фоновом режиме. Чтобы увидеть браузер, используйте флаг --headed:
 
    `npx playwright test --headed`
 
-  `npx playwright test --ui`
+  `npx playwright test --ui`  
     Starts the interactive UI mode.
 
-  `npx playwright test --project=chromium`
+  `npx playwright test --project=chromium`  
     Runs the tests only on Desktop Chrome.
 
   `npx playwright test example`
     Runs the tests in a specific file.
 
-  `npx playwright test --debug`
+  `npx playwright test --debug`  
     Runs the tests in debug mode.
 
-  `npx playwright codegen`
+  `npx playwright codegen`  
     Auto generate tests with Codegen.
 
 
-And check out the following files:
-  - .\tests\example.spec.ts - Example end-to-end test
-  - .\playwright.config.ts - Playwright Test configuration
+And check out the following files:  
+  - .\tests\example.spec.ts - Example end-to-end test  
+  - .\playwright.config.ts - Playwright Test configuration  
 
 Visit https://playwright.dev/docs/intro for more information. ✨
 
@@ -157,14 +207,49 @@ Visit https://playwright.dev/docs/intro for more information. ✨
             * Add a GitHub Actions workflow: Нажмите y, если планируете запускать тесты в облаке.  
             * Install Playwright browsers: Нажмите y (это автоматически скачает браузеры Chromium, Firefox и WebKit).  
 
-            * Windows: Обычно всё работает «из коробки». Playwright сам скачивает нужные браузеры в папку %USERPROFILE%\AppData\Local\ms-playwright.
-            * Linux (Ubuntu/Debian): Браузерам часто не хватает системных библиотек (библиотеки отрисовки, шрифты). После установки проекта вам обязательно нужно запустить команду:
+            * Windows: Обычно всё работает «из коробки». Playwright сам скачивает нужные браузеры в папку %USERPROFILE%\AppData\Local\ms-playwright.  
+            * Linux (Ubuntu/Debian): Браузерам часто не хватает системных библиотек (библиотеки отрисовки, шрифты). После установки проекта вам обязательно нужно запустить команду:  
             ```
             npx playwright install-deps
             ```
-            Без этого браузеры просто не запустятся в Linux.
-            * macOS: Как и в Windows, дополнительные зависимости обычно не требуются, если система обновлена.
+            Без этого браузеры просто не запустятся в Linux.  
+            * macOS: Как и в Windows, дополнительные зависимости обычно не требуются, если система обновлена.  
 
             Если вы пропустили шаг с установкой браузеров или скачали проект из Git, выполните:  
              `npx playwright install` - установка браузеров  
              `npx playwright install-deps` (только для Linux) - установка дополнение к браузерам - шрифты и т.д.  
+             
+             Установка пакета для использования файла .env  
+             `npm install dotenv --save-dev`
+             
+             Использование .env в коде  
+             в конфиге:  
+             ```
+             ссылка на переменную - process.env.BASE_URL
+             use: {
+               baseURL: process.env.BASE_URL,
+             },
+             ```
+             
+             В коде теста:  
+             
+             ```
+             ссылка на переменную - process.env.USER_LOGIN!
+             
+             await page.fill('#login', process.env.USER_LOGIN!);
+             ```
+             
+# Обновление PlayWrigth
+
+В папке проекта:
+
+```
+npm install -D @playwright/test@latest
+npx playwright install --with-deps
+```
+
+Проверка версии
+
+```
+npx playwright --version
+```
