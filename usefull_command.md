@@ -74,3 +74,7 @@ Match User имя_пользователя
 
 Проверьте конфиг на наличие ошибок: `sudo sshd -t`  
 перезапустите службу: `sudo systemctl restart ssh`
+
+**размеры папок**
+
+`sudo du -h --max-depth 1` - на глубину 1
