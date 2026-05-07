@@ -78,3 +78,11 @@ Match User имя_пользователя
 **размеры папок**
 
 `sudo du -h --max-depth 1` - на глубину 1
+
+**размер сущьностей докера**  
+`docker system df -v`  
+`docker images --format "{{.Repository}}:{{.Tag}}\t{{.Size}}" | sort -h -k 2 -r`  
+`docker ps -as --format "table {{.Names}}\t{{.Size}}\t{{.Image}}" | sort -h -k 2 -r`  
+назавания контейнеров  
+`docker inspect --format '{{.Name}}' 95f1f35c62315e8fc77b1c4c105c5149f006078051b50260291a1af1868e4fdf`  
+`docker inspect --format '{{index .Config.Labels "com.docker.compose.project.working_dir"}}' 95f1f35c6231`
