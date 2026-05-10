@@ -91,6 +91,16 @@
    
 ------------------------------
 
+# 2. Установка GIT
+
+Установим систему контроля версий Git
+
+На Linux возможно уже устанвлено
+
+На windows - установщик на сайте [https://git-scm.com/install/](https://git-scm.com/install/)
+
+[Standalon Win64](https://github.com/git-for-windows/git/releases/download/v2.54.0.windows.1/Git-2.54.0-64-bit.exe)
+
 
 # 2. Клонируем репозиторий с шаблоном для создания тестов
 
