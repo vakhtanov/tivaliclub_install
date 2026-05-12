@@ -26,6 +26,13 @@
 
 `wget https://raw.githubusercontent.com/vakhtanov/tivaliclub_install/refs/heads/main/nextcloud/docker-compose.yaml -O docker-compose.yaml`
 
+
+**start nextcloud on host100**
+```
+wget https://gitverse.ru/api/repos/wahha/tivaliclub_install/raw/branch/main/nextcloud%2Fdocker-compose_for100.yaml -O docker-compose_for100.yaml
+```
+docker-compose_for100.yaml
+
 *Все адреса и доменные имена исправляем на ИСПОЛЬЗУЕМЫЕ*
 
 `docker compose up` - SUDO NOT NEED for docker
